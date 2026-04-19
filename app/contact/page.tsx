@@ -20,6 +20,27 @@ export default function ContactPage() {
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#A1A1A1] md:text-lg">
             A single thread — tell me what you&apos;re shipping and what success looks like.
           </p>
+          <p className="mt-5 max-w-2xl text-sm leading-relaxed text-[#A1A1A1] md:text-base">
+            Available for hire on{" "}
+            <a
+              href="https://www.upwork.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#39ff88] underline decoration-[#39ff88]/45 underline-offset-4 transition-opacity hover:opacity-85"
+            >
+              Upwork
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://www.flexjobs.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#39ff88] underline decoration-[#39ff88]/45 underline-offset-4 transition-opacity hover:opacity-85"
+            >
+              FlexJobs
+            </a>
+            .
+          </p>
         </header>
 
         <div className="py-16 md:py-24">

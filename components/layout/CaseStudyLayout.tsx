@@ -13,7 +13,7 @@ export function CaseStudyLayout({ children, className }: CaseStudyLayoutProps) {
   return (
     <article className={cn("bg-[#000000] text-white", className)}>
       <SiteLayout as="div" contained={false}>
-        <div className="mx-auto w-full max-w-[1100px] px-5 sm:px-8">{children}</div>
+        <div className="mx-auto w-full max-w-[1100px] px-7 sm:px-8 lg:px-10">{children}</div>
       </SiteLayout>
     </article>
   );

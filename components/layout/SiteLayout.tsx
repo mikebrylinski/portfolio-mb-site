@@ -22,7 +22,7 @@ export function SiteLayout({
       className={cn("min-h-0 bg-[#000000] text-white antialiased", className)}
     >
       {contained ? (
-        <div className="mx-auto w-full max-w-[1100px] px-5 sm:px-8">
+        <div className="mx-auto w-full max-w-[1100px] px-7 sm:px-8 lg:px-10">
           {children}
         </div>
       ) : (

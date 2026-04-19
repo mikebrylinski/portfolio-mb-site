@@ -22,9 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body
-        className={`${inter.className} min-h-dvh overflow-x-hidden bg-[#000000] font-sans antialiased text-white`}
+        suppressHydrationWarning
+        className={`${inter.className} min-h-dvh overflow-x-hidden bg-[#000000] antialiased text-white`}
       >
         <a
           href="#main-content"

@@ -29,3 +29,31 @@ body {
   outline: 2px solid color-mix(in srgb, var(--color-accent) 65%, transparent);
   outline-offset: 3px;
 }
+
+/* Work section — horizontal client ticker (seamless loop) */
+@keyframes client-ticker-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.client-ticker-track {
+  animation: client-ticker-scroll 420s linear infinite;
+  will-change: transform;
+}
+
+@media (hover: hover) {
+  .group-ticker:hover .client-ticker-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-ticker-track {
+    animation: none;
+    transform: translate3d(0, 0, 0);
+  }
+}

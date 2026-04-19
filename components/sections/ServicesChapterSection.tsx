@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { useMemo } from "react";
+import { AppleStaggerChild, AppleStaggerRoot } from "@/components/layout/AppleStagger";
 import { ScrollSection } from "@/components/layout/ScrollSection";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { serviceColumns } from "@/content/services";
@@ -27,7 +28,7 @@ export function ServicesChapterSection() {
       show: {
         opacity: 1,
         y: 0,
-        transition: { duration: reduce ? 0 : 0.6, ease },
+        transition: { duration: reduce ? 0 : 0.95, ease },
       },
     }),
     [reduce],
@@ -45,14 +46,22 @@ export function ServicesChapterSection() {
       />
 
       <div className="relative mx-auto max-w-[1100px] text-left">
-        <SectionEyebrow>Services</SectionEyebrow>
-        <h2 className="mt-4 max-w-3xl text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium tracking-tight text-white">
-          Stack depth. Solo-operator focus. Zero fluff.
-        </h2>
-        <p className="mt-5 max-w-3xl text-base leading-relaxed text-[#A1A1A1] md:text-lg">
-          From UX strategy through deployment, one coherent thread — fewer handoffs,
-          fewer regressions, and velocity you can feel in the codebase.
-        </p>
+        <AppleStaggerRoot>
+          <AppleStaggerChild>
+            <SectionEyebrow>Services</SectionEyebrow>
+          </AppleStaggerChild>
+          <AppleStaggerChild>
+            <h2 className="mt-4 max-w-3xl text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium tracking-tight text-white">
+              Stack depth. Solo-operator focus. Zero fluff.
+            </h2>
+          </AppleStaggerChild>
+          <AppleStaggerChild>
+            <p className="mt-5 max-w-3xl text-base leading-relaxed text-[#A1A1A1] md:text-lg">
+              From UX strategy through deployment, one coherent thread — fewer handoffs,
+              fewer regressions, and velocity you can feel in the codebase.
+            </p>
+          </AppleStaggerChild>
+        </AppleStaggerRoot>
 
         <motion.div
           className="mt-14 grid grid-cols-1 gap-12 md:mt-16 lg:grid-cols-3 lg:gap-0 lg:divide-x lg:divide-[#39ff88]/15"

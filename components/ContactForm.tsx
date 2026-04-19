@@ -8,7 +8,13 @@ import {
 
 const initial: ContactState = {};
 
-export function ContactForm() {
+export type ContactFormProps = {
+  /** Tighter layout for in-page sections (e.g. homepage) — default intent project, no focus steal */
+  variant?: "default" | "compact";
+};
+
+export function ContactForm({ variant = "default" }: ContactFormProps) {
+  const compact = variant === "compact";
   const [state, formAction, isPending] = useActionState(
     submitContact,
     initial,
@@ -16,8 +22,10 @@ export function ContactForm() {
   const firstRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    firstRef.current?.focus();
-  }, []);
+    if (!compact) {
+      firstRef.current?.focus();
+    }
+  }, [compact]);
 
   if (state.ok) {
     return (
@@ -38,7 +46,7 @@ export function ContactForm() {
   return (
     <form
       action={formAction}
-      className="space-y-6 text-left"
+      className={compact ? "space-y-4 text-left" : "space-y-6 text-left"}
       noValidate
     >
       <div className="hidden" aria-hidden>
@@ -46,20 +54,24 @@ export function ContactForm() {
         <input id="company" name="company" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <div>
-        <label htmlFor="intent" className="mb-2 block text-sm font-medium text-white">
-          I&apos;m interested in
-        </label>
-        <select
-          id="intent"
-          name="intent"
-          className="w-full rounded-lg border border-white/15 bg-white/[0.04] px-4 py-3 text-white focus:border-white/35 focus:outline-none focus:ring-2 focus:ring-[#39ff88]/30"
-          defaultValue="project"
-        >
-          <option value="project">Starting a project</option>
-          <option value="hire">Hiring / hourly engagement</option>
-        </select>
-      </div>
+      {compact ? (
+        <input type="hidden" name="intent" value="project" />
+      ) : (
+        <div>
+          <label htmlFor="intent" className="mb-2 block text-sm font-medium text-white">
+            I&apos;m interested in
+          </label>
+          <select
+            id="intent"
+            name="intent"
+            className="w-full rounded-lg border border-white/15 bg-white/[0.04] px-4 py-3 text-white focus:border-white/35 focus:outline-none focus:ring-2 focus:ring-[#39ff88]/30"
+            defaultValue="project"
+          >
+            <option value="project">Starting a project</option>
+            <option value="hire">Hiring / hourly engagement</option>
+          </select>
+        </div>
+      )}
 
       <div>
         <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
@@ -113,7 +125,7 @@ export function ContactForm() {
         <textarea
           id="message"
           name="message"
-          rows={6}
+          rows={compact ? 4 : 6}
           required
           aria-invalid={!!state.fieldErrors?.message}
           aria-describedby={

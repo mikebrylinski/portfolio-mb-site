@@ -1,9 +1,11 @@
 "use client";
 
+import { motion, type HTMLMotionProps } from "framer-motion";
 import Link from "next/link";
 import type { CaseStudy } from "@/content/case-studies";
 import { CaseStudyThumbMedia } from "@/components/case-study/CaseStudyMedia";
 import { ArrowNudge, ChartBarsIcon, StorefrontIcon } from "@/components/icons/AccentIcons";
+import { cn } from "@/lib/cn";
 
 function ProjectIcon({ slug }: { slug: string }) {
   if (slug === "shopify-storefront" || slug === "cp-commerce") {
@@ -12,9 +14,13 @@ function ProjectIcon({ slug }: { slug: string }) {
   return <ChartBarsIcon className="h-9 w-9 shrink-0 opacity-90" />;
 }
 
-export function WorkProjectRow({ project }: { project: CaseStudy }) {
+export type WorkProjectRowProps = {
+  project: CaseStudy;
+} & Omit<HTMLMotionProps<"li">, "children">;
+
+export function WorkProjectRow({ project, className, ...motionProps }: WorkProjectRowProps) {
   return (
-    <li className="h-full min-w-0 list-none">
+    <motion.li className={cn("h-full min-w-0 list-none", className)} {...motionProps}>
       <Link
         href={`/work/${project.slug}`}
         className="group flex h-full min-h-[100%] flex-col overflow-hidden rounded-xl border border-[#39ff88]/15 bg-black/35 transition-[opacity,border-color] duration-300 hover:border-[#39ff88]/35 hover:opacity-95"
@@ -23,7 +29,7 @@ export function WorkProjectRow({ project }: { project: CaseStudy }) {
           <CaseStudyThumbMedia project={project} />
         </div>
 
-        <div className="flex flex-1 flex-col gap-4 p-5">
+        <div className="flex flex-1 flex-col gap-4 p-6">
           <div className="flex items-start gap-3">
             <ProjectIcon slug={project.slug} />
             <div className="min-w-0 flex-1">
@@ -41,6 +47,6 @@ export function WorkProjectRow({ project }: { project: CaseStudy }) {
           </p>
         </div>
       </Link>
-    </li>
+    </motion.li>
   );
 }

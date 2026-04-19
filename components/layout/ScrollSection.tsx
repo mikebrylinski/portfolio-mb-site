@@ -1,10 +1,8 @@
 "use client";
 
-import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/cn";
-
-const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
+import { sectionRevealTransition, sectionRevealViewport } from "@/lib/motion";
 
 type ScrollSectionProps = {
   id?: string;
@@ -20,12 +18,7 @@ export function ScrollSection({
   className,
   spacing = "chapter",
 }: ScrollSectionProps) {
-  const ref = useRef<HTMLElement | null>(null);
-  const reduce = useReducedMotion();
-  const inView = useInView(ref, {
-    margin: "0px 0px -12% 0px",
-    amount: 0.18,
-  });
+  const reduce = Boolean(useReducedMotion());
 
   const py =
     spacing === "chapter"
@@ -33,18 +26,22 @@ export function ScrollSection({
       : "py-20 md:py-28";
 
   return (
-    <motion.section
-      ref={ref}
+    <section
       id={id}
-      className={cn("scroll-mt-24 border-b border-[#39ff88]/10", py, className)}
-      initial={false}
-      animate={{
-        opacity: reduce ? 1 : inView ? 1 : 0.38,
-        y: reduce ? 0 : inView ? 0 : 12,
-      }}
-      transition={{ duration: reduce ? 0 : 0.85, ease }}
+      className={cn(
+        "scroll-mt-24 border-b border-[#39ff88]/10 px-7 sm:px-8 lg:px-10",
+        py,
+        className,
+      )}
     >
-      {children}
-    </motion.section>
+      <motion.div
+        initial={reduce ? false : { opacity: 0, y: 48 }}
+        whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+        viewport={sectionRevealViewport}
+        transition={sectionRevealTransition(reduce)}
+      >
+        {children}
+      </motion.div>
+    </section>
   );
 }

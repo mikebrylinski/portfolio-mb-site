@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050508"/>
+      <stop offset="100%" stop-color="#0a1210"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <text x="960" y="520" text-anchor="middle" fill="#39ff88" fill-opacity="0.9" font-family="ui-sans-serif, system-ui, sans-serif" font-size="42" font-weight="600" letter-spacing="0.08em">
+    CP COMMERCE
+  </text>
+  <text x="960" y="580" text-anchor="middle" fill="#ffffff" fill-opacity="0.45" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" letter-spacing="0.35em">
+    cp-commerce.com
+  </text>
+  <circle cx="960" cy="700" r="52" stroke="#39ff88" stroke-opacity="0.5" stroke-width="2" fill="none"/>
+  <path d="M940 700 L958 718 L988 682" stroke="#39ff88" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.85"/>
+</svg>

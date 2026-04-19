@@ -1,31 +1,31 @@
 import type { Metadata } from "next";
-import { SectionShell } from "@/components/SectionShell";
+import { SiteLayout } from "@/components/layout/SiteLayout";
 import { ContactForm } from "@/components/ContactForm";
 import { SiteFooter } from "@/components/sections/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Contact — Michael Brylinski",
   description:
-    "Start a project or hire for full-stack, eCommerce, AWS, and AI development.",
+    "Start a high-performance project — full-stack, eCommerce, cloud, and UX engineering.",
 };
 
 export default function ContactPage() {
   return (
-    <main id="main-content" className="min-h-[70dvh]">
-      <SectionShell variant={2} className="py-16 md:py-24">
-        <div className="mx-auto max-w-xl text-center">
-          <h1 className="text-3xl font-semibold tracking-tight text-[#fafafa] md:text-4xl">
-            Let&apos;s build something
+    <main id="main-content" className="min-h-[70dvh] bg-[#000000] text-white">
+      <SiteLayout as="div">
+        <header className="border-b border-white/[0.06] pb-14 pt-24 md:pb-16 md:pt-32">
+          <h1 className="max-w-3xl text-[clamp(2rem,4.6vw,3rem)] font-medium tracking-tight">
+            Let&apos;s build something high-performance
           </h1>
-          <p className="mt-4 text-lg text-white/70">
-            Tell me about your goals, stack, and timeline. I&apos;ll follow up
-            shortly.
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#A1A1A1] md:text-lg">
+            A single thread — tell me what you&apos;re shipping and what success looks like.
           </p>
-          <div className="mt-10">
-            <ContactForm />
-          </div>
+        </header>
+
+        <div className="py-16 md:py-24">
+          <ContactForm />
         </div>
-      </SectionShell>
+      </SiteLayout>
       <SiteFooter />
     </main>
   );

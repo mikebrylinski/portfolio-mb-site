@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { IntroProvider } from "@/components/providers/IntroProvider";
 import { SiteHeader } from "@/components/SiteHeader";
 
 const inter = Inter({
@@ -10,9 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Michael Brylinski — Senior Web & Systems Developer",
+  title: "Michael Brylinski — Developer & UX Engineer",
   description:
-    "High-performance digital systems for Shopify, WordPress, React & AWS — eCommerce, cloud, AI, and data-driven platforms.",
+    "High-performance web experiences for brands that expect more — systems, UX, and engineering with product-level restraint.",
 };
 
 export default function RootLayout({
@@ -23,16 +24,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body
-        className={`${inter.className} min-h-dvh overflow-x-hidden bg-[#050505] font-sans antialiased text-[#fafafa]`}
+        className={`${inter.className} min-h-dvh overflow-x-hidden bg-[#000000] font-sans antialiased text-white`}
       >
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-[#39ff88] focus:px-4 focus:py-3 focus:text-[#050505]"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-3 focus:text-black"
         >
           Skip to main content
         </a>
-        <SiteHeader />
-        {children}
+        <IntroProvider>
+          <SiteHeader />
+          {children}
+        </IntroProvider>
       </body>
     </html>
   );

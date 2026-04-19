@@ -1,26 +1,20 @@
-import { AboutSection } from "@/components/sections/AboutSection";
-import { ApproachSection } from "@/components/sections/ApproachSection";
-import { CtaBand } from "@/components/sections/CtaBand";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { PricingSection } from "@/components/sections/PricingSection";
-import { ResultsSection } from "@/components/sections/ResultsSection";
-import { ServicesSection } from "@/components/sections/ServicesSection";
+import { AboutChapterSection } from "@/components/sections/AboutChapterSection";
+import { ContactChapterSection } from "@/components/sections/ContactChapterSection";
+import { HeroHomeSection } from "@/components/sections/HeroHomeSection";
+import { ProcessChapterSection } from "@/components/sections/ProcessChapterSection";
+import { ServicesChapterSection } from "@/components/sections/ServicesChapterSection";
 import { SiteFooter } from "@/components/sections/SiteFooter";
-import { SystemsSection } from "@/components/sections/SystemsSection";
-import { TechStackSection } from "@/components/sections/TechStackSection";
+import { WorkChapterSection } from "@/components/sections/WorkChapterSection";
 
 export default function HomePage() {
   return (
-    <main id="main-content">
-      <HeroSection />
-      <SystemsSection />
-      <ServicesSection />
-      <ResultsSection />
-      <ApproachSection />
-      <TechStackSection />
-      <PricingSection />
-      <AboutSection />
-      <CtaBand />
+    <main id="main-content" className="bg-[#000000] text-white">
+      <HeroHomeSection />
+      <WorkChapterSection />
+      <ServicesChapterSection />
+      <ProcessChapterSection />
+      <AboutChapterSection />
+      <ContactChapterSection />
       <SiteFooter />
     </main>
   );

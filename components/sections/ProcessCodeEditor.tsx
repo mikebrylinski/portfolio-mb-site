@@ -4,7 +4,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/cn";
 
-const accent = "#39ff88";
+const accent = "#3B8CFF";
 
 function Twinkle({
   cx,
@@ -87,7 +87,7 @@ export function ProcessCodeEditor({ className }: { className?: string }) {
       aria-hidden
     >
       <div className="relative aspect-[5/4] w-full min-w-[260px] max-w-[300px] sm:min-w-[280px] sm:max-w-[320px]">
-        <div className="pointer-events-none absolute inset-0 rounded-[1.25rem] bg-[#39ff88]/[0.05] blur-2xl" />
+        <div className="pointer-events-none absolute inset-0 rounded-[1.25rem] bg-[#3B8CFF]/[0.05] blur-2xl" />
 
         <svg
           className="absolute inset-[6%] h-[88%] w-[88%] text-white/[0.09]"
@@ -129,7 +129,7 @@ export function ProcessCodeEditor({ className }: { className?: string }) {
           }}
         >
           <div
-            className="relative w-full overflow-hidden rounded-2xl border border-[#39ff88]/25 bg-[#050505]/90 shadow-[0_0_36px_-10px_rgba(57,255,136,0.22)] backdrop-blur-md"
+            className="relative w-full overflow-hidden rounded-2xl border border-[#3B8CFF]/25 bg-[#050505]/90 shadow-[0_0_36px_-10px_rgba(59,140,255,0.22)] backdrop-blur-md"
             style={{ boxShadow: `inset 0 1px 0 0 rgba(255,255,255,0.04)` }}
           >
             <motion.div
@@ -137,7 +137,7 @@ export function ProcessCodeEditor({ className }: { className?: string }) {
               className="pointer-events-none absolute inset-0 opacity-[0.07]"
               style={{
                 backgroundImage:
-                  "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(57,255,136,0.5) 2px, rgba(57,255,136,0.5) 3px)",
+                  "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(59,140,255,0.5) 2px, rgba(59,140,255,0.5) 3px)",
               }}
               animate={active ? { y: [0, 8, 0] } : { y: 0 }}
               transition={{ duration: 3.2, repeat: active ? Infinity : 0, ease: "linear" }}
@@ -147,7 +147,7 @@ export function ProcessCodeEditor({ className }: { className?: string }) {
               <span className="flex gap-1.5">
                 <span className="h-2 w-2 rounded-full bg-white/[0.12]" />
                 <span className="h-2 w-2 rounded-full bg-white/[0.12]" />
-                <span className="h-2 w-2 rounded-full bg-[#39ff88]/35" />
+                <span className="h-2 w-2 rounded-full bg-[#3B8CFF]/35" />
               </span>
               <span className="ml-1 font-mono text-[9px] uppercase tracking-[0.2em] text-white/30 sm:text-[10px]">
                 process.ts
@@ -186,9 +186,9 @@ export function ProcessCodeEditor({ className }: { className?: string }) {
                           ? {}
                           : {
                               boxShadow: [
-                                "0 0 0 0 rgba(57,255,136,0)",
-                                "0 0 20px -2px rgba(57,255,136,0.12)",
-                                "0 0 0 0 rgba(57,255,136,0)",
+                                "0 0 0 0 rgba(59,140,255,0)",
+                                "0 0 20px -2px rgba(59,140,255,0.12)",
+                                "0 0 0 0 rgba(59,140,255,0)",
                               ],
                             }
                       }
@@ -238,7 +238,7 @@ export function ProcessCodeEditor({ className }: { className?: string }) {
 
             <motion.div
               aria-hidden
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#39ff88]/40 to-transparent"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#3B8CFF]/40 to-transparent"
               animate={active ? { opacity: [0.25, 0.85, 0.25], scaleX: [0.92, 1, 0.92] } : { opacity: 0.35 }}
               transition={{ duration: 2.4, repeat: active ? Infinity : 0, ease: "easeInOut" }}
             />

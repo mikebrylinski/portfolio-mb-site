@@ -5,8 +5,8 @@
   --color-surface: #000000;
   --color-foreground: #ffffff;
   --color-muted: #a1a1a1;
-  --color-accent: #39ff88;
-  --color-accent-foreground: #000000;
+  --color-accent: #3b8cff;
+  --color-accent-foreground: #ffffff;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -56,4 +56,56 @@ body {
     animation: none;
     transform: translate3d(0, 0, 0);
   }
+}
+
+/* Case study — architectural blueprint sheet */
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(59, 140, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 140, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(rgba(59, 140, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 140, 255, 0.035) 1px, transparent 1px);
+  background-size:
+    80px 80px,
+    80px 80px,
+    16px 16px,
+    16px 16px;
+  background-position:
+    -1px -1px,
+    -1px -1px,
+    -1px -1px,
+    -1px -1px;
+}
+
+.blueprint-frame {
+  position: relative;
+  border: 1px solid rgba(59, 140, 255, 0.28);
+  background: rgba(6, 16, 28, 0.55);
+}
+
+.blueprint-frame::before,
+.blueprint-frame::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: rgba(59, 140, 255, 0.85);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.blueprint-frame::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.blueprint-frame::after {
+  right: -1px;
+  bottom: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.blueprint-dash {
+  border-top: 1px dashed rgba(59, 140, 255, 0.28);
 }

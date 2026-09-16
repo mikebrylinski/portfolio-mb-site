@@ -24,7 +24,7 @@ export function HeroSection() {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center text-center lg:items-center">
-          <p className="text-sm font-medium uppercase tracking-widest text-[#39ff88] md:text-base">
+          <p className="text-sm font-medium uppercase tracking-widest text-[#3B8CFF] md:text-base">
             Michael Brylinski
           </p>
           <h1
@@ -55,7 +55,7 @@ export function HeroSection() {
             <ul className="mt-3 flex flex-wrap justify-center gap-2 lg:justify-start">
               {expertiseChips.map((chip) => (
                 <li key={chip}>
-                  <span className="inline-block rounded-full border border-[#39ff88]/35 bg-[#39ff88]/10 px-3 py-1.5 text-xs text-[#fafafa] md:text-sm">
+                  <span className="inline-block rounded-full border border-[#3B8CFF]/35 bg-[#3B8CFF]/10 px-3 py-1.5 text-xs text-[#fafafa] md:text-sm">
                     {chip}
                   </span>
                 </li>
@@ -65,7 +65,7 @@ export function HeroSection() {
           <div className="mt-10 flex justify-center">
             <Link
               href="/contact"
-              className="inline-flex min-h-[48px] min-w-[200px] items-center justify-center rounded-lg bg-[#39ff88] px-8 py-3 text-base font-semibold text-[#050505] transition-opacity hover:opacity-90"
+              className="inline-flex min-h-[48px] min-w-[200px] items-center justify-center rounded-lg bg-[#3B8CFF] px-8 py-3 text-base font-semibold text-[#050505] transition-opacity hover:opacity-90"
             >
               Hire Me ($100/hour)
             </Link>

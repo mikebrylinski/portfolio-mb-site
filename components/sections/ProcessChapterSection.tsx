@@ -7,6 +7,7 @@ import { ScrollSection } from "@/components/layout/ScrollSection";
 import { ProcessCodeEditor } from "@/components/sections/ProcessCodeEditor";
 import { ProcessStepIcon } from "@/components/icons/AccentIcons";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { siteContainerClass } from "@/lib/site";
 
 const phases = [
   {
@@ -66,7 +67,7 @@ export function ProcessChapterSection() {
 
   return (
     <ScrollSection id="process">
-      <div className="mx-auto max-w-[1100px] text-left">
+      <div className={`${siteContainerClass} text-left`}>
         {/* Copy: stagger only in left column. Code editor stays outside stagger so it never stays opacity-0 / clipped. */}
         <div className="flex flex-col items-stretch gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-14 xl:gap-16">
           <div className="min-w-0 max-w-2xl flex-1">
@@ -111,7 +112,7 @@ export function ProcessChapterSection() {
             transition={{ duration: 0.6, ease }}
           >
             <motion.div
-              className="h-full w-1/3 rounded-full bg-gradient-to-r from-transparent via-[#39ff88]/70 to-transparent"
+              className="h-full w-1/3 rounded-full bg-gradient-to-r from-transparent via-[#3B8CFF]/70 to-transparent"
               animate={
                 reduce
                   ? { x: "0%" }
@@ -153,10 +154,10 @@ export function ProcessChapterSection() {
                         transition: { duration: 0.35, ease },
                       }
                 }
-                className="group relative flex h-full flex-col rounded-2xl border border-[#39ff88]/14 bg-gradient-to-b from-white/[0.04] to-transparent p-6 shadow-[0_24px_70px_-40px_rgba(0,0,0,0.85)] backdrop-blur-[2px] transition-[border-color,box-shadow] duration-300 md:p-7 lg:p-8 hover:border-[#39ff88]/32 hover:shadow-[0_28px_80px_-36px_rgba(57,255,136,0.08)]"
+                className="group relative flex h-full flex-col rounded-2xl border border-[#3B8CFF]/14 bg-gradient-to-b from-white/[0.04] to-transparent p-6 shadow-[0_24px_70px_-40px_rgba(0,0,0,0.85)] backdrop-blur-[2px] transition-[border-color,box-shadow] duration-300 md:p-7 lg:p-8 hover:border-[#3B8CFF]/32 hover:shadow-[0_28px_80px_-36px_rgba(59,140,255,0.08)]"
               >
                 <div className="mb-5 flex items-start justify-between gap-3">
-                  <span className="font-mono text-[11px] font-medium tabular-nums tracking-[0.2em] text-[#39ff88]/50">
+                  <span className="font-mono text-[11px] font-medium tabular-nums tracking-[0.2em] text-[#3B8CFF]/50">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div className="shrink-0 opacity-90 transition-opacity duration-300 group-hover:opacity-100">
@@ -172,9 +173,9 @@ export function ProcessChapterSection() {
                         ? {}
                         : {
                             textShadow: [
-                              "0 0 0 rgba(57,255,136,0)",
-                              "0 0 20px rgba(57,255,136,0.11)",
-                              "0 0 0 rgba(57,255,136,0)",
+                              "0 0 0 rgba(59,140,255,0)",
+                              "0 0 20px rgba(59,140,255,0.11)",
+                              "0 0 0 rgba(59,140,255,0)",
                             ],
                           }
                     }
@@ -187,7 +188,7 @@ export function ProcessChapterSection() {
                   >
                     {phase.title}
                   </motion.span>
-                  <span className="text-[clamp(1.65rem,3.6vw,2.35rem)] font-medium text-[#39ff88]">.</span>
+                  <span className="text-[clamp(1.65rem,3.6vw,2.35rem)] font-medium text-[#3B8CFF]">.</span>
                 </h3>
 
                 <p className="mt-4 flex-1 text-[15px] leading-relaxed text-[#A1A1A1] md:text-base md:leading-relaxed">

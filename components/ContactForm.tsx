@@ -30,18 +30,21 @@ export function ContactForm({ variant = "default" }: ContactFormProps) {
   if (state.ok) {
     return (
       <div
-        className="rounded-xl border border-white/15 bg-white/[0.04] p-8 text-center"
+        className="rounded-md border border-white/10 bg-white/[0.04] p-8 text-center"
         role="status"
       >
         <p className="text-lg font-medium text-white">
           Thanks — your message is on its way.
         </p>
-        <p className="mt-2 text-sm text-[#A1A1A1]">
+        <p className="mt-2 text-sm text-white/55">
           I&apos;ll get back to you shortly.
         </p>
       </div>
     );
   }
+
+  const fieldClass =
+    "w-full rounded-md border border-white/15 bg-[#020617]/60 px-4 py-3 text-white placeholder:text-white/40 focus:border-[#3B8CFF]/50 focus:outline-none focus:ring-2 focus:ring-[#3B8CFF]/25";
 
   return (
     <form
@@ -64,7 +67,7 @@ export function ContactForm({ variant = "default" }: ContactFormProps) {
           <select
             id="intent"
             name="intent"
-            className="w-full rounded-lg border border-white/15 bg-white/[0.04] px-4 py-3 text-white focus:border-white/35 focus:outline-none focus:ring-2 focus:ring-[#39ff88]/30"
+            className={fieldClass}
             defaultValue="project"
           >
             <option value="project">Starting a project</option>
@@ -86,7 +89,7 @@ export function ContactForm({ variant = "default" }: ContactFormProps) {
           required
           aria-invalid={!!state.fieldErrors?.name}
           aria-describedby={state.fieldErrors?.name ? "name-error" : undefined}
-          className="w-full rounded-lg border border-white/15 bg-white/[0.04] px-4 py-3 text-white placeholder:text-white/40 focus:border-white/35 focus:outline-none focus:ring-2 focus:ring-[#39ff88]/30"
+          className={fieldClass}
           placeholder="Your name"
         />
         {state.fieldErrors?.name && (
@@ -108,7 +111,7 @@ export function ContactForm({ variant = "default" }: ContactFormProps) {
           required
           aria-invalid={!!state.fieldErrors?.email}
           aria-describedby={state.fieldErrors?.email ? "email-error" : undefined}
-          className="w-full rounded-lg border border-white/15 bg-white/[0.04] px-4 py-3 text-white placeholder:text-white/40 focus:border-white/35 focus:outline-none focus:ring-2 focus:ring-[#39ff88]/30"
+          className={fieldClass}
           placeholder="you@company.com"
         />
         {state.fieldErrors?.email && (
@@ -131,7 +134,7 @@ export function ContactForm({ variant = "default" }: ContactFormProps) {
           aria-describedby={
             state.fieldErrors?.message ? "message-error" : undefined
           }
-          className="w-full resize-y rounded-lg border border-white/15 bg-white/[0.04] px-4 py-3 text-white placeholder:text-white/40 focus:border-white/35 focus:outline-none focus:ring-2 focus:ring-[#39ff88]/30"
+          className={`resize-y ${fieldClass}`}
           placeholder="What are you building? Timeline, stack, goals…"
         />
         {state.fieldErrors?.message && (
@@ -150,9 +153,14 @@ export function ContactForm({ variant = "default" }: ContactFormProps) {
       <button
         type="submit"
         disabled={isPending}
-        className="min-h-[48px] w-full rounded-full bg-[#39ff88] px-6 py-3 text-base font-semibold text-[#050505] transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-md border border-[#3B8CFF] bg-[#3B8CFF]/10 px-7 py-3 text-sm font-medium text-white transition-[background-color,opacity] hover:bg-[#3B8CFF]/20 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isPending ? "Sending…" : "Send message"}
+        {!isPending ? (
+          <span aria-hidden className="text-[#3B8CFF]">
+            →
+          </span>
+        ) : null}
       </button>
     </form>
   );

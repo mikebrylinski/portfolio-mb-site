@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { IntroProvider } from "@/components/providers/IntroProvider";
 import { SiteHeader } from "@/components/SiteHeader";
+import { ScrollToTop } from "@/components/ScrollToTop";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,9 +12,85 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Michael Brylinski — Developer & UX Engineer",
-  description:
-    "High-performance web experiences for brands that expect more — systems, UX, and engineering with product-level restraint.",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: `%s — ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: [...siteConfig.keywords],
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  applicationName: siteConfig.name,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.title,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  category: "technology",
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": absoluteUrl("/#website"),
+      url: siteConfig.url,
+      name: siteConfig.name,
+      description: siteConfig.description,
+      publisher: { "@id": absoluteUrl("/#person") },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Person",
+      "@id": absoluteUrl("/#person"),
+      name: siteConfig.name,
+      url: siteConfig.url,
+      jobTitle: "Full Stack Web Developer",
+      description: siteConfig.description,
+      knowsAbout: [
+        "Full-stack development",
+        "Next.js",
+        "React",
+        "UX design",
+        "AI product development",
+        "SaaS",
+      ],
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -27,16 +104,19 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${inter.className} min-h-dvh overflow-x-hidden bg-[#000000] antialiased text-white`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-3 focus:text-black"
         >
           Skip to main content
         </a>
-        <IntroProvider>
-          <SiteHeader />
-          {children}
-        </IntroProvider>
+        <SiteHeader />
+        <ScrollToTop />
+        {children}
       </body>
     </html>
   );

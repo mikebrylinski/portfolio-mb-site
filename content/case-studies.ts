@@ -8,6 +8,13 @@ export type CaseStudyMetric = {
   value: string;
 };
 
+export type CaseStudyMockup = {
+  src: string;
+  alt: string;
+  label: string;
+  caption?: string;
+};
+
 export type CaseStudy = {
   slug: string;
   title: string;
@@ -24,6 +31,10 @@ export type CaseStudy = {
   visualType?: "image" | "video";
   /** Poster / thumbnail for video (cards + hero before play) */
   visualPoster?: string;
+  /** Optional live project URL */
+  liveUrl?: string;
+  /** Optional device mockups (Mac / iPhone product shots) */
+  mockups?: CaseStudyMockup[];
   process: CaseStudyProcessStep[];
   challenge: string;
   solution: string;
@@ -34,156 +45,216 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "react-dashboard",
-    title: "React dashboard",
-    statement: "A calmer interface for noisy operational data.",
-    meta: "Design • Dev • UX Strategy",
-    outcome: "Cut time-to-insight for daily operators by clarifying hierarchy and density.",
+    slug: "andy-ebert",
+    title: "Andy Ebert",
+    statement: "International Live Production & Monitor Engineering",
+    meta: "UX / UI · Web Development · Motion · Gallery · Localization · Responsive Design",
+    outcome:
+      "A modern portfolio for an international live-production engineer — cinematic, bilingual, and built around his photography.",
     summary:
-      "Operators were drowning in charts without a clear story. We rebuilt the experience around decisions first, charts second — performance, accessibility, and a system that scales with new data sources.",
+      "Andy Ebert has spent decades working in live production, touring internationally with major artists and productions. His original website served as an archive of his career, but its visual design, navigation, and overall experience no longer reflected the level of his work. I designed and developed a completely new website that turns his experience, photography, and technical career into a modern digital portfolio.",
     keyResults: [
-      "Established a single source of truth for KPIs across teams",
-      "Reduced visual noise while increasing scan speed for power users",
-      "Shipped a component model that supports rapid feature iteration",
+      "Complete redesign built around Andy’s career and visual identity",
+      "Custom immersive gallery for touring and production photography",
+      "Dedicated English and German experiences across structure and content",
+      "Custom motion, transitions, and micro-interactions throughout",
+      "Responsive development across desktop, tablet, and mobile",
+      "Decades of professional experience organized into a clearer digital story",
     ],
-    visualSrc: "/case-studies/react-dashboard-visual.svg",
-    visualAlt: "Abstract data visualization on a monitor",
+    visualSrc: "/case-studies/andy-ebert-macbook-mockup.png",
+    visualAlt: "Andy Ebert portfolio on a MacBook Pro — dark cinematic hero with neon lime accents",
+    liveUrl: "https://ae-eight-omega.vercel.app/",
+    mockups: [
+      {
+        src: "/case-studies/andy-ebert-macbook-mockup.png",
+        alt: "MacBook Pro mockup of the Andy Ebert live production portfolio homepage",
+        label: "Desktop",
+        caption: "Cinematic homepage — storytelling, EN/DE, and a direct path into the work.",
+      },
+      {
+        src: "/case-studies/andy-ebert-iphone-mockup.png",
+        alt: "iPhone mockup of the Andy Ebert mobile portfolio experience",
+        label: "Mobile",
+        caption: "Same brand energy on phone — gallery-ready, bilingual, and built for one-thumb browsing.",
+      },
+    ],
     process: [
       {
-        title: "Discovery",
-        body: "We mapped workflows, failure points, and the questions operators actually ask — not the ones dashboards assume they ask.",
+        title: "From Legacy to Portfolio",
+        body: "Andy’s previous site was information-heavy and dated. The content was valuable — career history, credits, photographs, and background — but the presentation needed a refresh built around visual storytelling, motion, and simplicity.",
       },
       {
-        title: "UX Strategy",
-        body: "We prioritized a narrative hierarchy: alert → context → drill-down. Everything else moved behind intentional depth.",
+        title: "Custom Gallery",
+        body: "Photography is central to Andy’s story. Rather than treating images as simple thumbnails, I built an immersive gallery experience for exploring his touring and production photography.",
       },
       {
-        title: "Design System",
-        body: "A tight set of tokens, table patterns, and chart primitives kept the UI consistent as datasets multiplied.",
+        title: "English + German",
+        body: "Because Andy works internationally and has a strong connection to Germany, the site includes dedicated English and German experiences — consistent structure, navigation, content, and visual language across both.",
       },
       {
-        title: "Development",
-        body: "React performance budgets, virtualization where needed, and instrumentation to validate real usage — not guesses.",
+        title: "Motion & Interaction",
+        body: "Page transitions, image reveals, hover states, and other micro-interactions make the site feel alive without distracting from Andy’s work. Animation stays intentionally subtle and professional.",
       },
       {
-        title: "Optimization",
-        body: "We tuned bundle weight, rendering paths, and caching so the product stayed fast as complexity grew.",
+        title: "Built Around the Person",
+        body: "Design and development covered UX, visual direction, responsive build, image optimization, content migration, and production deployment — shaped around who Andy is and what he actually does, not a generic portfolio template.",
       },
     ],
     challenge:
-      "The product looked complete but felt heavy. Teams trusted exports more than the product itself, which quietly eroded adoption.",
+      "The original website primarily presented information — career history, credits, photographs, and background — through a traditional, dated interface with limited visual storytelling. Valuable content was trapped in an experience that no longer matched the caliber of Andy’s international work.",
     solution:
-      "We reframed the UI as a decision surface: fewer simultaneous signals, stronger typographic hierarchy, and progressive disclosure aligned to operational cadence.",
+      "The new site is responsive, cinematic, multilingual, and animated. Instead of overwhelming visitors with information, it gives Andy’s career room to breathe while making photography, touring history, and technical work easier to explore — designed around his existing career and content rather than forced into a template.",
     metrics: [
-      { label: "Interaction latency", value: "−38%" },
-      { label: "Task completion", value: "+24%" },
-      { label: "Support tickets (UI)", value: "−31%" },
+      { label: "Complete redesign", value: "01" },
+      { label: "Languages shipped", value: "EN + DE" },
+      { label: "Scope delivered", value: "End-to-end" },
     ],
     takeaway:
-      "The win was not more data on screen — it was faster confidence. When the interface respects cognitive load, adoption follows.",
-    nextSlug: "shopify-storefront",
+      "The finished website transforms an existing collection of career information into a modern digital portfolio that better represents Andy’s experience and personality — giving clients, artists, and production companies a more immediate way to understand who he is and the world he’s spent decades working in.",
+    nextSlug: "practical-drumming",
   },
   {
-    slug: "shopify-storefront",
-    title: "Shopify storefront",
-    statement: "Commerce that reads as premium — without sacrificing speed.",
-    meta: "Design • Dev • UX Strategy",
-    outcome: "Lifted conversion by tightening PDP narrative, performance, and trust signals.",
+    slug: "practical-drumming",
+    title: "Practical Drumming",
+    statement:
+      "Turning a drummer's expertise into a complete digital mentorship platform.",
+    meta: "Full-Stack Development · SaaS Architecture · Video · AI · UX/UI · SEO · Marketing",
+    outcome:
+      "A premium mastermind SaaS — membership, live video, community, AI coaching, and growth in one product.",
     summary:
-      "A brand-forward storefront with a performance-first theme architecture, sharper product storytelling, and checkout friction removed at the edges.",
+      "Practical Drumming is a private mastermind community created by professional touring and recording drummer Mike Malinin. The challenge wasn't simply to build another website for a music teacher — the goal was to turn decades of professional experience into a premium digital product combining mentorship, community, live video, educational content, AI, and marketing into one cohesive platform. I designed and built the experience from the ground up.",
     keyResults: [
-      "Rebuilt PDP around proof, story, and spec — in that order",
-      "Improved Core Web Vitals with disciplined theme assets",
-      "Aligned merchandising workflows so updates ship without dev bottlenecks",
+      "Complete membership and mastermind product experience",
+      "Full-stack Next.js application with Supabase backend",
+      "Integrated real-time live video via LiveKit",
+      "AI-powered Sprint Coach for between-session support",
+      "Conversion-focused membership funnel and SEO architecture",
+      "Admin tools for members, content, sessions, and leads",
     ],
-    visualSrc: "/case-studies/shopify-storefront-visual.svg",
-    visualAlt: "Retail checkout experience on a tablet",
+    visualSrc: "/case-studies/pd-imac-home.png",
+    visualAlt: "Practical Drumming homepage on an iMac — dark premium mastermind branding",
+    liveUrl: "https://pracdrum.com",
+    mockups: [
+      {
+        src: "/case-studies/pd-imac-home.png",
+        alt: "iMac showing the Practical Drumming homepage hero",
+        label: "iMac · Home",
+        caption: "Homepage — premium mastermind positioning and clear path into membership.",
+      },
+      {
+        src: "/case-studies/pd-macbook-home.png",
+        alt: "MacBook Pro showing the Practical Drumming homepage hero",
+        label: "MacBook · Home",
+        caption: "Same experience on laptop — dark club aesthetic and conversion path.",
+      },
+      {
+        src: "/case-studies/pd-ipad-club.png",
+        alt: "iPad Pro showing the Mastermind Club membership page",
+        label: "iPad · Club",
+        caption: "Mastermind Club — benefits, fit, and the weekly live-room model.",
+      },
+      {
+        src: "/case-studies/pd-iphone-about.png",
+        alt: "iPhone showing the About Mike Malinin page",
+        label: "iPhone · About",
+        caption: "About Mike — career proof that builds trust before the ask.",
+      },
+      {
+        src: "/case-studies/pd-studio-apply.png",
+        alt: "Studio Display showing the Book a Call application flow",
+        label: "Studio Display · Apply",
+        caption: "Fit-call application — Welcome → Questions → Schedule → Confirmed.",
+      },
+    ],
     process: [
       {
-        title: "Discovery",
-        body: "We audited analytics, heatmaps, and qualitative feedback to find where intent died — not where clicks were high.",
+        title: "From Marketing Site to SaaS",
+        body: "I architected Practical Drumming as a complete digital ecosystem — premium membership, private member experiences, live video, community, session archives, dashboards, CMS, AI coaching, email, lead capture, SEO, marketing pages, and admin tools — supporting acquisition and ongoing member delivery.",
       },
       {
-        title: "UX Strategy",
-        body: "We simplified paths to purchase and elevated trust moments: shipping, returns, and social proof at decision points.",
+        title: "Live Video, Built In",
+        body: "Instead of website → external service → video call → separate community, the platform unifies membership, community, and live mastermind sessions through LiveKit so mentorship feels native to the product.",
       },
       {
-        title: "Design System",
-        body: "A restrained Shopify theme system: reusable sections, consistent spacing rhythm, and editorial typography for premium positioning.",
+        title: "AI Coaching",
+        body: "The AI-powered Sprint Coach extends mentorship beyond weekly live sessions — Mike provides the experience; AI helps members keep moving between sessions with actionable practice and accountability.",
       },
       {
-        title: "Development",
-        body: "Liquid + JS with strict performance guardrails, accessible interactions, and clean integrations with marketing tooling.",
+        title: "High-Ticket Membership UX",
+        body: "Designed around Experience → Trust → Transformation → Application rather than Lesson → Purchase — marketing structured around Mike’s background, testimonials, philosophy, member experience, and an application-style CTA.",
       },
       {
-        title: "Optimization",
-        body: "We iterated with A/B tests on PDP modules and removed friction in cart and checkout microcopy.",
+        title: "SEO, Stack & Admin",
+        body: "Built for organic acquisition with search-optimized pages, educational content, and conversion CTAs. Stack: Next.js, Supabase, LiveKit, Vercel, Resend, and LLM APIs — plus admin infrastructure to operate members, content, sessions, and leads as a real business platform.",
       },
     ],
     challenge:
-      "Traffic was healthy but conversion lagged category benchmarks. The brand felt premium, yet the experience read as cautious and slow on mobile.",
+      "Most online drum education is passive content. Mike wanted a high-touch mastermind where serious drummers get direct access to a professional — questions, feedback, live sessions, and the realities of working as a musician. The site had to function as much more than a marketing site. It needed to become the product itself.",
     solution:
-      "We rebuilt the PDP as a product narrative, tightened theme performance, and redesigned trust signals to match the brand’s tone — minimal, confident, fast.",
+      "A single digital environment spanning marketing through membership, community, live video, AI coaching, SEO, and admin operations — turning offline access to an experienced professional into a scalable mentorship product.",
     metrics: [
-      { label: "Mobile conversion", value: "+18%" },
-      { label: "LCP (field)", value: "−26%" },
-      { label: "Average order value", value: "+9%" },
+      { label: "Live video", value: "Native" },
+      { label: "AI coaching", value: "Sprint" },
+      { label: "Model", value: "Membership" },
     ],
     takeaway:
-      "Premium is a feeling created by restraint and speed. When the storefront matches the product, customers stop hesitating.",
-    nextSlug: "cp-commerce",
+      "The most interesting part wasn’t building another website — it was taking something that traditionally exists offline, access to an experienced professional, and designing a digital product around it. Mentorship, community, live interaction, feedback, education, AI coaching, and industry knowledge in one platform. That’s the kind of product I like building.",
+    nextSlug: "glucorai",
   },
   {
-    slug: "cp-commerce",
-    title: "cp-commerce.com",
-    statement: "Premium regulated commerce with a storefront that earns trust in seconds.",
-    meta: "Design • Dev • UX Strategy • Video",
-    outcome: "Raised qualified sessions and repeat purchase with clearer PDP proof, age-gating UX, and a faster mobile path to cart.",
+    slug: "glucorai",
+    title: "GlucorAI",
+    statement: "Turning fragmented diabetes data into actionable intelligence",
+    meta: "AI-Powered SaaS · Product Design · Next.js · Supabase · Health Data · AI/LLM Integration",
+    outcome:
+      "An AI-backed SaaS that turns glucose, insulin, meals, and activity into contextual diabetes insights.",
     summary:
-      "cp-commerce.com needed a site that felt editorial and high-end while staying ruthlessly clear on compliance, shipping, and product truth. We rebuilt the experience around proof-first PDPs, disciplined performance, and merchandising workflows the team could run without a developer in the loop.",
+      "GlucorAI is an AI-backed SaaS platform designed to help people with Type 1 diabetes understand the relationships between glucose, insulin, food, activity, and daily events. The core idea was simple: people with diabetes generate an enormous amount of data, but that data is often scattered across multiple apps and devices. GlucorAI brings those signals together and uses AI to help turn the data into understandable patterns and observations.",
     keyResults: [
-      "Shipped a conversion-focused PDP system with modular storytelling blocks",
-      "Tightened age-gating and trust UX without adding friction for verified shoppers",
-      "Improved mobile LCP and interaction readiness for high-intent traffic",
+      "End-to-end AI-powered SaaS product experience",
+      "Unified Diabetes Wall timeline for fragmented health data",
+      "AI-powered meal and photo analysis with carb estimates",
+      "Contextual AI insights across glucose, meals, insulin, and activity",
+      "Nightscout ecosystem integration and expandable health-data architecture",
+      "Mobile-first UI on Next.js, Supabase, and Vercel",
     ],
-    visualType: "video",
-    visualSrc: "/case-studies/cp-commerce-preview.mp4",
-    visualPoster: "/case-studies/cp-commerce-poster.svg",
-    visualAlt: "Screen recording preview of the cp-commerce.com storefront experience",
+    visualSrc: "/case-studies/glucorai-cinema-display.png",
+    visualAlt: "GlucorAI homepage on an Apple Cinema Display — AI-powered diabetes intelligence hero",
+    liveUrl: "https://glucorai.vercel.app/",
     process: [
       {
-        title: "Discovery",
-        body: "We reviewed funnels, support themes, and compliance requirements alongside real session recordings — separating curiosity from purchase intent.",
+        title: "The Diabetes Wall",
+        body: "GlucorAI’s central interface is a unified diabetes timeline. Instead of treating glucose, insulin, meals, exercise, and notes as separate records, the platform combines them into a chronological story — so an elevated reading can be evaluated alongside meals, carbs, IOB, boluses, activity, notes, and historical patterns.",
       },
       {
-        title: "UX Strategy",
-        body: "We defined a narrative sequence for every PDP: proof, story, specs, then policy — so trust is built before the ask.",
+        title: "AI-Powered Meal Analysis",
+        body: "Users photograph a meal and GlucorAI identifies foods, estimates portions and carbs, then places that context on the timeline — reducing logging friction while creating useful signals for the rest of the system.",
       },
       {
-        title: "Design System",
-        body: "A compact set of reusable sections, typography rules, and media treatments kept the brand consistent as the catalog grew.",
+        title: "Contextual AI Insights",
+        body: "The AI layer looks across multiple data points instead of analyzing them independently. Rather than “your glucose increased,” GlucorAI surfaces observations like a larger-than-usual lunch rise when insulin on board was relatively low — contextual intelligence, not another chart.",
       },
       {
-        title: "Development",
-        body: "We implemented the storefront stack with performance budgets, accessible interactions, and clean integrations for promos and email capture.",
+        title: "Data Integration & Architecture",
+        body: "Architecture supports CGM, Nightscout, insulin/pump data, meals, Apple Health/activity, notes, and historical glucose — with room for GlucorAI Connect and additional sources. Data layer and AI interpretation stay separated for scalable iteration on Next.js, Supabase, Vercel, and LLM APIs.",
       },
       {
-        title: "Optimization",
-        body: "We tuned hero and PDP media delivery, reduced layout shift, and validated improvements against field metrics and checkout completion.",
+        title: "Design, Privacy & Safety",
+        body: "The UI follows Timeline → Context → Pattern → Insight — more consumer product than medical dashboard. Privacy and responsible positioning are core: GlucorAI is an informational tool, not a medical device, and insights do not diagnose, treat, or replace professional advice.",
       },
     ],
     challenge:
-      "The previous experience looked premium in stills but felt fragile on mobile: slow hero media, unclear policy placement, and PDPs that did not answer the questions shoppers ask under hesitation.",
+      "Managing Type 1 diabetes often means jumping between CGM readings, insulin and pump data, meals and carbs, exercise, sleep, health data, and personal notes. The challenge wasn’t collecting more data — it was making existing data understandable in one place with enough context for AI to find relationships a single reading can’t show.",
     solution:
-      "We rebuilt the storefront as a product-led narrative — faster above-the-fold delivery, modular PDP proof blocks, and age-gating that reads calm and confident rather than punitive.",
+      "A single Diabetes Wall timeline plus meal Snap AI and contextual insights — connecting glucose to meals, insulin, activity, and history so the product answers “what can my data teach me?” instead of only “what is my glucose right now?”",
     metrics: [
-      { label: "Mobile LCP (field)", value: "−31%" },
-      { label: "Add-to-cart rate", value: "+14%" },
-      { label: "Return sessions (30d)", value: "+22%" },
+      { label: "Timeline", value: "Unified" },
+      { label: "Meal logging", value: "Snap AI" },
+      { label: "Insights", value: "Contextual" },
     ],
     takeaway:
-      "In regulated commerce, trust is the product. When policy, proof, and performance align, customers stop treating the site like a hurdle — and start treating it like the brand.",
-    nextSlug: "react-dashboard",
+      "Most diabetes software answers “What is my glucose right now?” GlucorAI is built around a different question: “What can my data teach me?” That shift — from tracking data to understanding data — is the foundation of the product. GlucorAI turns thousands of disconnected health signals into a story people can actually understand.",
+    nextSlug: "andy-ebert",
   },
 ];
 

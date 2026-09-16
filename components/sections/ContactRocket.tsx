@@ -4,7 +4,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/cn";
 
-const accent = "#39ff88";
+const accent = "#3B8CFF";
 
 function Twinkle({
   cx,
@@ -52,7 +52,7 @@ export function ContactRocket({ className }: { className?: string }) {
       aria-hidden
     >
       <div className="relative aspect-square w-full max-w-[280px] sm:max-w-[300px]">
-        <div className="pointer-events-none absolute inset-0 rounded-full bg-[#39ff88]/[0.04] blur-2xl" />
+        <div className="pointer-events-none absolute inset-0 rounded-full bg-[#3B8CFF]/[0.04] blur-2xl" />
 
         <svg
           className="absolute inset-[8%] h-[84%] w-[84%] text-white/10"
@@ -94,7 +94,7 @@ export function ContactRocket({ className }: { className?: string }) {
             times: [0, 0.18, 0.32, 1],
           }}
         >
-          <svg viewBox="0 0 120 200" className="h-[78%] w-auto drop-shadow-[0_0_24px_rgba(57,255,136,0.15)]">
+          <svg viewBox="0 0 120 200" className="h-[78%] w-auto drop-shadow-[0_0_24px_rgba(59,140,255,0.15)]">
             <motion.g
               animate={
                 active

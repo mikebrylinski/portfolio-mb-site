@@ -1,21 +1,37 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { SiteFooter } from "@/components/sections/SiteFooter";
 import { WorkProjectRow } from "@/components/sections/WorkProjectRow";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { caseStudies } from "@/content/case-studies";
+import { absoluteUrl } from "@/lib/site";
+
+const title = "Work";
+const description =
+  "Selected case studies and outcomes across product, UX, full-stack engineering, and AI-powered SaaS.";
 
 export const metadata: Metadata = {
-  title: "Work — Michael Brylinski",
-  description: "Selected case studies and outcomes across product, UX, and engineering.",
+  title,
+  description,
+  alternates: { canonical: "/work" },
+  openGraph: {
+    title: `${title} — Mike Brylinski`,
+    description,
+    url: absoluteUrl("/work"),
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${title} — Mike Brylinski`,
+    description,
+  },
 };
 
 export default function WorkIndexPage() {
   return (
     <main id="main-content" className="bg-[#000000] text-white">
       <SiteLayout as="div">
-        <header className="border-b border-[#39ff88]/12 pb-16 pt-24 md:pb-20 md:pt-32">
+        <header className="border-b border-[#3B8CFF]/12 pb-16 pt-24 md:pb-20 md:pt-32">
           <SectionEyebrow>Work</SectionEyebrow>
           <h1 className="mt-4 max-w-3xl text-[clamp(2rem,4.6vw,3.25rem)] font-medium tracking-tight">
             Selected projects

@@ -6,14 +6,14 @@
     </linearGradient>
   </defs>
   <rect width="1920" height="1080" fill="url(#bg2)"/>
-  <rect x="480" y="200" width="960" height="680" rx="28" stroke="#39ff88" stroke-opacity="0.22" stroke-width="2" fill="#0a0a0a"/>
-  <rect x="560" y="280" width="420" height="360" rx="12" fill="#39ff88" opacity="0.12"/>
-  <rect x="1040" y="300" width="320" height="40" rx="6" fill="#39ff88" opacity="0.25"/>
+  <rect x="480" y="200" width="960" height="680" rx="28" stroke="#3B8CFF" stroke-opacity="0.22" stroke-width="2" fill="#0a0a0a"/>
+  <rect x="560" y="280" width="420" height="360" rx="12" fill="#3B8CFF" opacity="0.12"/>
+  <rect x="1040" y="300" width="320" height="40" rx="6" fill="#3B8CFF" opacity="0.25"/>
   <rect x="1040" y="360" width="260" height="28" rx="5" fill="#ffffff" opacity="0.08"/>
   <rect x="1040" y="410" width="300" height="28" rx="5" fill="#ffffff" opacity="0.06"/>
-  <rect x="560" y="680" width="180" height="48" rx="24" fill="#39ff88" opacity="0.45"/>
-  <rect x="1040" y="680" width="320" height="52" rx="26" stroke="#39ff88" stroke-opacity="0.35" fill="none" stroke-width="2"/>
-  <circle cx="720" cy="460" r="72" fill="#39ff88" opacity="0.15"/>
-  <path d="M1320 520 L1440 520 M1380 480 L1380 560" stroke="#39ff88" stroke-width="3.5" opacity="0.35" stroke-linecap="round"/>
-  <rect x="560" y="780" width="800" height="14" rx="4" fill="#39ff88" opacity="0.12"/>
+  <rect x="560" y="680" width="180" height="48" rx="24" fill="#3B8CFF" opacity="0.45"/>
+  <rect x="1040" y="680" width="320" height="52" rx="26" stroke="#3B8CFF" stroke-opacity="0.35" fill="none" stroke-width="2"/>
+  <circle cx="720" cy="460" r="72" fill="#3B8CFF" opacity="0.15"/>
+  <path d="M1320 520 L1440 520 M1380 480 L1380 560" stroke="#3B8CFF" stroke-width="3.5" opacity="0.35" stroke-linecap="round"/>
+  <rect x="560" y="780" width="800" height="14" rx="4" fill="#3B8CFF" opacity="0.12"/>
 </svg>

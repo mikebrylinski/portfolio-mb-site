@@ -59,13 +59,13 @@ export function TechOverlay({ variant = 0 }: Props) {
           y1="70%"
           x2="100%"
           y2="75%"
-          stroke="#39ff88"
+          stroke="#3B8CFF"
           strokeWidth="0.4"
           opacity="0.2"
         />
       </svg>
       <div
-        className="absolute inset-0 flex select-none items-center justify-center font-mono text-[8px] leading-relaxed text-[#39ff88] opacity-30 sm:text-[10px] md:text-xs"
+        className="absolute inset-0 flex select-none items-center justify-center font-mono text-[8px] leading-relaxed text-[#3B8CFF] opacity-30 sm:text-[10px] md:text-xs"
         style={{
           maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 70%)",
         }}

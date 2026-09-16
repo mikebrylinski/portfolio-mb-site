@@ -20,7 +20,7 @@ export function CtaBand() {
         <div className="mt-10">
           <Link
             href="/contact"
-            className="inline-flex min-h-[48px] min-w-[200px] items-center justify-center rounded-lg bg-[#39ff88] px-10 py-3 text-base font-semibold text-[#050505] transition-opacity hover:opacity-90"
+            className="inline-flex min-h-[48px] min-w-[200px] items-center justify-center rounded-lg bg-[#3B8CFF] px-10 py-3 text-base font-semibold text-[#050505] transition-opacity hover:opacity-90"
           >
             Start a Project
           </Link>

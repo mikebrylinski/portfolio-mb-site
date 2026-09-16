@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CaseStudyView } from "@/components/case-study/CaseStudyView";
 import { SiteFooter } from "@/components/sections/SiteFooter";
 import { getCaseStudy, getCaseStudySlugs } from "@/content/case-studies";
+import { absoluteUrl } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -16,9 +17,36 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const study = getCaseStudy(slug);
   if (!study) return { title: "Work" };
+
+  const title = study.title;
+  const description = study.statement;
+  const ogImage = study.visualSrc.endsWith(".svg")
+    ? "/og-default.png"
+    : study.visualSrc;
+  const url = absoluteUrl(`/work/${study.slug}`);
+
   return {
-    title: `${study.title} — Michael Brylinski`,
-    description: study.statement,
+    title,
+    description,
+    alternates: { canonical: `/work/${study.slug}` },
+    openGraph: {
+      title: `${title} — Mike Brylinski`,
+      description,
+      url,
+      type: "article",
+      images: [
+        {
+          url: ogImage,
+          alt: study.visualAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} — Mike Brylinski`,
+      description,
+      images: [ogImage],
+    },
   };
 }
 
@@ -32,7 +60,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
     : undefined;
 
   return (
-    <main id="main-content" className="bg-[#000000] text-white">
+    <main id="main-content" className="bg-[#06101c] text-white">
       <CaseStudyView study={study} nextTitle={nextTitle} />
       <SiteFooter />
     </main>

@@ -6,16 +6,15 @@ type AboutPortraitProps = {
 };
 
 /**
- * Editorial portrait treatment: generous radius, hairline edge, soft depth (Apple-style restraint).
+ * Portrait plate — blueprint-adjacent frame for About.
  */
 export function AboutPortrait({ className }: AboutPortraitProps) {
   return (
     <figure className={cn("relative w-full", className)}>
       <div
         className={cn(
-          "relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] bg-[#141414]",
-          "border border-white/[0.08]",
-          "shadow-[0_32px_90px_-28px_rgba(0,0,0,0.75),0_0_0_1px_rgba(255,255,255,0.04)_inset]",
+          "relative aspect-[4/5] w-full overflow-hidden bg-[#030910]",
+          "border border-[#3B8CFF]/25",
         )}
       >
         <Image

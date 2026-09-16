@@ -4,7 +4,7 @@ import { EyebrowPulse } from "@/components/icons/AccentIcons";
 
 export function SectionEyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.22em] text-[#39ff88]">
+    <p className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.22em] text-[#3B8CFF]">
       <EyebrowPulse />
       <span>{children}</span>
     </p>

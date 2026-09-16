@@ -3,38 +3,71 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { sectionRevealTransition, sectionRevealViewport } from "@/lib/motion";
+import { siteContainerClass } from "@/lib/site";
+
+const footerNav = [
+  { href: "/#work", label: "Work" },
+  { href: "/#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/#contact", label: "Contact" },
+] as const;
 
 export function SiteFooter() {
   const reduce = Boolean(useReducedMotion());
 
   return (
     <motion.footer
-      className="border-t border-[#39ff88]/12 bg-[#000000] py-14 text-left"
-      style={{ paddingBottom: "max(3.5rem, env(safe-area-inset-bottom))" }}
+      className="border-t border-white/10 bg-[#020617] text-left"
+      style={{ paddingBottom: "max(2.5rem, env(safe-area-inset-bottom))" }}
       initial={reduce ? false : { opacity: 0, y: 40 }}
       whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
       viewport={sectionRevealViewport}
       transition={sectionRevealTransition(reduce)}
     >
-      <div className="mx-auto flex w-full max-w-[1100px] flex-col gap-6 px-7 sm:flex-row sm:items-end sm:justify-between sm:px-8 lg:px-10">
-        <div>
-          <p className="text-sm text-[#A1A1A1]">Michael Brylinski</p>
-          <p className="mt-2 max-w-sm text-sm text-white/45">
-            Developer &amp; UX engineer — performance, systems, and product craft.
+      <div
+        className={`${siteContainerClass} flex flex-col gap-10 py-12 md:py-14`}
+      >
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <Link
+              href="/"
+              className="inline-flex min-h-[44px] items-center text-[clamp(1.05rem,2.6vw,1.25rem)] font-bold uppercase leading-none tracking-[-0.03em] transition-opacity hover:opacity-90"
+              aria-label="Mike Brylinski home"
+            >
+              <span className="text-white">Mike</span>
+              <span className="ml-1.5 text-[#3B8CFF]">Brylinski</span>
+            </Link>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/55">
+              Full-stack developer and builder — systems, experiences, and outcomes
+              from studio to stack.
+            </p>
+          </div>
+
+          <nav
+            className="flex flex-wrap items-center gap-x-1 gap-y-2 sm:justify-end"
+            aria-label="Footer"
+          >
+            {footerNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="px-3 py-2 text-[11px] font-medium uppercase tracking-[0.24em] text-white/70 transition-colors hover:text-white"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        <div className="flex flex-col gap-3 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-white/40">
+            © {new Date().getFullYear()} Mike Brylinski
+          </p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/35">
+            mikeb<span className="text-[#3B8CFF]/70">web.com</span>
           </p>
         </div>
-        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-[#A1A1A1]">
-          <Link href="/work" className="text-[#39ff88] transition-opacity hover:opacity-80">
-            Work
-          </Link>
-          <Link href="/contact" className="text-[#39ff88] transition-opacity hover:opacity-80">
-            Contact
-          </Link>
-        </div>
       </div>
-      <p className="mx-auto mt-10 max-w-[1100px] px-7 text-xs text-white/35 sm:px-8 lg:px-10">
-        © {new Date().getFullYear()} Michael Brylinski
-      </p>
     </motion.footer>
   );
 }

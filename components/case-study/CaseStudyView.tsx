@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { CaseStudyHeroMedia } from "@/components/case-study/CaseStudyMedia";
+import {
+  CaseStudyDeviceMockups,
+  CaseStudyHeroMedia,
+} from "@/components/case-study/CaseStudyMedia";
 import { CaseStudyLayout } from "@/components/layout/CaseStudyLayout";
 import { ParallaxLayer } from "@/components/ParallaxLayer";
-import { ProcessStepIcon } from "@/components/icons/AccentIcons";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import type { CaseStudy } from "@/content/case-studies";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -14,19 +15,53 @@ const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 function FadeIn({
   children,
   delay = 0,
+  className,
 }: {
   children: React.ReactNode;
   delay?: number;
+  className?: string;
 }) {
   const reduce = useReducedMotion();
   return (
     <motion.div
-      initial={{ opacity: 0, y: reduce ? 0 : 16 }}
+      className={className}
+      initial={{ opacity: 0, y: reduce ? 0 : 14 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: reduce ? 0 : 0.95, delay: reduce ? 0 : delay, ease }}
+      transition={{ duration: reduce ? 0 : 0.85, delay: reduce ? 0 : delay, ease }}
     >
       {children}
     </motion.div>
+  );
+}
+
+function SheetLabel({
+  code,
+  children,
+}: {
+  code: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex items-center gap-3">
+      <span className="font-mono text-[10px] font-medium tracking-[0.2em] text-[#3B8CFF]">
+        {code}
+      </span>
+      <span className="h-px flex-1 max-w-[3rem] bg-[#3B8CFF]/40" aria-hidden />
+      <p className="font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[#3B8CFF]/90">
+        {children}
+      </p>
+    </div>
+  );
+}
+
+function FrameCorners({ className = "" }: { className?: string }) {
+  return (
+    <div className={`pointer-events-none absolute inset-0 ${className}`} aria-hidden>
+      <span className="absolute left-0 top-0 h-3 w-3 border-l-2 border-t-2 border-[#3B8CFF]/80" />
+      <span className="absolute right-0 top-0 h-3 w-3 border-r-2 border-t-2 border-[#3B8CFF]/80" />
+      <span className="absolute bottom-0 left-0 h-3 w-3 border-b-2 border-l-2 border-[#3B8CFF]/80" />
+      <span className="absolute bottom-0 right-0 h-3 w-3 border-b-2 border-r-2 border-[#3B8CFF]/80" />
+    </div>
   );
 }
 
@@ -39,130 +74,229 @@ export function CaseStudyView({
 }) {
   const reduce = useReducedMotion();
   const next = study.nextSlug;
+  const sheetId = study.slug.slice(0, 8).toUpperCase().replace(/-/g, "");
 
   return (
     <CaseStudyLayout>
-      <header className="border-b border-[#39ff88]/10 pb-20 pt-28 md:pb-28 md:pt-36">
-        <FadeIn>
-          <SectionEyebrow>Case study</SectionEyebrow>
-          <h1 className="mt-5 text-[clamp(2.1rem,5vw,3.5rem)] font-medium tracking-tight text-white">
-            {study.title}
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#A1A1A1] md:text-xl">
-            {study.statement}
-          </p>
-          <p className="mt-6 text-sm text-[#39ff88]/80">{study.meta}</p>
-        </FadeIn>
-      </header>
+      {/* Outer drawing border */}
+      <div className="relative overflow-hidden border border-[#3B8CFF]/35 px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
+        <FrameCorners />
 
-      <section className="grid gap-12 border-b border-[#39ff88]/10 py-20 md:grid-cols-2 md:gap-16 md:py-28">
-        <FadeIn delay={0.05}>
-          <SectionEyebrow>Overview</SectionEyebrow>
-          <p className="mt-5 text-base leading-relaxed text-[#A1A1A1] md:text-lg">
-            {study.summary}
-          </p>
-        </FadeIn>
-        <FadeIn delay={0.12}>
-          <SectionEyebrow>Key results</SectionEyebrow>
-          <ul className="mt-5 space-y-4 text-base leading-relaxed text-[#A1A1A1] md:text-lg">
-            {study.keyResults.map((line) => (
-              <li key={line} className="border-t border-[#39ff88]/12 pt-4 first:border-t-0 first:pt-0">
-                {line}
-              </li>
-            ))}
-          </ul>
-        </FadeIn>
-      </section>
-
-      <div className="relative left-1/2 my-20 w-screen max-w-[100vw] -translate-x-1/2 md:my-28">
-        <ParallaxLayer className="relative h-[min(78vh,920px)] w-full">
-          <CaseStudyHeroMedia study={study} />
-          {study.visualType !== "video" ? (
-            <div className="absolute inset-0 bg-black/20" aria-hidden />
-          ) : (
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/50 to-transparent" aria-hidden />
-          )}
-        </ParallaxLayer>
-      </div>
-
-      <section className="border-b border-[#39ff88]/10 py-20 md:py-28">
-        <SectionEyebrow>Process</SectionEyebrow>
-        <div className="mt-12 space-y-12 md:mt-16 md:space-y-14">
-          {study.process.map((step, i) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, y: reduce ? 0 : 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-12% 0px", amount: 0.25 }}
-              transition={{ duration: reduce ? 0 : 0.85, delay: reduce ? 0 : i * 0.06, ease }}
-              className="flex flex-col gap-4 sm:flex-row sm:items-start"
-            >
-              <div className="shrink-0 pt-1">
-                <ProcessStepIcon index={i} />
-              </div>
-              <div>
-                <h3 className="text-lg font-medium text-white md:text-xl">{step.title}</h3>
-                <p className="mt-3 max-w-2xl text-base leading-relaxed text-[#A1A1A1]">
-                  {step.body}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      <section className="grid gap-12 border-b border-[#39ff88]/10 py-20 md:grid-cols-2 md:gap-16 md:py-28">
-        <div>
-          <SectionEyebrow>Challenge</SectionEyebrow>
-          <p className="mt-5 text-base leading-relaxed text-[#A1A1A1] md:text-lg">
-            {study.challenge}
-          </p>
-        </div>
-        <div>
-          <SectionEyebrow>Solution</SectionEyebrow>
-          <p className="mt-5 text-base leading-relaxed text-[#A1A1A1] md:text-lg">
-            {study.solution}
-          </p>
-        </div>
-      </section>
-
-      <section className="border-b border-[#39ff88]/10 py-20 md:py-28">
-        <SectionEyebrow>Results</SectionEyebrow>
-        <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-3 md:gap-8">
-          {study.metrics.map((m) => (
-            <div key={m.label} className="border-t border-[#39ff88]/15 pt-8 md:border-t-0 md:pt-0">
-              <p className="text-[clamp(2.1rem,4vw,3rem)] font-medium tracking-tight text-[#39ff88]">
-                {m.value}
-              </p>
-              <p className="mt-3 text-sm text-[#A1A1A1]">{m.label}</p>
+        {/* Title block / legend */}
+        <header className="relative grid gap-0 border border-[#3B8CFF]/30 md:grid-cols-[1fr_minmax(220px,280px)]">
+          <FadeIn className="border-b border-[#3B8CFF]/30 p-5 md:border-b-0 md:border-r md:p-7">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#3B8CFF]/75">
+                Project drawing
+              </span>
+              <span className="font-mono text-[10px] tracking-[0.16em] text-[#3B8CFF]/45">
+                REV.01
+              </span>
             </div>
-          ))}
-        </div>
-      </section>
+            <h1 className="mt-4 text-[clamp(1.85rem,4.5vw,3.15rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
+              {study.title}
+            </h1>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
+              {study.statement}
+            </p>
+            <p className="mt-5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-[#3B8CFF]/70">
+              {study.meta}
+            </p>
+            {study.liveUrl ? (
+              <div className="mt-7">
+                <a
+                  href={study.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-[44px] items-center gap-2 border border-[#3B8CFF] bg-[#3B8CFF]/10 px-5 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#3B8CFF]/20"
+                >
+                  View live site
+                  <span aria-hidden>↗</span>
+                </a>
+              </div>
+            ) : null}
+          </FadeIn>
 
-      <section className="py-20 md:py-28">
-        <SectionEyebrow>Takeaway</SectionEyebrow>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white md:text-xl">
-          {study.takeaway}
-        </p>
-      </section>
+          <FadeIn
+            delay={0.08}
+            className="grid grid-rows-[auto_1fr_auto] font-mono text-[10px] uppercase tracking-[0.16em] text-[#3B8CFF]/80"
+          >
+            <div className="border-b border-[#3B8CFF]/30 p-4 md:p-5">
+              <p className="text-[#3B8CFF]/45">Sheet</p>
+              <p className="mt-1 text-lg tracking-[0.08em] text-white">A-{sheetId.slice(0, 4)}</p>
+            </div>
+            <div className="border-b border-[#3B8CFF]/30 p-4 md:p-5">
+              <p className="text-[#3B8CFF]/45">Drawn by</p>
+              <p className="mt-1 text-[11px] tracking-[0.12em] text-[#c8dff7]">
+                Mike Brylinski
+              </p>
+              <p className="mt-3 text-[#3B8CFF]/45">Scale</p>
+              <p className="mt-1 text-[11px] tracking-[0.12em] text-[#c8dff7]">
+                1 : 1 — End to end
+              </p>
+            </div>
+            <div className="p-4 md:p-5">
+              <p className="text-[#3B8CFF]/45">Status</p>
+              <p className="mt-1 flex items-center gap-2 text-[11px] tracking-[0.12em] text-[#c8dff7]">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#3B8CFF]" aria-hidden />
+                Built / shipped
+              </p>
+            </div>
+          </FadeIn>
+        </header>
 
-      <footer className="border-t border-[#39ff88]/10 py-16 md:py-20">
-        <SectionEyebrow>Next</SectionEyebrow>
-        <div className="mt-6 flex flex-col gap-4 text-base">
-          {next ? (
-            <Link
-              href={`/work/${next}`}
-              className="w-fit text-[#39ff88] transition-opacity hover:opacity-80"
-            >
-              {nextTitle ?? "Next project"}
-            </Link>
-          ) : null}
-          <Link href="/work" className="w-fit text-[#39ff88] transition-opacity hover:opacity-80">
-            All work
-          </Link>
-        </div>
-      </footer>
+        {/* Overview + key results */}
+        <section className="mt-6 grid gap-0 border border-[#3B8CFF]/30 md:mt-8 md:grid-cols-2">
+          <FadeIn delay={0.05} className="border-b border-[#3B8CFF]/30 p-5 md:border-b-0 md:border-r md:p-7">
+            <SheetLabel code="01">Overview</SheetLabel>
+            <p className="mt-5 text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
+              {study.summary}
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.1} className="p-5 md:p-7">
+            <SheetLabel code="02">Key results</SheetLabel>
+            <ul className="mt-5 space-y-0">
+              {study.keyResults.map((line, i) => (
+                <li
+                  key={line}
+                  className="blueprint-dash flex gap-3 py-3 text-sm leading-relaxed text-[#9cb6d4] first:border-t-0 first:pt-0 md:text-[15px]"
+                >
+                  <span className="shrink-0 font-mono text-[10px] tracking-[0.14em] text-[#3B8CFF]/70">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
+          </FadeIn>
+        </section>
+
+        {/* Visual plate */}
+        {study.mockups && study.mockups.length > 0 ? (
+          <section className="relative mt-6 overflow-hidden border border-[#3B8CFF]/30 md:mt-8">
+            <div className="flex items-center justify-between border-b border-[#3B8CFF]/30 px-5 py-3 md:px-7">
+              <SheetLabel code="03">Visual plate</SheetLabel>
+              <span className="font-mono text-[10px] tracking-[0.16em] text-[#3B8CFF]/50">
+                FIG. A–{study.mockups.length}
+              </span>
+            </div>
+            <CaseStudyDeviceMockups mockups={study.mockups} />
+          </section>
+        ) : (
+          <section className="relative mt-6 overflow-hidden border border-[#3B8CFF]/30 md:mt-8">
+            <div className="flex items-center justify-between border-b border-[#3B8CFF]/30 px-5 py-3 md:px-7">
+              <SheetLabel code="03">Visual plate</SheetLabel>
+              <span className="font-mono text-[10px] tracking-[0.16em] text-[#3B8CFF]/50">
+                FIG. A
+              </span>
+            </div>
+            <div className="relative h-[min(55vh,560px)] w-full max-w-full overflow-hidden">
+              <ParallaxLayer className="relative h-full w-full">
+                <CaseStudyHeroMedia study={study} />
+                {study.visualType !== "video" ? (
+                  <div className="absolute inset-0 bg-[#06101c]/25" aria-hidden />
+                ) : (
+                  <div
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#06101c]/70 to-transparent"
+                    aria-hidden
+                  />
+                )}
+              </ParallaxLayer>
+            </div>
+          </section>
+        )}
+
+        {/* Process */}
+        <section className="mt-6 border border-[#3B8CFF]/30 md:mt-8">
+          <div className="border-b border-[#3B8CFF]/30 px-5 py-3 md:px-7">
+            <SheetLabel code="04">Process</SheetLabel>
+          </div>
+          <div className="divide-y divide-[#3B8CFF]/20">
+            {study.process.map((step, i) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: reduce ? 0 : 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10% 0px", amount: 0.25 }}
+                transition={{
+                  duration: reduce ? 0 : 0.75,
+                  delay: reduce ? 0 : i * 0.05,
+                  ease,
+                }}
+                className="grid w-full items-center gap-3 px-5 py-6 sm:grid-cols-[5.5rem_minmax(0,1fr)] sm:gap-6 md:px-7 md:py-7"
+              >
+                <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#3B8CFF]/70 sm:self-center">
+                  <p>Step</p>
+                  <p className="mt-1 text-2xl tracking-[0.06em] text-[#3B8CFF]">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                </div>
+                <div className="min-w-0 w-full">
+                  <h3 className="text-base font-medium uppercase tracking-tight text-white md:text-lg">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 w-full text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
+                    {step.body}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Challenge / Solution */}
+        <section className="mt-6 grid gap-0 border border-[#3B8CFF]/30 md:mt-8 md:grid-cols-2">
+          <div className="border-b border-[#3B8CFF]/30 p-5 md:border-b-0 md:border-r md:p-7">
+            <SheetLabel code="05">Challenge</SheetLabel>
+            <p className="mt-5 text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
+              {study.challenge}
+            </p>
+          </div>
+          <div className="p-5 md:p-7">
+            <SheetLabel code="06">Solution</SheetLabel>
+            <p className="mt-5 text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
+              {study.solution}
+            </p>
+          </div>
+        </section>
+
+        {/* Takeaway */}
+        <section className="mt-6 border border-[#3B8CFF]/30 p-5 md:mt-8 md:p-7">
+          <SheetLabel code="07">Takeaway</SheetLabel>
+          <p className="mt-5 w-full text-base leading-relaxed text-white md:text-lg">
+            {study.takeaway}
+          </p>
+        </section>
+
+        {/* Next / revision block */}
+        <footer className="mt-6 grid gap-0 border border-[#3B8CFF]/30 md:mt-8 md:grid-cols-[1fr_auto]">
+          <div className="border-b border-[#3B8CFF]/30 p-5 md:border-b-0 md:border-r md:p-7">
+            <SheetLabel code="08">Next sheet</SheetLabel>
+            <div className="mt-5 flex flex-col gap-3 font-mono text-[12px] uppercase tracking-[0.16em]">
+              {next ? (
+                <Link
+                  href={`/work/${next}`}
+                  className="w-fit text-[#3B8CFF] transition-opacity hover:opacity-80"
+                >
+                  → {nextTitle ?? "Next project"}
+                </Link>
+              ) : null}
+              <Link
+                href="/work"
+                className="w-fit text-[#3B8CFF]/70 transition-opacity hover:opacity-100"
+              >
+                → All work
+              </Link>
+            </div>
+          </div>
+          <div className="flex items-end p-5 font-mono text-[10px] uppercase tracking-[0.18em] text-[#3B8CFF]/45 md:p-7">
+            <p>
+              End of drawing
+              <span className="mt-1 block text-[#3B8CFF]/70">MB / {sheetId}</span>
+            </p>
+          </div>
+        </footer>
+      </div>
     </CaseStudyLayout>
   );
 }

@@ -7,7 +7,7 @@ export function ClientTicker() {
 
   return (
     <div
-      className="group-ticker relative overflow-hidden border-y border-[#39ff88]/20 bg-[#030303]/95 py-3 shadow-[inset_0_0_60px_rgba(57,255,136,0.04)] backdrop-blur-sm md:py-3.5"
+      className="group-ticker relative overflow-hidden border-y border-[#3B8CFF]/20 bg-[#030303]/95 py-3 shadow-[inset_0_0_60px_rgba(59,140,255,0.04)] backdrop-blur-sm md:py-3.5"
       aria-label="Selected clients and partners"
     >
       {/* Edge fades */}
@@ -25,21 +25,21 @@ export function ClientTicker() {
         className="pointer-events-none absolute inset-0 opacity-[0.07]"
         style={{
           backgroundImage:
-            "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(57,255,136,0.35) 2px, rgba(57,255,136,0.35) 3px)",
+            "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(59,140,255,0.35) 2px, rgba(59,140,255,0.35) 3px)",
         }}
         aria-hidden
       />
 
       <div className="relative z-[1] flex items-center gap-4 px-7 md:gap-6 md:px-8">
-        <div className="hidden shrink-0 items-center gap-2 border-r border-[#39ff88]/25 pr-4 sm:flex md:pr-6">
+        <div className="hidden shrink-0 items-center gap-2 border-r border-[#3B8CFF]/25 pr-4 sm:flex md:pr-6">
           <span
-            className="relative flex h-2 w-2 shrink-0 rounded-full bg-[#39ff88]"
+            className="relative flex h-2 w-2 shrink-0 rounded-full bg-[#3B8CFF]"
             aria-hidden
           >
-            <span className="absolute inset-0 animate-ping rounded-full bg-[#39ff88] opacity-40" />
+            <span className="absolute inset-0 animate-ping rounded-full bg-[#3B8CFF] opacity-40" />
           </span>
           <div className="flex flex-col leading-none">
-            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-[#39ff88]">
+            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-[#3B8CFF]">
               Client feed
             </span>
             <span className="mt-0.5 font-mono text-[9px] uppercase tracking-[0.2em] text-white/35">
@@ -58,7 +58,7 @@ export function ClientTicker() {
                 >
                   <span className="flex items-center gap-2.5 whitespace-nowrap px-6 py-1 md:px-8">
                     <span
-                      className="font-mono text-[9px] text-[#39ff88]/55 md:text-[10px]"
+                      className="font-mono text-[9px] text-[#3B8CFF]/55 md:text-[10px]"
                       aria-hidden
                     >
                       ◆
@@ -77,7 +77,7 @@ export function ClientTicker() {
                   className="flex items-center border-l border-white/[0.08] first:border-l-0"
                 >
                   <span className="flex items-center gap-2.5 whitespace-nowrap px-6 py-1 md:px-8">
-                    <span className="font-mono text-[9px] text-[#39ff88]/55 md:text-[10px]" aria-hidden>
+                    <span className="font-mono text-[9px] text-[#3B8CFF]/55 md:text-[10px]" aria-hidden>
                       ◆
                     </span>
                     <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-white/88 md:text-xs">

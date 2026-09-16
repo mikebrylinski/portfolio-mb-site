@@ -28,11 +28,7 @@ export function ScrollSection({
   return (
     <section
       id={id}
-      className={cn(
-        "scroll-mt-24 border-b border-[#39ff88]/10 px-7 sm:px-8 lg:px-10",
-        py,
-        className,
-      )}
+      className={cn("scroll-mt-24 border-b border-[#3B8CFF]/10", py, className)}
     >
       <motion.div
         initial={reduce ? false : { opacity: 0, y: 48 }}

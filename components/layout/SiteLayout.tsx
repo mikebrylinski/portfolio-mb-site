@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { siteContainerClass } from "@/lib/site";
 
 type SiteLayoutProps = {
   children: React.ReactNode;
@@ -21,13 +22,7 @@ export function SiteLayout({
       id={id}
       className={cn("min-h-0 bg-[#000000] text-white antialiased", className)}
     >
-      {contained ? (
-        <div className="mx-auto w-full max-w-[1100px] px-7 sm:px-8 lg:px-10">
-          {children}
-        </div>
-      ) : (
-        children
-      )}
+      {contained ? <div className={siteContainerClass}>{children}</div> : children}
     </Comp>
   );
 }

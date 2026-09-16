@@ -19,9 +19,9 @@ export function ServicesSection() {
         {services.map((s) => (
           <article
             key={s.title}
-            className="group w-full max-w-md rounded-xl border border-white/10 bg-white/[0.03] p-6 text-center transition-colors hover:border-[#39ff88]/40 md:max-w-none"
+            className="group w-full max-w-md rounded-xl border border-white/10 bg-white/[0.03] p-6 text-center transition-colors hover:border-[#3B8CFF]/40 md:max-w-none"
           >
-            <h3 className="text-lg font-semibold text-[#fafafa] group-hover:text-[#39ff88]">
+            <h3 className="text-lg font-semibold text-[#fafafa] group-hover:text-[#3B8CFF]">
               {s.title}
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-white/70 md:text-base">

@@ -21,14 +21,14 @@ export function PricingSection() {
         <SectionImage {...sectionImages.pricing} />
       </div>
       <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-white/10 bg-white/[0.04] p-8 text-center md:p-10">
-        <p className="text-5xl font-bold tracking-tight text-[#39ff88] md:text-6xl">
+        <p className="text-5xl font-bold tracking-tight text-[#3B8CFF] md:text-6xl">
           $100
           <span className="text-2xl font-semibold text-white/80">/hour</span>
         </p>
         <ul className="mt-8 space-y-3 text-white/80">
           {includes.map((line) => (
             <li key={line} className="flex justify-center gap-2 text-center">
-              <span className="text-[#39ff88]" aria-hidden>
+              <span className="text-[#3B8CFF]" aria-hidden>
                 ✓
               </span>
               <span>{line}</span>

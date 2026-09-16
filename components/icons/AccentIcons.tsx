@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 
-const accent = "#39ff88";
+const accent = "#3B8CFF";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 

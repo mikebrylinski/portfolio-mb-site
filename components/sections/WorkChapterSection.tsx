@@ -11,59 +11,31 @@ import {
 import { AppleStaggerChild, AppleStaggerRoot } from "@/components/layout/AppleStagger";
 import { ScrollSection } from "@/components/layout/ScrollSection";
 import { WorkProjectRow } from "@/components/sections/WorkProjectRow";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { AestheticNote, FieldLabel, FrameCorners } from "@/components/ui/FieldNotes";
 import { caseStudies } from "@/content/case-studies";
 import { clients } from "@/content/clients";
 import { appleEase } from "@/lib/motion";
 import { siteContainerClass } from "@/lib/site";
-
-const listContainer = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.11, delayChildren: 0.04 },
-  },
-};
 
 const ROTATE_MS = 2200;
 
 function TrustMark({ pulseKey, reduce }: { pulseKey: number; reduce: boolean }) {
   return (
     <div
-      className="relative flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center md:h-[5.25rem] md:w-[5.25rem]"
+      className="relative flex h-14 w-14 shrink-0 items-center justify-center"
       aria-hidden
     >
       {!reduce && (
-        <>
-          <motion.span
-            key={`ring-a-${pulseKey}`}
-            className="absolute inset-0 rounded-full border border-[#3B8CFF]/35"
-            initial={{ scale: 0.72, opacity: 0.55 }}
-            animate={{ scale: 1.35, opacity: 0 }}
-            transition={{ duration: 1.35, ease: appleEase }}
-          />
-          <motion.span
-            className="absolute inset-[10%] rounded-full border border-[#3B8CFF]/20"
-            animate={{ scale: [1, 1.08, 1], opacity: [0.35, 0.6, 0.35] }}
-            transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </>
-      )}
-
-      <div className="relative flex h-[3.15rem] w-[3.15rem] items-center justify-center rounded-full border border-[#3B8CFF]/45 bg-[#3B8CFF]/10 md:h-[3.5rem] md:w-[3.5rem]">
         <motion.span
-          className="absolute inset-0 rounded-full bg-[#3B8CFF]/15"
-          animate={
-            reduce
-              ? undefined
-              : { opacity: [0.25, 0.55, 0.25], scale: [1, 1.04, 1] }
-          }
-          transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+          key={`ring-${pulseKey}`}
+          className="absolute inset-0 rounded-full border border-[#3B8CFF]/35"
+          initial={{ scale: 0.8, opacity: 0.5 }}
+          animate={{ scale: 1.3, opacity: 0 }}
+          transition={{ duration: 1.2, ease: appleEase }}
         />
-        <svg
-          viewBox="0 0 48 48"
-          className="relative h-7 w-7 text-[#3B8CFF] md:h-8 md:w-8"
-          fill="none"
-        >
+      )}
+      <div className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[#3B8CFF]/45 bg-[#3B8CFF]/10">
+        <svg viewBox="0 0 48 48" className="h-5 w-5 text-[#3B8CFF]" fill="none">
           <motion.path
             d="M24 6.5 36 11.5v10.2c0 8.1-5.4 15.5-12 17.8-6.6-2.3-12-9.7-12-17.8V11.5L24 6.5Z"
             stroke="currentColor"
@@ -82,11 +54,7 @@ function TrustMark({ pulseKey, reduce }: { pulseKey: number; reduce: boolean }) 
             strokeLinejoin="round"
             initial={reduce ? false : { pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
-            transition={{
-              duration: reduce ? 0 : 0.45,
-              delay: reduce ? 0 : 0.08,
-              ease: appleEase,
-            }}
+            transition={{ duration: reduce ? 0 : 0.4, ease: appleEase }}
           />
         </svg>
       </div>
@@ -113,41 +81,54 @@ function TrustedByRotator() {
   return (
     <div
       ref={rootRef}
-      className="flex min-w-0 items-start gap-5 lg:gap-6 lg:pt-10"
+      className="relative flex min-w-0 flex-col gap-3 border border-[#3B8CFF]/25 px-4 py-3 sm:px-5 sm:py-4"
       aria-live="polite"
       aria-atomic="true"
     >
-      <TrustMark pulseKey={index} reduce={reduce} />
-
-      <div className="min-w-0 flex-1 pt-1">
-        <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#3B8CFF]">
-          Trusted by
-        </p>
-        <div className="relative mt-4 h-[2.75rem] overflow-hidden md:h-[3.25rem]">
-          {reduce ? (
-            <p className="text-lg font-medium uppercase tracking-[0.06em] text-white/80 md:text-xl">
-              {clients.slice(0, 4).join(" · ")}
-              <span className="text-white/40"> · +{clients.length - 4} more</span>
-            </p>
-          ) : (
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.p
-                key={name}
-                className="absolute inset-x-0 top-0 text-lg font-medium uppercase tracking-[0.06em] text-white/85 md:text-xl"
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -14 }}
-                transition={{ duration: 0.45, ease: appleEase }}
-              >
-                {name}
-              </motion.p>
-            </AnimatePresence>
-          )}
+      <FrameCorners size="sm" />
+      <div className="flex min-w-0 items-center gap-3">
+        <TrustMark pulseKey={index} reduce={reduce} />
+        <div className="min-w-0 flex-1 overflow-hidden">
+          <p className="truncate font-mono text-[10px] uppercase tracking-[0.2em] text-[#3B8CFF]">
+            Trusted by
+          </p>
+          <div className="relative mt-1.5 h-6 overflow-hidden">
+            {reduce ? (
+              <p className="truncate text-sm font-medium uppercase tracking-wide text-white/85">
+                {clients.length}+ clients & partners
+              </p>
+            ) : (
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.p
+                  key={name}
+                  className="absolute inset-0 truncate text-sm font-medium uppercase tracking-wide text-white/85"
+                  title={name}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4, ease: appleEase }}
+                >
+                  {name}
+                </motion.p>
+              </AnimatePresence>
+            )}
+          </div>
         </div>
       </div>
+      <p className="border-t border-[#3B8CFF]/15 pt-3 text-center text-xs font-light leading-relaxed text-white/45 sm:text-[13px]">
+        I&apos;ve had the opportunity to work with A-list musicians, top brands and
+        startups.
+      </p>
     </div>
   );
 }
+
+const listContainer = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.11, delayChildren: 0.04 },
+  },
+};
 
 export function WorkChapterSection() {
   const reduce = Boolean(useReducedMotion());
@@ -164,86 +145,59 @@ export function WorkChapterSection() {
     [reduce],
   );
 
-  const featured = caseStudies.slice(0, 3);
-
   return (
     <ScrollSection
       id="work"
+      spacing="tight"
       className="relative overflow-hidden border-white/10 bg-[#020617]"
     >
       <div
         className="pointer-events-none absolute inset-0 blueprint-grid opacity-40"
         aria-hidden
       />
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_10%,rgba(59,140,255,0.05),transparent_50%)]"
-        aria-hidden
-      />
 
       <div className={`relative z-[1] ${siteContainerClass} text-left`}>
         <div className="relative border border-[#3B8CFF]/25 px-5 py-8 sm:px-7 sm:py-10 md:px-8">
-          <span
-            className="pointer-events-none absolute left-0 top-0 h-3 w-3 border-l-2 border-t-2 border-[#3B8CFF]/80"
-            aria-hidden
-          />
-          <span
-            className="pointer-events-none absolute right-0 top-0 h-3 w-3 border-r-2 border-t-2 border-[#3B8CFF]/80"
-            aria-hidden
-          />
-          <span
-            className="pointer-events-none absolute bottom-0 left-0 h-3 w-3 border-b-2 border-l-2 border-[#3B8CFF]/80"
-            aria-hidden
-          />
-          <span
-            className="pointer-events-none absolute bottom-0 right-0 h-3 w-3 border-b-2 border-r-2 border-[#3B8CFF]/80"
-            aria-hidden
-          />
+          <FrameCorners />
 
           <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-            <p className="font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[#3B8CFF]/75">
-              Sheet A — Selected work
-            </p>
-            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#3B8CFF]/45">
-              Scale 1 : 1 · End to end
-            </p>
+            <FieldLabel>Basecamp — Selected builds</FieldLabel>
+            <AestheticNote>SYSTEM / DIGITAL PRODUCT</AestheticNote>
           </div>
 
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
             <AppleStaggerRoot>
               <AppleStaggerChild>
-                <SectionEyebrow>Work</SectionEyebrow>
-              </AppleStaggerChild>
-              <AppleStaggerChild>
-                <h2 className="mt-5 text-[clamp(2rem,4.5vw,3.25rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
-                  Selected work
-                  <span className="mt-1 block text-[#3B8CFF]">built end to end.</span>
+                <h2 className="text-[clamp(2rem,4.5vw,3.25rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
+                  Selected builds
                 </h2>
               </AppleStaggerChild>
               <AppleStaggerChild>
-                <p className="mt-6 max-w-md text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
-                  Selected work spanning cinematic portfolios, membership platforms,
-                  and AI-powered products — design, development, and systems in one
-                  thread.
+                <p className="mt-6 max-w-xl text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
+                  Digital products, AI applications and experiences built from the
+                  ground up.
                 </p>
               </AppleStaggerChild>
             </AppleStaggerRoot>
 
-            <TrustedByRotator />
+            <div className="min-w-0">
+              <TrustedByRotator />
+            </div>
           </div>
         </div>
 
         <motion.ul
-          className="mt-10 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-2 md:mt-12 lg:grid-cols-3 lg:gap-6"
+          className="mt-10 grid list-none grid-cols-1 gap-6 p-0 md:mt-12"
           variants={listContainer}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.1, margin: "0px 0px -12% 0px" }}
+          viewport={{ once: true, amount: 0.08, margin: "0px 0px -12% 0px" }}
         >
-          {featured.map((project, index) => (
+          {caseStudies.map((project, index) => (
             <WorkProjectRow
               key={project.slug}
               project={project}
-              index={index}
+              reverse={index === 1}
               variants={listItem}
             />
           ))}

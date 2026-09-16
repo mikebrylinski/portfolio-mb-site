@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Mike Brylinski",
-  title: "Mike Brylinski Full Stack Web Developer",
+  title: "Mike Brylinski — Digital Product Designer & Full-Stack Developer",
   description:
-    "Full-stack web developer and UX engineer building high-performance products, AI-powered apps, SaaS platforms, and modern digital experiences.",
+    "Mike Brylinski designs and builds SaaS products, AI applications, and high-performance digital experiences from concept through production.",
   url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://mikebweb.com",
   locale: "en_US",
   ogImage: "/og-default.png",

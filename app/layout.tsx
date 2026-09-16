@@ -79,7 +79,7 @@ const jsonLd = {
       "@id": absoluteUrl("/#person"),
       name: siteConfig.name,
       url: siteConfig.url,
-      jobTitle: "Full Stack Web Developer",
+      jobTitle: "Digital Product Designer & Full-Stack Developer",
       description: siteConfig.description,
       knowsAbout: [
         "Full-stack development",

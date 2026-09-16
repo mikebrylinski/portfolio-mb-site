@@ -129,11 +129,11 @@ function ComponentsStage({ reduce }: { reduce: boolean }) {
   ];
 
   return (
-    <div className="flex h-full flex-col px-4 py-4 sm:px-5">
-      <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#3B8CFF]/80">
+    <div className="flex h-full min-h-0 flex-col overflow-hidden px-3 py-3 sm:px-4">
+      <p className="mb-2 shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-[#3B8CFF]/80">
         Building UI primitives
       </p>
-      <div className="grid flex-1 grid-cols-2 gap-2.5 content-start">
+      <div className="grid min-h-0 flex-1 grid-cols-2 content-start gap-2 overflow-hidden">
         {cards.map((card, i) => (
           <motion.div
             key={card.name}
@@ -171,35 +171,31 @@ function DatabaseStage({ reduce }: { reduce: boolean }) {
   ];
 
   return (
-    <div className="flex h-full flex-col px-4 py-4 sm:px-5">
-      <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#3B8CFF]/80">
+    <div className="flex h-full min-h-0 flex-col overflow-hidden px-3 py-3 sm:px-4">
+      <p className="mb-2 shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-[#3B8CFF]/80">
         Database integration
       </p>
 
-      <div className="flex min-h-0 flex-1 items-center gap-3">
-        {/* App / API node */}
+      <div className="flex min-h-0 shrink-0 items-center gap-2 sm:gap-3">
         <motion.div
-          className="flex h-[72px] w-[72px] shrink-0 flex-col items-center justify-center rounded-xl border border-[#3B8CFF]/30 bg-[#3B8CFF]/10"
+          className="flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-lg border border-[#3B8CFF]/30 bg-[#3B8CFF]/10 sm:h-16 sm:w-16"
           initial={reduce ? false : { opacity: 0, x: -8 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: reduce ? 0 : 0.4, ease: appleEase }}
         >
-          <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/80">
+          <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/80 sm:text-[10px]">
             API
           </span>
-          <span className="mt-1 font-mono text-[9px] text-[#3B8CFF]/90">Node</span>
+          <span className="mt-0.5 font-mono text-[8px] text-[#3B8CFF]/90 sm:text-[9px]">
+            Node
+          </span>
         </motion.div>
 
-        {/* Animated connection */}
-        <div className="relative flex h-12 flex-1 items-center">
-          <div className="h-px w-full bg-gradient-to-r from-[#3B8CFF]/20 via-[#3B8CFF]/70 to-[#3B8CFF]/20" />
+        <div className="relative h-8 min-w-0 flex-1">
+          <div className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-[#3B8CFF]/20 via-[#3B8CFF]/70 to-[#3B8CFF]/20" />
           <motion.span
-            className="absolute left-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-[#3B8CFF] shadow-[0_0_12px_rgba(59,140,255,0.9)]"
-            animate={
-              reduce
-                ? { left: "50%" }
-                : { left: ["0%", "100%", "0%"] }
-            }
+            className="absolute top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-[#3B8CFF] shadow-[0_0_12px_rgba(59,140,255,0.9)]"
+            animate={reduce ? { left: "50%" } : { left: ["0%", "calc(100% - 8px)", "0%"] }}
             transition={
               reduce
                 ? undefined
@@ -208,27 +204,26 @@ function DatabaseStage({ reduce }: { reduce: boolean }) {
           />
         </div>
 
-        {/* Database cylinder */}
         <motion.div
-          className="relative flex h-[88px] w-[78px] shrink-0 flex-col items-center justify-center"
+          className="relative flex h-14 w-14 shrink-0 items-center justify-center sm:h-16 sm:w-16"
           initial={reduce ? false : { opacity: 0, x: 8 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: reduce ? 0 : 0.45, ease: appleEase, delay: 0.1 }}
         >
-          <div className="absolute inset-x-2 top-1 h-4 rounded-full border border-[#3B8CFF]/45 bg-[#3B8CFF]/25" />
-          <div className="absolute inset-x-2 top-3 bottom-3 border-x border-[#3B8CFF]/35 bg-gradient-to-b from-[#3B8CFF]/15 to-[#05070c]/80" />
-          <div className="absolute inset-x-2 bottom-1 h-4 rounded-full border border-[#3B8CFF]/45 bg-[#0b1a33]" />
-          <span className="relative z-[1] font-mono text-[10px] uppercase tracking-[0.12em] text-white/85">
+          <div className="absolute inset-x-1 top-0.5 h-3 rounded-full border border-[#3B8CFF]/45 bg-[#3B8CFF]/25" />
+          <div className="absolute inset-x-1 top-2 bottom-2 border-x border-[#3B8CFF]/35 bg-gradient-to-b from-[#3B8CFF]/15 to-[#05070c]/80" />
+          <div className="absolute inset-x-1 bottom-0.5 h-3 rounded-full border border-[#3B8CFF]/45 bg-[#0b1a33]" />
+          <span className="relative z-[1] font-mono text-[9px] uppercase tracking-[0.12em] text-white/85 sm:text-[10px]">
             MySQL
           </span>
         </motion.div>
       </div>
 
-      <div className="mt-2 space-y-1.5">
+      <div className="mt-2 flex min-h-0 flex-1 flex-col justify-end gap-1 overflow-hidden">
         {rows.map((row, i) => (
           <motion.div
             key={row.id}
-            className="flex h-7 items-center justify-between rounded-md border border-white/10 bg-white/[0.03] px-2.5 font-mono text-[10px]"
+            className="flex h-6 shrink-0 items-center justify-between rounded-md border border-white/10 bg-white/[0.03] px-2 font-mono text-[9px] sm:h-7 sm:text-[10px]"
             initial={reduce ? false : { opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -381,7 +376,7 @@ export function HeroDevAnimation({ className }: { className?: string }) {
       <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-[#3B8CFF]/20 blur-3xl" />
 
       <motion.div
-        className="relative flex h-[280px] flex-col overflow-hidden rounded-2xl border border-[#3B8CFF]/30 bg-[#05070c]/88 shadow-[0_0_60px_-12px_rgba(59,140,255,0.45)] backdrop-blur-md sm:h-[300px]"
+        className="relative flex h-[240px] flex-col overflow-hidden rounded-2xl border border-[#3B8CFF]/30 bg-[#05070c]/88 shadow-[0_0_60px_-12px_rgba(59,140,255,0.45)] backdrop-blur-md sm:h-[280px] lg:h-[300px]"
         initial={reduce ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.85, ease: appleEase, delay: 0.2 }}

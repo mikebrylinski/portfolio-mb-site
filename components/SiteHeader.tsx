@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import { BrandMark } from "@/components/BrandMark";
 import { cn } from "@/lib/cn";
 import { siteContainerClass } from "@/lib/site";
 
-const SECTION_IDS = ["work", "about", "services", "contact"] as const;
+const SECTION_IDS = ["work", "about", "capabilities", "contact"] as const;
 
 type NavItem = {
   id: (typeof SECTION_IDS)[number];
@@ -16,7 +17,7 @@ type NavItem = {
 const navItems: NavItem[] = [
   { id: "work", label: "Work" },
   { id: "about", label: "About" },
-  { id: "services", label: "Services" },
+  { id: "capabilities", label: "Capabilities" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -92,14 +93,7 @@ export function SiteHeader() {
           "flex min-h-[3.75rem] items-center justify-between sm:min-h-16",
         )}
       >
-        <Link
-          href="/"
-          className="inline-flex min-h-[44px] items-center py-2 text-[clamp(0.95rem,2.4vw,1.15rem)] font-bold uppercase leading-none tracking-[-0.03em] transition-opacity hover:opacity-90"
-          aria-label="mikebweb.com home"
-        >
-          <span className="text-white">mikeb</span>
-          <span className="text-[#3B8CFF]">web.com</span>
-        </Link>
+        <BrandMark className="text-[clamp(1.15rem,2.8vw,1.4rem)]" />
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
           {navItems.map((item) => {

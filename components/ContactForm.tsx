@@ -30,7 +30,7 @@ export function ContactForm({ variant = "default" }: ContactFormProps) {
   if (state.ok) {
     return (
       <div
-        className="rounded-md border border-white/10 bg-white/[0.04] p-8 text-center"
+        className="border border-[#3B8CFF]/30 bg-[#06101c]/70 p-8 text-center"
         role="status"
       >
         <p className="text-lg font-medium text-white">
@@ -44,7 +44,7 @@ export function ContactForm({ variant = "default" }: ContactFormProps) {
   }
 
   const fieldClass =
-    "w-full rounded-md border border-white/15 bg-[#020617]/60 px-4 py-3 text-white placeholder:text-white/40 focus:border-[#3B8CFF]/50 focus:outline-none focus:ring-2 focus:ring-[#3B8CFF]/25";
+    "w-full border border-[#3B8CFF]/25 bg-[#06101c]/70 px-4 py-3 text-white placeholder:text-white/40 focus:border-[#3B8CFF]/55 focus:outline-none focus:ring-2 focus:ring-[#3B8CFF]/25";
 
   return (
     <form

@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import { BrandMark } from "@/components/BrandMark";
 import { sectionRevealTransition, sectionRevealViewport } from "@/lib/motion";
 import { siteContainerClass } from "@/lib/site";
 
 const footerNav = [
   { href: "/#work", label: "Work" },
   { href: "/#about", label: "About" },
-  { href: "/#services", label: "Services" },
+  { href: "/#capabilities", label: "Capabilities" },
   { href: "/#contact", label: "Contact" },
 ] as const;
 
@@ -24,9 +25,7 @@ export function SiteFooter() {
       viewport={sectionRevealViewport}
       transition={sectionRevealTransition(reduce)}
     >
-      <div
-        className={`${siteContainerClass} flex flex-col gap-10 py-12 md:py-14`}
-      >
+      <div className={`${siteContainerClass} flex flex-col gap-10 py-12 md:py-14`}>
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <Link
@@ -38,8 +37,15 @@ export function SiteFooter() {
               <span className="ml-1.5 text-[#3B8CFF]">Brylinski</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/55">
-              Full-stack developer and builder — systems, experiences, and outcomes
-              from studio to stack.
+              Digital Product Designer & Full-Stack Developer. I design and
+              build SaaS platforms, AI applications, and high-performance
+              digital experiences.
+            </p>
+            <p
+              className="mt-3 hidden font-mono text-[9px] uppercase tracking-[0.16em] text-[#3B8CFF]/35 sm:block"
+              aria-hidden
+            >
+              LAT / 34.0928 · LONG / -118.3287
             </p>
           </div>
 
@@ -63,9 +69,7 @@ export function SiteFooter() {
           <p className="text-xs text-white/40">
             © {new Date().getFullYear()} Mike Brylinski
           </p>
-          <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/35">
-            mikeb<span className="text-[#3B8CFF]/70">web.com</span>
-          </p>
+          <BrandMark className="px-2.5 py-1.5 text-sm tracking-[-0.03em]" />
         </div>
       </div>
     </motion.footer>

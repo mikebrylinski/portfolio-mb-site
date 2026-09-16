@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const study = getCaseStudy(slug);
   if (!study) return { title: "Work" };
 
-  const title = study.title;
-  const description = study.statement;
+  const title = `${study.title} — Case Study`;
+  const description = study.seoDescription;
   const ogImage = study.visualSrc.endsWith(".svg")
     ? "/og-default.png"
     : study.visualSrc;

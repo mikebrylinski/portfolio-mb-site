@@ -64,17 +64,16 @@ export function HeroHomeSection() {
           fetchPriority="high"
           quality={90}
           sizes="100vw"
-          className="scale-105 object-cover object-[center_45%] saturate-[0.75] contrast-[1.05] brightness-[0.88]"
+          className="scale-105 object-cover object-[center_50%] saturate-[0.78] contrast-[1.05] brightness-[0.82]"
         />
-        <div className="absolute inset-0 bg-[#020617]/25 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0c4a6e]/20 via-transparent to-[#020617]/55" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/55 via-[#020617]/15 to-[#020617]/20" />
-        <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-[#020617]/75 via-[#020617]/35 to-transparent" />
-        <div className="absolute inset-x-0 top-[28%] h-40 bg-gradient-to-b from-transparent via-white/[0.06] to-transparent blur-2xl" />
+        <div className="absolute inset-0 bg-[#020617]/30 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0c4a6e]/25 via-transparent to-[#020617]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/60 via-[#020617]/20 to-[#020617]/25" />
+        <div className="absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-[#020617]/80 via-[#020617]/35 to-transparent" />
       </motion.div>
 
       <div
-        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-[#020617]/50 via-[#020617]/15 to-transparent lg:via-[#020617]/10"
+        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-[#020617]/45 via-[#020617]/12 to-transparent"
         aria-hidden
       />
 
@@ -85,12 +84,19 @@ export function HeroHomeSection() {
           <motion.div
             className="w-full max-w-xl shrink-0 text-left lg:max-w-none"
             variants={heroContainer}
-            initial={reduceBool ? false : "hidden"}
+            initial={false}
             animate="visible"
           >
+            <motion.p
+              variants={heroItem}
+              className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#3B8CFF]/80"
+            >
+              Design / Build / Ship
+            </motion.p>
+
             <motion.h1
               variants={heroItem}
-              className="text-[clamp(2.75rem,9vw,5.5rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em]"
+              className="mt-5 text-[clamp(2.75rem,9vw,5.5rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em]"
             >
               <span className="block text-white">Mike</span>
               <span className="block text-[#3B8CFF]">Brylinski</span>
@@ -98,38 +104,56 @@ export function HeroHomeSection() {
 
             <motion.p
               variants={heroItem}
-              className="mt-6 text-[11px] font-medium uppercase tracking-[0.28em] text-white/90 sm:text-xs sm:tracking-[0.32em]"
+              className="mt-5 text-[11px] font-medium uppercase tracking-[0.22em] text-white/80 sm:text-xs sm:tracking-[0.26em]"
             >
-              Full Stack Developer{" "}
-              <span className="text-white/40" aria-hidden>
-                /
-              </span>{" "}
-              Creative
+              Digital Product Designer & Full-Stack Developer
             </motion.p>
 
             <motion.p
               variants={heroItem}
-              className="mt-6 max-w-md text-base leading-relaxed text-white/80 md:text-lg"
+              className="mt-6 max-w-md text-base leading-relaxed text-white/75 md:text-lg"
             >
-              I build modern web applications, create digital experiences, and help
-              ideas become real.
+              I design and build SaaS platforms, AI applications, and
+              high-performance digital experiences — from the first idea through
+              production.
             </motion.p>
 
-            <motion.div variants={heroItem} className="mt-10">
+            <motion.div
+              variants={heroItem}
+              className="mt-10 flex flex-wrap items-center gap-3"
+            >
               <Link
                 href="/#work"
-                className="inline-flex min-h-[48px] items-center gap-2.5 rounded-md border border-[#3B8CFF] bg-transparent px-7 py-3 text-sm font-medium text-white transition-[background-color,border-color] hover:bg-[#3B8CFF]/10"
+                className="inline-flex min-h-[48px] items-center gap-2.5 rounded-md border border-[#3B8CFF] bg-[#3B8CFF]/10 px-7 py-3 text-sm font-medium text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
               >
-                View Work
+                Explore the Work
+                <span aria-hidden className="text-[#3B8CFF]">
+                  →
+                </span>
+              </Link>
+              <Link
+                href="/#contact"
+                className="inline-flex min-h-[48px] items-center gap-2.5 rounded-md border border-white/25 bg-transparent px-7 py-3 text-sm font-medium text-white transition-[border-color,background-color] hover:border-[#3B8CFF]/50 hover:bg-[#3B8CFF]/10"
+              >
+                Start a Project
                 <span aria-hidden className="text-[#3B8CFF]">
                   →
                 </span>
               </Link>
             </motion.div>
+
+            <motion.p
+              variants={heroItem}
+              className="mt-8 hidden font-mono text-[9px] uppercase tracking-[0.18em] text-[#3B8CFF]/35 sm:block"
+              aria-hidden
+            >
+              LAT / 34.0928 · LONG / -118.3287 · REV / 2026.09
+            </motion.p>
           </motion.div>
 
           <motion.div
-            className="w-full shrink-0 justify-self-center lg:justify-self-end"
+            className="mt-4 w-full max-w-md shrink-0 justify-self-center lg:mt-0 lg:max-w-none lg:justify-self-end"
+            aria-hidden
             initial={reduceBool ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: reduceBool ? 0 : 0.85, ease: appleEase, delay: 0.18 }}

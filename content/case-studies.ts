@@ -9,10 +9,13 @@ export type CaseStudyMetric = {
 };
 
 export type CaseStudyMockup = {
-  src: string;
+  /** Image path — omit when `placeholder` is true */
+  src?: string;
   alt: string;
   label: string;
   caption?: string;
+  /** Blueprint plate until a real screenshot is available */
+  placeholder?: boolean;
 };
 
 export type CaseStudyStackGroup = {
@@ -70,17 +73,18 @@ export const caseStudies: CaseStudy[] = [
       "Student dashboard",
       "Custom CMS",
       "Calendar bookings",
-      "LiveKit community",
+      "LiveKit video control",
+      "Custom admin",
       "AI coaching",
-      "Admin",
     ],
     stack: [
       { label: "Frontend", items: "Next.js · React · TypeScript" },
       { label: "Backend", items: "Supabase · Custom APIs · Database" },
       { label: "Bookings", items: "Custom calendar booking API" },
       { label: "CMS", items: "Custom content management" },
+      { label: "Admin", items: "Custom ops dashboard · Members · Sessions · Leads" },
       { label: "Infrastructure", items: "Vercel" },
-      { label: "Real-time", items: "Custom LiveKit video integration" },
+      { label: "Real-time", items: "Custom LiveKit video + chat control" },
       { label: "Email", items: "Resend" },
       { label: "AI", items: "LLM-powered functionality" },
     ],
@@ -88,18 +92,18 @@ export const caseStudies: CaseStudy[] = [
       "Case study: Practical Drumming — a membership SaaS with live video, community, and AI coaching, designed and built by Mike Brylinski.",
     meta: "Full-Stack Development · SaaS Architecture · Video · AI · UX/UI · SEO · Marketing",
     outcome:
-      "A premium mastermind SaaS with membership, a custom calendar-booking API, custom CMS, LiveKit community video, and AI coaching — built end to end as the product itself.",
+      "A premium mastermind SaaS with membership, custom admin, custom CMS, LiveKit video/chat control, calendar booking API, and AI coaching — built end to end as the product itself.",
     summary:
-      "Practical Drumming is a private mastermind community created by professional touring and recording drummer Mike Malinin. The challenge wasn't simply to build another website for a music teacher — the goal was to turn decades of professional experience into a premium digital product combining mentorship, community, live video, educational content, AI, and marketing into one cohesive platform. I designed and built the experience from the ground up, including a custom calendar-booking API, a custom CMS, and a custom LiveKit video integration for the digital community.",
+      "Practical Drumming is a private mastermind community created by professional touring and recording drummer Mike Malinin. The challenge wasn't simply to build another website for a music teacher — the goal was to turn decades of professional experience into a premium digital product combining mentorship, community, live video, educational content, AI, and marketing into one cohesive platform. I designed and built the experience from the ground up, including a custom calendar-booking API, a custom CMS, a custom admin area for day-to-day operations, and a custom LiveKit video integration with chat and session controls for the digital community.",
     keyResults: [
       "Complete membership and mastermind product experience",
       "Custom API for calendar bookings and fit-call scheduling",
-      "Custom CMS for members, sessions, and educational content",
-      "Custom LiveKit video integration for the digital community",
+      "Custom CMS for sessions, educational content, and community material",
+      "Custom admin area for members, sessions, content, and leads",
+      "Custom LiveKit video rooms with host chat and session controls",
       "Full-stack Next.js application with Supabase backend",
       "AI-powered Sprint Coach for between-session support",
       "Conversion-focused membership funnel and SEO architecture",
-      "Admin tools for members, content, sessions, and leads",
     ],
     visualSrc: "/case-studies/pd-imac-home.png",
     visualAlt: "Practical Drumming homepage on an iMac — dark premium mastermind branding",
@@ -135,11 +139,32 @@ export const caseStudies: CaseStudy[] = [
         label: "Studio Display · Apply",
         caption: "Fit-call application — custom calendar booking API from Welcome → Questions → Schedule → Confirmed.",
       },
+      {
+        placeholder: true,
+        alt: "Placeholder for Practical Drumming custom admin area",
+        label: "Admin · Ops",
+        caption:
+          "Custom admin area — members, sessions, leads, and day-to-day platform operations in one control surface.",
+      },
+      {
+        placeholder: true,
+        alt: "Placeholder for Practical Drumming custom CMS",
+        label: "CMS · Content",
+        caption:
+          "Custom CMS — educational content, session archives, and community material managed without a generic blog tool.",
+      },
+      {
+        placeholder: true,
+        alt: "Placeholder for Practical Drumming LiveKit video chat controls",
+        label: "Live · Video control",
+        caption:
+          "LiveKit video rooms with host controls and chat — live mastermind sessions run inside the product, not a third-party tab.",
+      },
     ],
     process: [
       {
         title: "From Marketing Site to SaaS",
-        body: "I architected Practical Drumming as a complete digital ecosystem — premium membership, private member experiences, live video, community, session archives, dashboards, a custom CMS, AI coaching, email, lead capture, SEO, marketing pages, and admin tools — supporting acquisition and ongoing member delivery.",
+        body: "I architected Practical Drumming as a complete digital ecosystem — premium membership, private member experiences, live video, community, session archives, dashboards, a custom CMS, a custom admin area, AI coaching, email, lead capture, SEO, marketing pages, and operations tooling — supporting acquisition and ongoing member delivery.",
       },
       {
         title: "Calendar bookings, custom API",
@@ -147,11 +172,15 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Custom CMS",
-        body: "A custom CMS lets the team manage members, educational content, sessions, and community material without a generic blog tool. Content operations sit next to membership and admin — the same system that sells the product is the system that runs it.",
+        body: "A purpose-built CMS manages educational content, session materials, archives, and community posts without forcing the team into WordPress or a generic headless blog. Editors work in the same product that members use — content, membership, and delivery stay connected.",
       },
       {
-        title: "LiveKit community video",
-        body: "Instead of website → external service → video call → separate community, I built a custom LiveKit integration so live mastermind sessions and the digital community stay inside the membership product — real-time video as infrastructure, not a third-party tab.",
+        title: "Custom admin area",
+        body: "The admin area is a real operations dashboard: members, access, sessions, leads, and content workflows in one place. Instead of stitching together third-party panels, Mike’s team can run the mastermind as a product — who is in, what is shipping, and what needs attention.",
+      },
+      {
+        title: "LiveKit video + chat control",
+        body: "Live mastermind rooms are built on a custom LiveKit integration with host-side video and chat controls — mute, session presence, and room management inside the membership product. Members join the live room from the platform; hosts run the session without leaving the product for Zoom or a separate community tool.",
       },
       {
         title: "AI Coaching",
@@ -162,14 +191,14 @@ export const caseStudies: CaseStudy[] = [
         body: "Designed around Experience → Trust → Transformation → Application rather than Lesson → Purchase — marketing structured around Mike’s background, testimonials, philosophy, member experience, and an application-style CTA.",
       },
       {
-        title: "SEO, Stack & Admin",
-        body: "Built for organic acquisition with search-optimized pages, educational content, and conversion CTAs. Stack: Next.js, Supabase, a custom LiveKit integration, custom calendar APIs, custom CMS, Vercel, Resend, and LLM APIs — plus admin infrastructure to operate members, content, sessions, and leads as a real business platform.",
+        title: "SEO, Stack & Operations",
+        body: "Built for organic acquisition with search-optimized pages, educational content, and conversion CTAs. Stack: Next.js, Supabase, custom LiveKit video/chat control, custom calendar APIs, custom CMS, custom admin, Vercel, Resend, and LLM APIs — so the product can sell, deliver, and operate as one system.",
       },
     ],
     challenge:
-      "Most online drum education is passive content. Mike wanted a high-touch mastermind where serious drummers get direct access to a professional — questions, feedback, live sessions, and the realities of working as a musician. The site had to function as much more than a marketing site. It needed to become the product itself.",
+      "Most online drum education is passive content. Mike wanted a high-touch mastermind where serious drummers get direct access to a professional — questions, feedback, live sessions, and the realities of working as a musician. The site had to function as much more than a marketing site. It needed to become the product itself — including the CMS, admin operations, and live video controls required to run it week to week.",
     solution:
-      "A single digital environment spanning marketing through membership, a custom CMS, calendar bookings via a custom API, LiveKit-powered community video, AI coaching, SEO, and admin operations — turning offline access to an experienced professional into a scalable mentorship product.",
+      "A single digital environment spanning marketing through membership, a custom CMS, a custom admin area, calendar bookings via a custom API, LiveKit-powered community video with chat and host controls, AI coaching, SEO, and day-to-day operations — turning offline access to an experienced professional into a scalable mentorship product.",
     metrics: [
       { label: "Live video", value: "Native" },
       { label: "AI coaching", value: "Sprint" },

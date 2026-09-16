@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SitePreloader } from "@/components/SitePreloader";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
@@ -114,6 +115,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <SitePreloader />
         <SiteHeader />
         <ScrollToTop />
         {children}

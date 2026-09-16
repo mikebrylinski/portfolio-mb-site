@@ -9,20 +9,21 @@ export const siteConfig = {
   twitterHandle: "",
   keywords: [
     "Mike Brylinski",
-    "full stack web developer",
-    "UX engineer",
+    "digital product designer",
+    "full stack developer",
+    "SaaS product development",
+    "AI product development",
+    "membership platforms",
     "Next.js developer",
     "React developer",
-    "SaaS development",
-    "AI product development",
-    "web design",
+    "hire full stack developer",
     "portfolio",
   ],
 } as const;
 
 /** Matches SiteHeader content width + horizontal padding */
 export const siteContainerClass =
-  "mx-auto w-full max-w-[1100px] px-7 sm:px-8 lg:px-10";
+  "mx-auto w-full max-w-[1320px] px-7 sm:px-8 lg:px-10 xl:px-12";
 
 export function absoluteUrl(path = "/") {
   const base = siteConfig.url;

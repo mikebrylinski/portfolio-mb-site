@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getCaseStudySlugs } from "@/content/case-studies";
+import { getSeoPageSlugs } from "@/content/seo-pages";
 import { absoluteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,6 +10,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.8,
+  }));
+
+  const seoPages = getSeoPageSlugs().map((slug) => ({
+    url: absoluteUrl(`/${slug}`),
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
   }));
 
   return [
@@ -30,6 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    ...seoPages,
     ...caseStudies,
   ];
 }

@@ -82,7 +82,7 @@ export function HeroHomeSection() {
       >
         <div className="grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-10 xl:gap-14">
           <motion.div
-            className="w-full max-w-xl shrink-0 text-left lg:max-w-none"
+            className="mx-auto w-full max-w-xl shrink-0 text-center lg:mx-0 lg:max-w-none lg:text-left"
             variants={heroContainer}
             initial={false}
             animate="visible"
@@ -111,7 +111,7 @@ export function HeroHomeSection() {
 
             <motion.p
               variants={heroItem}
-              className="mt-6 max-w-md text-base leading-relaxed text-white/75 md:text-lg"
+              className="mx-auto mt-6 max-w-md text-base leading-relaxed text-white/75 md:text-lg lg:mx-0"
             >
               I design and build SaaS platforms, AI applications, and
               high-performance digital experiences — from the first idea through
@@ -120,7 +120,7 @@ export function HeroHomeSection() {
 
             <motion.div
               variants={heroItem}
-              className="mt-10 flex flex-wrap items-center gap-3"
+              className="mt-10 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
             >
               <Link
                 href="/#work"

@@ -32,15 +32,15 @@ export function AboutChapterSection() {
 
           <AppleStaggerRoot>
             <AppleStaggerChild>
-              <h2 className="max-w-3xl text-[clamp(2rem,4.5vw,3.25rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
-                From the studio
-                <span className="mt-1 block text-[#3B8CFF]">to the stack.</span>
+              <h2 className="whitespace-nowrap text-[clamp(1.05rem,4.8vw,3.25rem)] font-bold uppercase leading-none tracking-[-0.03em] text-white">
+                From the studio{" "}
+                <span className="text-[#3B8CFF]">to the stack.</span>
               </h2>
             </AppleStaggerChild>
           </AppleStaggerRoot>
 
-          <div className="mt-12 flex flex-col items-center gap-12 lg:mt-14 lg:flex-row lg:items-start lg:gap-14">
-            <div className="relative mx-auto w-full max-w-[min(100%,300px)] shrink-0 sm:max-w-[340px] lg:mx-0 lg:sticky lg:top-28 lg:max-w-[min(38vw,360px)]">
+          <div className="mt-12 flex flex-col items-center gap-12 lg:mt-14 lg:flex-row lg:items-center lg:gap-14">
+            <div className="relative mx-auto w-full max-w-[min(100%,300px)] shrink-0 sm:max-w-[340px] lg:mx-0 lg:max-w-[min(38vw,360px)]">
               <div className="relative border border-[#3B8CFF]/30 p-2">
                 <FrameCorners size="sm" />
                 <AboutPortrait className="w-full" />

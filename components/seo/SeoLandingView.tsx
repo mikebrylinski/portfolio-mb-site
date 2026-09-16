@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ContactChapterSection } from "@/components/sections/ContactChapterSection";
 import { SiteFooter } from "@/components/sections/SiteFooter";
 import {
   AestheticNote,
@@ -16,7 +17,7 @@ export function SeoLandingView({ page }: { page: SeoPage }) {
         aria-hidden
       />
 
-      <div className={`relative z-[1] ${siteContainerClass} pb-20 pt-24 md:pb-28 md:pt-28`}>
+      <div className={`relative z-[1] ${siteContainerClass} pb-12 pt-24 md:pb-16 md:pt-28`}>
         <div className="relative border border-[#3B8CFF]/25 px-5 py-8 sm:px-7 sm:py-10 md:px-8">
           <FrameCorners />
           <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
@@ -129,27 +130,6 @@ export function SeoLandingView({ page }: { page: SeoPage }) {
           </SheetBlock>
         </section>
 
-        <section className="relative mt-8 border border-[#3B8CFF]/30 bg-[#06101c]/60 px-5 py-8 sm:px-7 sm:py-10">
-          <FrameCorners />
-          <FieldLabel>Next step</FieldLabel>
-          <h2 className="mt-4 text-[clamp(1.5rem,3vw,2.25rem)] font-bold uppercase tracking-[-0.03em] text-white">
-            Ready to talk?
-          </h2>
-          <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
-            Share the idea, timeline, and constraints. Available for select
-            freelance and product engagements.
-          </p>
-          <Link
-            href="/contact"
-            className="mt-7 inline-flex min-h-[48px] items-center gap-2 border border-[#3B8CFF] bg-[#3B8CFF]/10 px-6 py-3 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
-          >
-            {page.cta}
-            <span aria-hidden className="text-[#3B8CFF]">
-              →
-            </span>
-          </Link>
-        </section>
-
         <nav
           className="mt-10 border border-[#3B8CFF]/20 px-5 py-4"
           aria-label="Related pages"
@@ -172,6 +152,7 @@ export function SeoLandingView({ page }: { page: SeoPage }) {
         </nav>
       </div>
 
+      <ContactChapterSection />
       <SiteFooter />
     </main>
   );

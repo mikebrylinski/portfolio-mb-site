@@ -98,7 +98,8 @@ export function SiteFooter() {
 
         <div className="flex flex-col items-center gap-3 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-white/40">
-            © {new Date().getFullYear()} Mike Brylinski
+            © {new Date().getFullYear()} Mike Brylinski. All Rights Reserved.
+            Please Respect IP.
           </p>
           <BrandMark className="px-2.5 py-1.5 text-sm tracking-[-0.03em]" />
         </div>

@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { motion, type HTMLMotionProps } from "framer-motion";
 import Link from "next/link";
 import type { CaseStudy } from "@/content/case-studies";
+import { CaseStudyLogo } from "@/components/case-study/CaseStudyLogo";
 import { CaseStudyThumbMedia } from "@/components/case-study/CaseStudyMedia";
 import { ArrowNudge } from "@/components/icons/AccentIcons";
 import { FieldLabel, FrameCorners } from "@/components/ui/FieldNotes";
@@ -46,12 +48,37 @@ export function WorkProjectRow({
 
         <div
           className={cn(
-            "flex flex-1 flex-col gap-4 p-5 md:p-7 lg:p-8",
+            "relative flex flex-1 flex-col gap-4 overflow-hidden p-5 md:p-7 lg:p-8",
             reverse && "md:order-1",
           )}
         >
-          <FieldLabel>{label}</FieldLabel>
-          <div className="min-w-0">
+          {project.heroBgSrc ? (
+            <>
+              <Image
+                src={project.heroBgSrc}
+                alt=""
+                fill
+                className="object-cover object-center opacity-40 transition-transform duration-500 group-hover:scale-[1.03] group-hover:opacity-50"
+                sizes="(max-width: 768px) 100vw, 45vw"
+                aria-hidden
+              />
+              <div
+                className="absolute inset-0 bg-gradient-to-r from-[#06101c]/92 via-[#06101c]/82 to-[#06101c]/70"
+                aria-hidden
+              />
+            </>
+          ) : null}
+          <div className="relative z-[1] flex flex-wrap items-center justify-between gap-3">
+            <FieldLabel>{label}</FieldLabel>
+            {project.logoSrc ? (
+              <CaseStudyLogo
+                src={project.logoSrc}
+                alt={project.logoAlt ?? `${project.title} logo`}
+                size="card"
+              />
+            ) : null}
+          </div>
+          <div className="relative z-[1] min-w-0">
             <h3 className="text-[clamp(1.35rem,2.4vw,2rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white transition-colors group-hover:text-[#3B8CFF]">
               {project.title}
             </h3>
@@ -63,7 +90,7 @@ export function WorkProjectRow({
             </p>
           </div>
 
-          <ul className="flex flex-wrap gap-1.5" aria-label="Tags">
+          <ul className="relative z-[1] flex flex-wrap gap-1.5" aria-label="Tags">
             {project.tags.map((tag) => (
               <li key={tag}>
                 <span className="inline-flex border border-[#3B8CFF]/20 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.16em] text-[#3B8CFF]/80">
@@ -73,7 +100,7 @@ export function WorkProjectRow({
             ))}
           </ul>
 
-          <p className="mt-auto flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-[#3B8CFF]">
+          <p className="relative z-[1] mt-auto flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-[#3B8CFF]">
             <span>View case study</span>
             <ArrowNudge className="opacity-80 group-hover:opacity-100" />
           </p>

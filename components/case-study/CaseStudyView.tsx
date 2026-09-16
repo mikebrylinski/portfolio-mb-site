@@ -1,12 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import { CaseStudyLogo } from "@/components/case-study/CaseStudyLogo";
 import {
   CaseStudyDeviceMockups,
   CaseStudyHeroMedia,
 } from "@/components/case-study/CaseStudyMedia";
 import { CaseStudyLayout } from "@/components/layout/CaseStudyLayout";
+import { ContactChapterSection } from "@/components/sections/ContactChapterSection";
 import {
   BlueprintPath,
   FieldLabel,
@@ -14,6 +17,7 @@ import {
   SheetLabel,
 } from "@/components/ui/FieldNotes";
 import type { CaseStudy } from "@/content/case-studies";
+import { cn } from "@/lib/cn";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -59,13 +63,50 @@ export function CaseStudyView({
   const sheetId = study.slug.slice(0, 8).toUpperCase().replace(/-/g, "");
 
   return (
-    <CaseStudyLayout>
-      <div className="relative overflow-hidden border border-[#3B8CFF]/35 px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
-        <FrameCorners />
+    <>
+      <CaseStudyLayout>
+        <div className="relative overflow-hidden border border-[#3B8CFF]/35 px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
+          <FrameCorners />
 
-        <header className="relative grid gap-0 border border-[#3B8CFF]/30 md:grid-cols-[1fr_minmax(220px,280px)]">
-          <FadeIn className="border-b border-[#3B8CFF]/30 p-5 md:border-b-0 md:border-r md:p-7">
-            <FieldLabel>Case study {study.code}</FieldLabel>
+        <header className="relative grid gap-0 overflow-hidden border border-[#3B8CFF]/30 md:grid-cols-[1fr_minmax(220px,280px)]">
+          {study.heroBgSrc ? (
+            <>
+              <Image
+                src={study.heroBgSrc}
+                alt=""
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 1100px"
+                className="object-cover object-center"
+                aria-hidden
+              />
+              <div
+                className="absolute inset-0 bg-[#06101c]/78 md:bg-[#06101c]/72"
+                aria-hidden
+              />
+              <div
+                className="absolute inset-0 bg-gradient-to-r from-[#06101c]/90 via-[#06101c]/55 to-[#06101c]/75"
+                aria-hidden
+              />
+            </>
+          ) : null}
+
+          <FadeIn
+            className={cn(
+              "relative z-[1] border-b border-[#3B8CFF]/30 p-5 md:border-b-0 md:border-r md:p-7",
+              study.heroBgSrc && "backdrop-blur-[1px]",
+            )}
+          >
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <FieldLabel>Case study {study.code}</FieldLabel>
+              {study.logoSrc ? (
+                <CaseStudyLogo
+                  src={study.logoSrc}
+                  alt={study.logoAlt ?? `${study.title} logo`}
+                  size="hero"
+                />
+              ) : null}
+            </div>
             <h1 className="mt-4 text-[clamp(1.85rem,4.5vw,3.15rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
               {study.title}
             </h1>
@@ -92,7 +133,10 @@ export function CaseStudyView({
 
           <FadeIn
             delay={0.08}
-            className="grid font-mono text-[10px] uppercase tracking-[0.16em] text-[#3B8CFF]/80"
+            className={cn(
+              "relative z-[1] grid font-mono text-[10px] uppercase tracking-[0.16em] text-[#3B8CFF]/80",
+              study.heroBgSrc && "bg-[#06101c]/55 backdrop-blur-[2px]",
+            )}
           >
             <div className="border-b border-[#3B8CFF]/30 p-4 md:p-5">
               <p className="text-[#3B8CFF]/45">System type</p>
@@ -303,7 +347,9 @@ export function CaseStudyView({
             </p>
           </div>
         </footer>
-      </div>
-    </CaseStudyLayout>
+        </div>
+      </CaseStudyLayout>
+      <ContactChapterSection />
+    </>
   );
 }

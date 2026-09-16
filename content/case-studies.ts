@@ -45,6 +45,11 @@ export type CaseStudy = {
   visualAlt: string;
   visualType?: "image" | "video";
   visualPoster?: string;
+  /** Client / product mark for preview cards and case study header */
+  logoSrc?: string;
+  logoAlt?: string;
+  /** Optional background for case study header + homepage work-card copy panel */
+  heroBgSrc?: string;
   liveUrl?: string;
   mockups?: CaseStudyMockup[];
   process: CaseStudyProcessStep[];
@@ -107,6 +112,8 @@ export const caseStudies: CaseStudy[] = [
     ],
     visualSrc: "/case-studies/pd-imac-home.png",
     visualAlt: "Practical Drumming homepage on an iMac — dark premium mastermind branding",
+    logoSrc: "/case-studies/logos/practical-drumming-wordmark.png",
+    logoAlt: "Practical Drumming Mastermind Club logo",
     liveUrl: "https://pracdrum.com",
     mockups: [
       {
@@ -252,6 +259,8 @@ export const caseStudies: CaseStudy[] = [
     ],
     visualSrc: "/case-studies/glucorai-cinema-display.png",
     visualAlt: "GlucorAI homepage on an Apple Cinema Display — AI-powered diabetes intelligence hero",
+    logoSrc: "/case-studies/logos/glucorai.svg",
+    logoAlt: "GlucorAI logo",
     liveUrl: "https://glucorai.vercel.app/",
     process: [
       {
@@ -298,31 +307,56 @@ export const caseStudies: CaseStudy[] = [
     title: "Andy Ebert",
     statement: "International Live Production & Monitor Engineering",
     headline: "A cinematic digital experience for an international audio professional.",
-    systemType: "Digital Experience",
+    systemType: "Digital Experience / CMS / Admin",
     role: "Product Design · Full-Stack Development",
     status: "LIVE",
-    tags: ["UX", "DEVELOPMENT", "MOTION", "AUDIO"],
-    architecture: ["Site", "Custom gallery", "English + German", "Motion"],
-    stack: [],
+    tags: ["UX", "DEVELOPMENT", "MOTION", "GALLERY", "ADMIN"],
+    architecture: [
+      "Site",
+      "Custom career timeline",
+      "Custom gallery",
+      "Gallery admin",
+      "English + German",
+      "Motion",
+    ],
+    stack: [
+      { label: "Frontend", items: "Custom UI · Motion · EN/DE" },
+      { label: "Timeline", items: "Custom career credits timeline · Filters · Pagination" },
+      { label: "Gallery", items: "Immersive photo gallery · Touring & production" },
+      { label: "Admin", items: "Custom gallery admin · Add · Edit · Organize images" },
+    ],
     seoDescription:
-      "Case study: Andy Ebert — a cinematic, bilingual portfolio for an international live-production engineer, redesigned and rebuilt by Mike Brylinski.",
-    meta: "UX / UI · Web Development · Motion · Gallery · Localization · Responsive Design",
+      "Case study: Andy Ebert — a cinematic, bilingual portfolio with a custom career timeline, gallery, and admin tools for an international live-production engineer, redesigned and rebuilt by Mike Brylinski.",
+    meta: "UX / UI · Web Development · Motion · Career Timeline · Gallery · Custom Admin · Localization",
     outcome:
-      "A cinematic, bilingual portfolio for an international live-production engineer — custom gallery, motion-driven interactions, and a redesign built around his photography and touring career.",
+      "A cinematic, bilingual portfolio with a custom career timeline, immersive gallery, and custom admin to add and edit gallery images — built around Andy’s photography and touring career.",
     summary:
-      "Andy Ebert has spent decades working in live production, touring internationally with major artists and productions. His original website served as an archive of his career, but its visual design, navigation, and overall experience no longer reflected the level of his work. I designed and developed a completely new website that turns his experience, photography, and technical career into a modern digital portfolio.",
+      "Andy Ebert has spent decades working in live production, touring internationally with major artists and productions. His original website served as an archive of his career, but its visual design, navigation, and overall experience no longer reflected the level of his work. I designed and developed a completely new website that turns his experience, photography, and technical career into a modern digital portfolio — including a custom career credits timeline, an immersive gallery, and a custom admin area so new gallery pages and images can be added and edited without rebuilding the site.",
     keyResults: [
       "Complete redesign built around Andy’s career and visual identity",
+      "Custom career credits timeline with filters and pagination",
       "Custom immersive gallery for touring and production photography",
+      "Custom admin to add and edit gallery pages and images",
       "Dedicated English and German experiences across structure and content",
       "Custom motion, transitions, and micro-interactions throughout",
       "Responsive development across desktop, tablet, and mobile",
       "Decades of professional experience organized into a clearer digital story",
     ],
-    visualSrc: "/case-studies/andy-ebert-macbook-mockup.png",
-    visualAlt: "Andy Ebert portfolio on a MacBook Pro — dark cinematic hero with neon lime accents",
+    visualSrc: "/case-studies/andy-ebert-hero-devices.png",
+    visualAlt:
+      "Andy Ebert portfolio on MacBook and iPhone — career timeline and gallery screens over an arena crowd",
+    logoSrc: "/case-studies/logos/andy-ebert.svg",
+    logoAlt: "Andy Ebert AE logo",
+    heroBgSrc: "/case-studies/andy-ebert-portfolio-bg.jpg",
     liveUrl: "https://ae-eight-omega.vercel.app/",
     mockups: [
+      {
+        src: "/case-studies/andy-ebert-hero-devices.png",
+        alt: "MacBook and iPhone mockup showing Andy Ebert career timeline and gallery over an arena crowd",
+        label: "Hero · Devices",
+        caption:
+          "Career timeline on desktop and gallery on mobile — arena atmosphere matching the live-production brand.",
+      },
       {
         src: "/case-studies/andy-ebert-macbook-mockup.png",
         alt: "MacBook Pro mockup of the Andy Ebert live production portfolio homepage",
@@ -335,6 +369,34 @@ export const caseStudies: CaseStudy[] = [
         label: "Mobile",
         caption: "Same brand energy on phone — gallery-ready, bilingual, and built for one-thumb browsing.",
       },
+      {
+        src: "/case-studies/andy-ebert-timeline.jpg",
+        alt: "Andy Ebert custom career credits timeline with artist cards and year markers",
+        label: "Career · Timeline",
+        caption:
+          "Custom career credits timeline — filters, pagination, and decades of touring work as an interactive story.",
+      },
+      {
+        src: "/case-studies/andy-ebert-gallery.png",
+        alt: "Andy Ebert On the Road gallery page with filters and photo grid",
+        label: "Gallery · On the road",
+        caption:
+          "Immersive gallery — touring photography with filters, pagination, and captioned frames.",
+      },
+      {
+        placeholder: true,
+        alt: "Placeholder for Andy Ebert custom gallery admin",
+        label: "Admin · Gallery",
+        caption:
+          "Custom admin — add new gallery pages, upload images, and edit existing sets without touching code.",
+      },
+      {
+        placeholder: true,
+        alt: "Placeholder for Andy Ebert gallery page editing",
+        label: "Gallery · Edit",
+        caption:
+          "Gallery page editing — organize touring and production photography, captions, and presentation.",
+      },
     ],
     process: [
       {
@@ -342,8 +404,16 @@ export const caseStudies: CaseStudy[] = [
         body: "Andy’s previous site was information-heavy and dated. The content was valuable — career history, credits, photographs, and background — but the presentation needed a refresh built around visual storytelling, motion, and simplicity.",
       },
       {
-        title: "Custom Gallery",
+        title: "Custom career timeline",
+        body: "Career credits are the spine of Andy’s story. I built a custom timeline for monitors and FOH work — year markers, artist cards, filters, and pagination — so decades of international touring read as a navigable history instead of a static list.",
+      },
+      {
+        title: "Custom gallery",
         body: "Photography is central to Andy’s story. Rather than treating images as simple thumbnails, I built an immersive gallery experience for exploring his touring and production photography.",
+      },
+      {
+        title: "Custom admin — add & edit",
+        body: "A purpose-built gallery admin lets Andy’s team add new gallery pages, upload and arrange images, and edit existing sets without a generic CMS or a developer in the loop. Content stays current as new tours and shoots land.",
       },
       {
         title: "English + German",
@@ -355,20 +425,20 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Built Around the Person",
-        body: "Design and development covered UX, visual direction, responsive build, image optimization, content migration, and production deployment — shaped around who Andy is and what he actually does, not a generic portfolio template.",
+        body: "Design and development covered UX, visual direction, responsive build, image optimization, content migration, timeline data, gallery admin, and production deployment — shaped around who Andy is and what he actually does, not a generic portfolio template.",
       },
     ],
     challenge:
-      "The original website primarily presented information — career history, credits, photographs, and background — through a traditional, dated interface with limited visual storytelling. Valuable content was trapped in an experience that no longer matched the caliber of Andy’s international work.",
+      "The original website primarily presented information — career history, credits, photographs, and background — through a traditional, dated interface with limited visual storytelling. Valuable content was trapped in an experience that no longer matched the caliber of Andy’s international work, and updating galleries meant more developer time than the photography deserved.",
     solution:
-      "The new site is responsive, cinematic, multilingual, and animated. Instead of overwhelming visitors with information, it gives Andy’s career room to breathe while making photography, touring history, and technical work easier to explore — designed around his existing career and content rather than forced into a template.",
+      "The new site is responsive, cinematic, and multilingual, with a custom career timeline, an immersive gallery, and a custom admin to add and edit gallery pages and images. Instead of overwhelming visitors with information, it gives Andy’s career room to breathe — and keeps the archive maintainable as the work continues.",
     metrics: [
-      { label: "Complete redesign", value: "01" },
-      { label: "Languages shipped", value: "EN + DE" },
-      { label: "Scope delivered", value: "End-to-end" },
+      { label: "Career timeline", value: "Custom" },
+      { label: "Gallery admin", value: "Built-in" },
+      { label: "Languages", value: "EN + DE" },
     ],
     takeaway:
-      "The finished website transforms an existing collection of career information into a modern digital portfolio that better represents Andy’s experience and personality — giving clients, artists, and production companies a more immediate way to understand who he is and the world he’s spent decades working in.",
+      "The finished website transforms an existing collection of career information into a modern digital portfolio that better represents Andy’s experience and personality — timeline, gallery, and admin included — giving clients, artists, and production companies a more immediate way to understand who he is and the world he’s spent decades working in.",
     nextSlug: "practical-drumming",
   },
 ];

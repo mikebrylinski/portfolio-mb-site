@@ -27,7 +27,7 @@ export function CaseStudyLayout({ children, className }: CaseStudyLayoutProps) {
         aria-hidden
       />
       <SiteLayout as="div" contained={false}>
-        <div className={`relative z-[1] ${siteContainerClass} py-2 md:py-4`}>
+        <div className={`relative z-[1] ${siteContainerClass} pb-12 pt-2 md:pb-16 md:pt-4`}>
           {children}
         </div>
       </SiteLayout>

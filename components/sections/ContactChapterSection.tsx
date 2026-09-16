@@ -60,16 +60,6 @@ export function ContactChapterSection() {
                 Start a project
               </p>
               <ContactForm variant="compact" />
-              <p className="mt-5 text-xs leading-relaxed text-white/45">
-                Longer briefs:{" "}
-                <Link
-                  href="/contact"
-                  className="text-[#3B8CFF] underline decoration-[#3B8CFF]/40 underline-offset-2 transition-opacity hover:opacity-85"
-                >
-                  full contact page
-                </Link>
-                .
-              </p>
             </div>
           </div>
         </div>

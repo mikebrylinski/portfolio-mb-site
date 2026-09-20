@@ -1,27 +1,3 @@
-export type ServiceItem = {
-  title: string;
-  body: string;
-};
-
-export const capabilities: readonly ServiceItem[] = [
-  {
-    title: "Digital Products",
-    body: "SaaS platforms, web applications, dashboards and membership systems.",
-  },
-  {
-    title: "AI Products",
-    body: "AI-powered applications, intelligent workflows and LLM integrations.",
-  },
-  {
-    title: "Web + Commerce",
-    body: "High-performance websites, ecommerce and content platforms.",
-  },
-  {
-    title: "Product Design + Development",
-    body: "Taking ideas from concept through UX, engineering, deployment and iteration.",
-  },
-];
-
 export type SkillGroup = {
   label: string;
   items: readonly string[];
@@ -29,40 +5,69 @@ export type SkillGroup = {
 
 export const skillGroups: readonly SkillGroup[] = [
   {
-    label: "Frontend",
-    items: ["React", "Next.js", "TypeScript"],
-  },
-  {
-    label: "Backend",
-    items: ["Node.js", "APIs", "Authentication"],
+    label: "Full Stack",
+    items: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "JavaScript",
+      "REST APIs",
+      "Frontend Architecture",
+      "Backend Development",
+    ],
   },
   {
     label: "Data",
-    items: ["Supabase", "Firebase", "MongoDB", "MySQL"],
+    items: [
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "Supabase",
+      "Firebase",
+      "Firestore",
+      "Data Modeling",
+      "BI Dashboards",
+    ],
   },
   {
-    label: "Cloud",
-    items: ["AWS", "Vercel"],
+    label: "Cloud & Infrastructure",
+    items: [
+      "AWS",
+      "AWS Bedrock",
+      "GCP",
+      "Vercel",
+      "Docker",
+      "Firebase",
+      "Serverless",
+      "CI/CD",
+    ],
   },
   {
     label: "AI",
-    items: ["OpenAI", "Google Gemini", "AWS Bedrock", "LLM integrations"],
-  },
-  {
-    label: "Commerce + CMS",
-    items: ["Shopify", "WooCommerce", "WordPress"],
-  },
-  {
-    label: "Other",
     items: [
-      "UX / UI",
-      "SEO",
-      "Motion",
-      "Video",
-      "LiveKit",
-      "Resend",
-      "Payments",
+      "LLM APIs",
+      "AWS Bedrock",
+      "AI Product Integration",
+      "Prompt Engineering",
+      "AI Workflows",
+      "RAG / Contextual AI",
+      "AI-powered SaaS",
+    ],
+  },
+  {
+    label: "Ecommerce",
+    items: ["Shopify", "WooCommerce", "BigCommerce", "Magento"],
+  },
+  {
+    label: "Product",
+    items: [
+      "UX/UI",
+      "Design Systems",
       "Analytics",
+      "SEO",
+      "Product Architecture",
+      "Technical Strategy",
     ],
   },
 ];
@@ -72,6 +77,12 @@ export const capabilitySpec = skillGroups
   .join(" · ");
 
 /** Legacy unused sections — keep compiling. */
+export type ServiceItem = {
+  title: string;
+  body: string;
+};
+
+export const capabilities: readonly ServiceItem[] = [];
 export const serviceColumns = [] as const;
 export const techStack: string[] = [];
 export const expertiseChips: string[] = [];

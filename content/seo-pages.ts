@@ -148,22 +148,22 @@ export const seoPages: SeoPage[] = [
   },
   {
     slug: "hire",
-    title: "Hire Mike Brylinski",
-    metaTitle: "Hire a Digital Product Designer & Full-Stack Developer",
+    title: "Work with Michael Brylinski",
+    metaTitle: "Senior Full-Stack Developer — Remote Full-Time & Select Freelance",
     description:
-      "Hire Mike Brylinski for select freelance and product engagements — SaaS, AI applications, membership platforms, and high-performance digital experiences from concept through production.",
-    eyebrow: "Available for select engagements",
-    headline: "One builder.",
-    headlineAccent: "Concept to production.",
+      "Michael Brylinski is a senior full-stack developer open to remote full-time W-2 roles. Select freelance and consulting projects are also considered.",
+    eyebrow: "Remote · Full-time · W-2",
+    headline: "Senior engineer.",
+    headlineAccent: "Ready to ship.",
     intro:
-      "I work with a small number of clients who need an experienced digital product designer and full-stack developer — someone who can take a complex idea from sketch to a shipped product without agency theater.",
+      "I'm currently looking for a remote full-time W-2 role as a senior full-stack developer. I build production web applications from frontend to backend, database, cloud infrastructure, and AI. Select freelance and consulting projects are also considered.",
     audience:
-      "Best for founders, operators, and professionals who value craft, systems thinking, and direct collaboration with the person doing the work.",
+      "A strong fit for product and engineering teams that need someone who can take a system from architecture through implementation and production — and for operators who still need a senior builder for a focused engagement.",
     outcomes: [
-      "Product design and full-stack development in one engagement",
-      "SaaS, AI, membership, and high-performance web products",
-      "Clear communication, tight loops, and production-minded delivery",
-      "A portfolio of shipped work across music, health, and digital experiences",
+      "Production web applications across frontend, backend, data, and cloud",
+      "SaaS, AI-powered products, ecommerce, and enterprise systems",
+      "End-to-end ownership from concept through deployment",
+      "A 15+ year path from studios and touring into full-stack engineering",
     ],
     approach: [
       {
@@ -181,15 +181,15 @@ export const seoPages: SeoPage[] = [
     ],
     proof: [
       {
-        label: "Selected builds",
-        detail: "Practical Drumming, GlucorAI, and Andy Ebert — products and experiences designed and shipped end to end.",
+        label: "Selected projects",
+        detail: "Practical Drumming, GlucorAI, and Andy Ebert — products designed, architected, and shipped end to end.",
       },
       {
         label: "Background",
         detail: "Studio and touring systems experience applied to digital products that have to work when it counts.",
       },
     ],
-    cta: "Start a project",
+    cta: "Get in touch",
   },
 ];
 

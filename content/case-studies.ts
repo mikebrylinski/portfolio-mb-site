@@ -31,6 +31,12 @@ export type CaseStudy = {
   statement: string;
   headline: string;
   systemType: string;
+  /** Homepage card category, e.g. FULL-STACK SAAS */
+  category: string;
+  /** Homepage technology line */
+  techLine: string;
+  /** Homepage summary — engineering-first */
+  homepageSummary: string;
   role: string;
   status: string;
   tags: readonly string[];
@@ -69,6 +75,11 @@ export const caseStudies: CaseStudy[] = [
       "Turning a drummer's expertise into a complete digital mentorship platform.",
     headline: "Turning decades of touring experience into a digital product.",
     systemType: "SaaS / Membership / Video / AI",
+    category: "FULL-STACK SAAS",
+    techLine:
+      "Next.js · React · TypeScript · Supabase · LiveKit · Resend · Vercel",
+    homepageSummary:
+      "Built an end-to-end SaaS platform for a premium online drumming mastermind, including the marketing site, membership experience, authentication, database architecture, live video, admin functionality, email infrastructure, AI coaching functionality, SEO, and production deployment.",
     role: "Product Design · Full-Stack Development",
     status: "LIVE",
     tags: ["PRODUCT DESIGN", "FULL-STACK", "AI", "VIDEO", "SAAS"],
@@ -94,7 +105,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "AI", items: "LLM-powered functionality" },
     ],
     seoDescription:
-      "Case study: Practical Drumming — a membership SaaS with live video, community, and AI coaching, designed and built by Mike Brylinski.",
+      "Case study: Practical Drumming — a membership SaaS with live video, community, and AI coaching, designed and built by Michael Brylinski.",
     meta: "Full-Stack Development · SaaS Architecture · Video · AI · UX/UI · SEO · Marketing",
     outcome:
       "A premium mastermind SaaS with membership, custom admin, custom CMS, LiveKit video/chat control, calendar booking API, and AI coaching — built end to end as the product itself.",
@@ -222,6 +233,11 @@ export const caseStudies: CaseStudy[] = [
     statement: "Turning fragmented diabetes data into actionable intelligence",
     headline: "An AI-powered health product built around real-world data.",
     systemType: "AI Product / SaaS / Health Data",
+    category: "AI-POWERED SAAS",
+    techLine:
+      "Next.js · React · TypeScript · AI APIs · Supabase · Vercel",
+    homepageSummary:
+      "Designed and built an AI-powered SaaS product that transforms glucose, insulin, meal, and activity data into contextual insights — covering AI integration, product and data architecture, frontend and backend development, SaaS architecture, and production deployment.",
     role: "Product Design · Full-Stack Development",
     status: "LIVE",
     tags: ["AI", "PRODUCT", "SAAS", "DATA"],
@@ -234,7 +250,7 @@ export const caseStudies: CaseStudy[] = [
       "Nightscout integration",
     ],
     stack: [
-      { label: "Frontend", items: "Next.js · React" },
+      { label: "Frontend", items: "Next.js · React · TypeScript" },
       { label: "Backend", items: "Supabase · Custom user profiles" },
       { label: "Infrastructure", items: "Vercel" },
       { label: "Context", items: "Vector database for AI calls" },
@@ -308,6 +324,10 @@ export const caseStudies: CaseStudy[] = [
     statement: "International Live Production & Monitor Engineering",
     headline: "A cinematic digital experience for an international audio professional.",
     systemType: "Digital Experience / CMS / Admin",
+    category: "WEB APPLICATION",
+    techLine: "Next.js · React · TypeScript · CMS · Animation",
+    homepageSummary:
+      "Modernized an established professional audio website into a responsive, multilingual web experience with custom galleries, German localization, animations, and a modern content architecture.",
     role: "Product Design · Full-Stack Development",
     status: "LIVE",
     tags: ["UX", "DEVELOPMENT", "MOTION", "GALLERY", "ADMIN"],
@@ -320,13 +340,13 @@ export const caseStudies: CaseStudy[] = [
       "Motion",
     ],
     stack: [
-      { label: "Frontend", items: "Custom UI · Motion · EN/DE" },
+      { label: "Frontend", items: "Next.js · React · TypeScript · Custom UI · Motion · EN/DE" },
       { label: "Timeline", items: "Custom career credits timeline · Filters · Pagination" },
       { label: "Gallery", items: "Immersive photo gallery · Touring & production" },
       { label: "Admin", items: "Custom gallery admin · Add · Edit · Organize images" },
     ],
     seoDescription:
-      "Case study: Andy Ebert — a cinematic, bilingual portfolio with a custom career timeline, gallery, and admin tools for an international live-production engineer, redesigned and rebuilt by Mike Brylinski.",
+      "Case study: Andy Ebert — a cinematic, bilingual portfolio with a custom career timeline, gallery, and admin tools for an international live-production engineer, redesigned and rebuilt by Michael Brylinski.",
     meta: "UX / UI · Web Development · Motion · Career Timeline · Gallery · Custom Admin · Localization",
     outcome:
       "A cinematic, bilingual portfolio with a custom career timeline, immersive gallery, and custom admin to add and edit gallery images — built around Andy’s photography and touring career.",

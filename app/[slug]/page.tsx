@@ -5,7 +5,7 @@ import {
   getSeoPage,
   getSeoPageSlugs,
 } from "@/content/seo-pages";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -29,14 +29,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description,
     alternates: { canonical: `/${page.slug}` },
     openGraph: {
-      title: `${title} — Mike Brylinski`,
+      title: `${title} — ${siteConfig.name}`,
       description,
       url,
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} — Mike Brylinski`,
+      title: `${title} — ${siteConfig.name}`,
       description,
     },
   };

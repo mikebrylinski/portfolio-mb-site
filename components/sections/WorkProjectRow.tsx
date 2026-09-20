@@ -22,7 +22,7 @@ export function WorkProjectRow({
   className,
   ...motionProps
 }: WorkProjectRowProps) {
-  const label = `PROJECT ${project.code} / ${project.systemType.split(" / ")[0].toUpperCase()}`;
+  const label = `${project.code} — ${project.category}`;
 
   return (
     <motion.li className={cn("h-full min-w-0 list-none", className)} {...motionProps}>
@@ -82,23 +82,13 @@ export function WorkProjectRow({
             <h3 className="text-[clamp(1.35rem,2.4vw,2rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white transition-colors group-hover:text-[#3B8CFF]">
               {project.title}
             </h3>
-            <p className="mt-3 text-sm font-medium leading-snug text-white/90 md:text-base">
-              {project.headline}
-            </p>
             <p className="mt-3 text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
-              {project.outcome}
+              {project.homepageSummary}
+            </p>
+            <p className="mt-4 font-mono text-[10px] uppercase leading-relaxed tracking-[0.12em] text-[#3B8CFF]/80">
+              {project.techLine}
             </p>
           </div>
-
-          <ul className="relative z-[1] flex flex-wrap gap-1.5" aria-label="Tags">
-            {project.tags.map((tag) => (
-              <li key={tag}>
-                <span className="inline-flex border border-[#3B8CFF]/20 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.16em] text-[#3B8CFF]/80">
-                  {tag}
-                </span>
-              </li>
-            ))}
-          </ul>
 
           <p className="relative z-[1] mt-auto flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-[#3B8CFF]">
             <span>View case study</span>

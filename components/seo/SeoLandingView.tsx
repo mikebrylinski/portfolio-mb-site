@@ -191,7 +191,7 @@ function relatedLinks(currentSlug: string) {
     { href: "/saas-product-development", label: "SaaS", slug: "saas-product-development" },
     { href: "/ai-product-development", label: "AI products", slug: "ai-product-development" },
     { href: "/membership-platforms", label: "Membership", slug: "membership-platforms" },
-    { href: "/hire", label: "Hire", slug: "hire" },
+    { href: "/hire", label: "Availability", slug: "hire" },
   ];
   return all.filter((item) => item.slug !== currentSlug);
 }

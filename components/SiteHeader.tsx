@@ -4,27 +4,45 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { BrandMark } from "@/components/BrandMark";
+import { ResumeCta } from "@/components/ResumeCta";
 import { cn } from "@/lib/cn";
 import { siteContainerClass } from "@/lib/site";
 
-const SECTION_IDS = ["work", "about", "capabilities", "contact"] as const;
+const SECTION_IDS = ["work", "experience", "about", "skills", "contact"] as const;
 
-type NavItem = {
+type SectionNavItem = {
+  kind: "section";
   id: (typeof SECTION_IDS)[number];
   label: string;
 };
 
+type RouteNavItem = {
+  kind: "route";
+  href: string;
+  label: string;
+};
+
+type NavItem = SectionNavItem | RouteNavItem;
+
 const navItems: NavItem[] = [
-  { id: "work", label: "Work" },
-  { id: "about", label: "About" },
-  { id: "capabilities", label: "Capabilities" },
-  { id: "contact", label: "Contact" },
+  { kind: "section", id: "work", label: "Work" },
+  { kind: "section", id: "experience", label: "Experience" },
+  { kind: "section", id: "about", label: "About" },
+  { kind: "section", id: "skills", label: "Skills" },
+  { kind: "section", id: "contact", label: "Contact" },
+  { kind: "route", href: "/recruiters", label: "Recruiters" },
 ];
 
 function scrollToId(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
   el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function sectionHref(id: SectionNavItem["id"], onHome: boolean) {
+  if (id === "work") return onHome ? "/#work" : "/work";
+  if (id === "contact" && !onHome) return "/contact";
+  return `/#${id}`;
 }
 
 export function SiteHeader() {
@@ -34,6 +52,7 @@ export function SiteHeader() {
 
   const onHome = pathname === "/";
   const navActive = onHome ? active : null;
+  const recruitersActive = pathname === "/recruiters";
 
   useEffect(() => {
     if (!open) return;
@@ -70,17 +89,15 @@ export function SiteHeader() {
     return () => observer.disconnect();
   }, [onHome]);
 
-  const handleNavClick = useCallback(
-    (item: NavItem, e: React.MouseEvent) => {
+  const handleSectionClick = useCallback(
+    (id: SectionNavItem["id"], e: React.MouseEvent) => {
       if (!onHome) return;
       e.preventDefault();
-      scrollToId(item.id);
+      scrollToId(id);
       setOpen(false);
     },
     [onHome],
   );
-
-  const workHref = onHome ? "/#work" : "/work";
 
   return (
     <header
@@ -90,26 +107,38 @@ export function SiteHeader() {
       <div
         className={cn(
           siteContainerClass,
-          "flex min-h-[3.75rem] items-center justify-between sm:min-h-16",
+          "flex min-h-[3.75rem] items-center justify-between gap-3 sm:min-h-16",
         )}
       >
         <BrandMark className="text-[clamp(1.15rem,2.8vw,1.4rem)]" />
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
+        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main">
           {navItems.map((item) => {
-            const href =
-              item.id === "work"
-                ? workHref
-                : onHome
-                  ? `/#${item.id}`
-                  : `/#${item.id}`;
+            if (item.kind === "route") {
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "px-2 py-2 text-[10px] font-medium uppercase tracking-[0.18em] transition-colors xl:px-2.5 xl:tracking-[0.2em]",
+                    recruitersActive
+                      ? "text-white"
+                      : "text-white/70 hover:text-white",
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            }
+
+            const href = sectionHref(item.id, onHome);
             return (
               <Link
                 key={item.id}
                 href={href}
-                onClick={(e) => handleNavClick(item, e)}
+                onClick={(e) => handleSectionClick(item.id, e)}
                 className={cn(
-                  "px-3 py-2 text-[11px] font-medium uppercase tracking-[0.24em] transition-colors",
+                  "px-2 py-2 text-[10px] font-medium uppercase tracking-[0.18em] transition-colors xl:px-2.5 xl:tracking-[0.2em]",
                   navActive === item.id
                     ? "text-white"
                     : "text-white/70 hover:text-white",
@@ -119,11 +148,12 @@ export function SiteHeader() {
               </Link>
             );
           })}
+          <ResumeCta variant="compact" className="ml-2" />
         </nav>
 
         <button
           type="button"
-          className="flex min-h-[44px] min-w-[44px] items-center justify-center text-white md:hidden"
+          className="flex min-h-[44px] min-w-[44px] items-center justify-center text-white lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -145,19 +175,27 @@ export function SiteHeader() {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
-          className="fixed inset-0 top-[calc(env(safe-area-inset-top,0px)+3.75rem)] z-50 flex flex-col bg-[#020617]/95 px-7 backdrop-blur-md md:hidden"
+          className="fixed inset-0 top-[calc(env(safe-area-inset-top,0px)+3.75rem)] z-50 flex flex-col bg-[#020617]/95 px-7 backdrop-blur-md lg:hidden"
           style={{
             paddingBottom: "max(1rem, env(safe-area-inset-bottom))",
           }}
         >
-          <nav className="flex w-full flex-col items-center gap-2 pt-10" aria-label="Mobile">
+          <nav className="flex w-full flex-col items-center gap-1 pt-8" aria-label="Mobile">
             {navItems.map((item) => {
-              const href =
-                item.id === "work"
-                  ? workHref
-                  : item.id === "contact" && !onHome
-                    ? "/contact"
-                    : `/#${item.id}`;
+              if (item.kind === "route") {
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="w-full max-w-sm py-3.5 text-center text-sm font-medium uppercase tracking-[0.28em] text-white/85 transition-colors hover:text-[#3B8CFF]"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              }
+
+              const href = sectionHref(item.id, onHome);
               return (
                 <Link
                   key={item.id}
@@ -175,6 +213,9 @@ export function SiteHeader() {
                 </Link>
               );
             })}
+            <div className="pt-4">
+              <ResumeCta variant="compact" />
+            </div>
           </nav>
         </div>
       )}

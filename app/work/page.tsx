@@ -3,25 +3,25 @@ import { SiteFooter } from "@/components/sections/SiteFooter";
 import { WorkProjectRow } from "@/components/sections/WorkProjectRow";
 import { AestheticNote, FieldLabel, FrameCorners } from "@/components/ui/FieldNotes";
 import { caseStudies } from "@/content/case-studies";
-import { absoluteUrl, siteContainerClass } from "@/lib/site";
+import { absoluteUrl, siteConfig, siteContainerClass } from "@/lib/site";
 
-const title = "Work";
+const title = "Selected Projects";
 const description =
-  "Selected builds — SaaS products, AI applications, and digital experiences designed and shipped by Mike Brylinski.";
+  "Products designed, architected, and shipped by Michael Brylinski — full-stack SaaS, AI-powered applications, and production web experiences.";
 
 export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/work" },
   openGraph: {
-    title: `${title} — Mike Brylinski`,
+    title: `${title} — ${siteConfig.name}`,
     description,
     url: absoluteUrl("/work"),
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${title} — Mike Brylinski`,
+    title: `${title} — ${siteConfig.name}`,
     description,
   },
 };
@@ -37,15 +37,14 @@ export default function WorkIndexPage() {
         <div className="relative border border-[#3B8CFF]/25 px-5 py-8 sm:px-7 sm:py-10 md:px-8">
           <FrameCorners />
           <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-            <FieldLabel>Sheet A — Selected builds</FieldLabel>
+            <FieldLabel>Sheet A — Selected projects</FieldLabel>
             <AestheticNote>SCALE 1 : 1 · END TO END</AestheticNote>
           </div>
           <h1 className="text-[clamp(2rem,4.5vw,3.25rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
-            Selected builds
+            Selected projects
           </h1>
           <p className="mt-6 max-w-xl text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
-            Digital products, AI applications and experiences built from the
-            ground up.
+            Products I&apos;ve designed, architected, and shipped.
           </p>
         </div>
 

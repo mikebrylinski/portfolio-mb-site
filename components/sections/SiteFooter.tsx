@@ -8,10 +8,142 @@ import { siteContainerClass } from "@/lib/site";
 
 const footerNav = [
   { href: "/#work", label: "Work" },
+  { href: "/#experience", label: "Experience" },
   { href: "/#about", label: "About" },
-  { href: "/#capabilities", label: "Capabilities" },
+  { href: "/#skills", label: "Skills" },
   { href: "/#contact", label: "Contact" },
+  { href: "/recruiters", label: "Recruiters" },
 ] as const;
+
+function FooterSystemAnimation({ reduce }: { reduce: boolean }) {
+  const nodes = [
+    { x: 42, y: 72, label: "UI" },
+    { x: 118, y: 38, label: "API" },
+    { x: 194, y: 72, label: "DATA" },
+    { x: 270, y: 38, label: "CLOUD" },
+    { x: 346, y: 72, label: "AI" },
+  ] as const;
+
+  return (
+    <div
+      className="relative w-full max-w-[430px] overflow-hidden border border-[#3B8CFF]/25 bg-[#06101c]/55 p-3 sm:p-4"
+      aria-hidden
+    >
+      <div className="pointer-events-none absolute inset-0 blueprint-grid opacity-30" />
+      <div className="relative flex items-center justify-between border-b border-[#3B8CFF]/15 pb-2 font-mono text-[8px] uppercase tracking-[0.2em] text-[#3B8CFF]/55">
+        <span>System signal</span>
+        <span className="flex items-center gap-1.5">
+          <motion.span
+            className="h-1.5 w-1.5 rounded-full bg-[#3B8CFF]"
+            animate={reduce ? undefined : { opacity: [0.35, 1, 0.35] }}
+            transition={{ duration: 1.8, repeat: Infinity }}
+          />
+          Online
+        </span>
+      </div>
+
+      <svg
+        viewBox="0 0 388 112"
+        className="relative mt-2 h-auto w-full"
+        role="presentation"
+      >
+        <motion.path
+          d="M42 72 L118 38 L194 72 L270 38 L346 72"
+          fill="none"
+          stroke="rgba(59,140,255,0.42)"
+          strokeWidth="1"
+          strokeDasharray="4 4"
+          initial={reduce ? false : { pathLength: 0, opacity: 0 }}
+          whileInView={{ pathLength: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: reduce ? 0 : 1.4, ease: [0.22, 1, 0.36, 1] }}
+        />
+
+        {!reduce ? (
+          <motion.circle
+            r="3.5"
+            fill="#3B8CFF"
+            animate={{
+              cx: nodes.map((node) => node.x),
+              cy: nodes.map((node) => node.y),
+              opacity: [0, 1, 1, 1, 0],
+            }}
+            transition={{
+              duration: 3.6,
+              repeat: Infinity,
+              ease: "linear",
+              times: [0, 0.25, 0.5, 0.75, 1],
+            }}
+          />
+        ) : null}
+
+        {nodes.map((node, index) => (
+          <g key={node.label}>
+            <motion.circle
+              cx={node.x}
+              cy={node.y}
+              r="15"
+              fill="rgba(6,16,28,0.95)"
+              stroke="rgba(59,140,255,0.6)"
+              strokeWidth="1"
+              animate={
+                reduce
+                  ? undefined
+                  : {
+                      strokeOpacity: [0.35, 1, 0.35],
+                      r: [15, 16.5, 15],
+                    }
+              }
+              transition={{
+                duration: 2.2,
+                repeat: Infinity,
+                delay: index * 0.35,
+                ease: "easeInOut",
+              }}
+            />
+            <text
+              x={node.x}
+              y={node.y + 2.5}
+              textAnchor="middle"
+              fill="rgba(200,223,247,0.9)"
+              fontSize="6.5"
+              fontFamily="monospace"
+              letterSpacing="0.8"
+            >
+              {node.label}
+            </text>
+          </g>
+        ))}
+
+        <motion.path
+          d="M24 96 H364"
+          stroke="rgba(59,140,255,0.16)"
+          strokeWidth="1"
+          initial={reduce ? false : { scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: reduce ? 0 : 1.2, delay: 0.2 }}
+        />
+        {[72, 148, 224, 300].map((x, index) => (
+          <motion.rect
+            key={x}
+            x={x}
+            y="102"
+            width="40"
+            height="2"
+            fill="#3B8CFF"
+            animate={reduce ? undefined : { opacity: [0.15, 0.7, 0.15] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              delay: index * 0.3,
+            }}
+          />
+        ))}
+      </svg>
+    </div>
+  );
+}
 
 export function SiteFooter() {
   const reduce = Boolean(useReducedMotion());
@@ -27,27 +159,7 @@ export function SiteFooter() {
     >
       <div className={`${siteContainerClass} flex flex-col gap-10 py-12 md:py-14`}>
         <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:justify-between">
-          <div className="flex flex-col items-center sm:items-start">
-            <Link
-              href="/"
-              className="inline-flex min-h-[44px] items-center text-[clamp(1.05rem,2.6vw,1.25rem)] font-bold uppercase leading-none tracking-[-0.03em] transition-opacity hover:opacity-90"
-              aria-label="Mike Brylinski home"
-            >
-              <span className="text-white">Mike</span>
-              <span className="ml-1.5 text-[#3B8CFF]">Brylinski</span>
-            </Link>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/55">
-              Digital Product Designer & Full-Stack Developer. I design and
-              build SaaS platforms, AI applications, and high-performance
-              digital experiences.
-            </p>
-            <p
-              className="mt-3 hidden font-mono text-[9px] uppercase tracking-[0.16em] text-[#3B8CFF]/35 sm:block"
-              aria-hidden
-            >
-              LAT / 34.0928 · LONG / -118.3287
-            </p>
-          </div>
+          <FooterSystemAnimation reduce={reduce} />
 
           <div className="flex flex-col items-center gap-3 sm:items-end">
             <nav
@@ -64,41 +176,12 @@ export function SiteFooter() {
                 </Link>
               ))}
             </nav>
-            <nav
-              className="flex flex-wrap justify-center gap-x-3 gap-y-1 px-3 sm:justify-end"
-              aria-label="Engagement pages"
-            >
-              <Link
-                href="/saas-product-development"
-                className="text-[10px] font-medium uppercase tracking-[0.16em] text-white/40 transition-colors hover:text-[#3B8CFF]"
-              >
-                SaaS
-              </Link>
-              <Link
-                href="/ai-product-development"
-                className="text-[10px] font-medium uppercase tracking-[0.16em] text-white/40 transition-colors hover:text-[#3B8CFF]"
-              >
-                AI
-              </Link>
-              <Link
-                href="/membership-platforms"
-                className="text-[10px] font-medium uppercase tracking-[0.16em] text-white/40 transition-colors hover:text-[#3B8CFF]"
-              >
-                Membership
-              </Link>
-              <Link
-                href="/hire"
-                className="text-[10px] font-medium uppercase tracking-[0.16em] text-white/40 transition-colors hover:text-[#3B8CFF]"
-              >
-                Hire
-              </Link>
-            </nav>
           </div>
         </div>
 
         <div className="flex flex-col items-center gap-3 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-white/40">
-            © {new Date().getFullYear()} Mike Brylinski. All Rights Reserved.
+            © {new Date().getFullYear()} Michael Brylinski. All Rights Reserved.
             Please Respect IP.
           </p>
           <BrandMark className="px-2.5 py-1.5 text-sm tracking-[-0.03em]" />

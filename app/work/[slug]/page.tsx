@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { CaseStudyView } from "@/components/case-study/CaseStudyView";
 import { SiteFooter } from "@/components/sections/SiteFooter";
 import { getCaseStudy, getCaseStudySlugs } from "@/content/case-studies";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description,
     alternates: { canonical: `/work/${study.slug}` },
     openGraph: {
-      title: `${title} — Mike Brylinski`,
+      title: `${title} — ${siteConfig.name}`,
       description,
       url,
       type: "article",
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} — Mike Brylinski`,
+      title: `${title} — ${siteConfig.name}`,
       description,
       images: [ogImage],
     },

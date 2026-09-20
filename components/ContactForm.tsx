@@ -58,7 +58,7 @@ export function ContactForm({ variant = "default" }: ContactFormProps) {
       </div>
 
       {compact ? (
-        <input type="hidden" name="intent" value="project" />
+        <input type="hidden" name="intent" value="fulltime" />
       ) : (
         <div>
           <label htmlFor="intent" className="mb-2 block text-sm font-medium text-white">
@@ -68,10 +68,10 @@ export function ContactForm({ variant = "default" }: ContactFormProps) {
             id="intent"
             name="intent"
             className={fieldClass}
-            defaultValue="project"
+            defaultValue="fulltime"
           >
-            <option value="project">Starting a project</option>
-            <option value="hire">Hiring / hourly engagement</option>
+            <option value="fulltime">Full-time opportunity</option>
+            <option value="freelance">Freelance / consulting</option>
           </select>
         </div>
       )}
@@ -135,7 +135,7 @@ export function ContactForm({ variant = "default" }: ContactFormProps) {
             state.fieldErrors?.message ? "message-error" : undefined
           }
           className={`resize-y ${fieldClass}`}
-          placeholder="What are you building? Timeline, stack, goals…"
+          placeholder="Role, team, stack, timeline…"
         />
         {state.fieldErrors?.message && (
           <p id="message-error" className="mt-1 text-sm text-red-400" role="alert">

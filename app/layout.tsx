@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { SiteHeader } from "@/components/SiteHeader";
-import { SitePreloader } from "@/components/SitePreloader";
-import { ScrollToTop } from "@/components/ScrollToTop";
+import { SiteChrome } from "@/components/SiteChrome";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
 const inter = Inter({
@@ -80,13 +78,15 @@ const jsonLd = {
       "@id": absoluteUrl("/#person"),
       name: siteConfig.name,
       url: siteConfig.url,
-      jobTitle: "Digital Product Designer & Full-Stack Developer",
+      jobTitle: siteConfig.jobTitle,
       description: siteConfig.description,
       knowsAbout: [
         "Full-stack development",
         "Next.js",
         "React",
-        "UX design",
+        "TypeScript",
+        "Node.js",
+        "AWS",
         "AI product development",
         "SaaS",
       ],
@@ -115,10 +115,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <SitePreloader />
-        <SiteHeader />
-        <ScrollToTop />
-        {children}
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

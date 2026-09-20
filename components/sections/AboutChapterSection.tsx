@@ -52,29 +52,24 @@ export function AboutChapterSection() {
 
             <div className="min-w-0 w-full max-w-2xl flex-1 space-y-5 text-sm leading-relaxed text-[#9cb6d4] md:text-[15px] lg:max-w-none">
               <p>
-                I&apos;m a digital product designer and full-stack developer, but
-                that path didn&apos;t start in software. I spent years in recording
-                studios and on the road — touring internationally with artists and
-                production teams, keeping complex shows running when there was no
-                rehearsal for failure.
+                Before writing production code, I spent years working in recording
+                studios and touring internationally with artists and production
+                teams.
               </p>
               <p>
-                Studios and live production taught me to think in systems. People,
-                signal flow, timing, and creative work all have to function together.
-                If one piece breaks, the whole thing falls apart in front of an
-                audience. That pressure shaped how I still work.
+                That experience taught me to troubleshoot complex systems, work
+                under pressure, collaborate across disciplines, and keep things
+                running when failure isn&apos;t an option.
               </p>
               <p>
-                The same instincts now go into digital products. I care about how
-                something feels, how it&apos;s built, and whether it actually holds
-                up — design, architecture, and engineering as one thread, not a
-                handoff.
+                I eventually moved into full-time web development, where I&apos;ve
+                spent 15+ years building ecommerce platforms, enterprise systems,
+                digital experiences, SaaS products, and AI-powered applications.
               </p>
               <p>
-                Today I build SaaS platforms, AI applications, membership products,
-                and high-performance web experiences from the first sketch through
-                production. I&apos;m most interested in work where technology isn&apos;t
-                the end goal. The goal is to build something useful.
+                Today I work across the entire product stack — from UX and
+                frontend architecture to APIs, databases, cloud infrastructure,
+                and AI.
               </p>
             </div>
           </div>

@@ -22,7 +22,7 @@ const ROTATE_MS = 2200;
 function TrustMark({ pulseKey, reduce }: { pulseKey: number; reduce: boolean }) {
   return (
     <div
-      className="relative flex h-14 w-14 shrink-0 items-center justify-center"
+      className="relative flex h-20 w-20 shrink-0 items-center justify-center"
       aria-hidden
     >
       {!reduce && (
@@ -34,8 +34,8 @@ function TrustMark({ pulseKey, reduce }: { pulseKey: number; reduce: boolean }) 
           transition={{ duration: 1.2, ease: appleEase }}
         />
       )}
-      <div className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[#3B8CFF]/45 bg-[#3B8CFF]/10">
-        <svg viewBox="0 0 48 48" className="h-5 w-5 text-[#3B8CFF]" fill="none">
+      <div className="relative flex h-14 w-14 items-center justify-center rounded-full border border-[#3B8CFF]/45 bg-[#3B8CFF]/10">
+        <svg viewBox="0 0 48 48" className="h-8 w-8 text-[#3B8CFF]" fill="none">
           <motion.path
             d="M24 6.5 36 11.5v10.2c0 8.1-5.4 15.5-12 17.8-6.6-2.3-12-9.7-12-17.8V11.5L24 6.5Z"
             stroke="currentColor"
@@ -156,12 +156,24 @@ export function WorkChapterSection() {
         aria-hidden
       />
 
+      {!reduce ? (
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden
+        >
+          <span className="shooting-star shooting-star--1" />
+          <span className="shooting-star shooting-star--2" />
+          <span className="shooting-star shooting-star--3" />
+          <span className="shooting-star shooting-star--4" />
+        </div>
+      ) : null}
+
       <div className={`relative z-[1] ${siteContainerClass} text-left`}>
         <div className="relative border border-[#3B8CFF]/25 px-5 py-8 sm:px-7 sm:py-10 md:px-8">
           <FrameCorners />
 
           <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-            <FieldLabel>Basecamp — Selected builds</FieldLabel>
+            <FieldLabel>Basecamp — Selected projects</FieldLabel>
             <AestheticNote>SYSTEM / DIGITAL PRODUCT</AestheticNote>
           </div>
 
@@ -169,13 +181,12 @@ export function WorkChapterSection() {
             <AppleStaggerRoot>
               <AppleStaggerChild>
                 <h2 className="text-[clamp(2rem,4.5vw,3.25rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
-                  Selected builds
+                  Selected projects
                 </h2>
               </AppleStaggerChild>
               <AppleStaggerChild>
                 <p className="mt-6 max-w-xl text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
-                  Digital products, AI applications and experiences built from the
-                  ground up.
+                  Products I&apos;ve designed, architected, and shipped.
                 </p>
               </AppleStaggerChild>
             </AppleStaggerRoot>

@@ -23,7 +23,7 @@ export async function submitContact(
   if (!name) fieldErrors.name = "Please enter your name.";
   if (!email) fieldErrors.email = "Please enter a valid email.";
   else if (!isValidEmail(email)) fieldErrors.email = "Invalid email format.";
-  if (!message) fieldErrors.message = "Tell me a bit about your project.";
+  if (!message) fieldErrors.message = "Tell me a bit about the role or project.";
   if (Object.keys(fieldErrors).length) {
     return { ok: false, fieldErrors };
   }
@@ -37,7 +37,7 @@ export async function submitContact(
     name,
     email,
     message,
-    intent: intent === "hire" ? "hire" : "project",
+    intent: intent === "freelance" ? "freelance" : "fulltime",
     at: new Date().toISOString(),
   };
 

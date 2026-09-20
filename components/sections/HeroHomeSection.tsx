@@ -9,6 +9,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { useMemo, useRef } from "react";
+import { ResumeCta } from "@/components/ResumeCta";
 import { HeroDevAnimation } from "@/components/sections/HeroDevAnimation";
 import { appleEase } from "@/lib/motion";
 import { siteContainerClass } from "@/lib/site";
@@ -53,7 +54,7 @@ export function HeroHomeSection() {
     <section
       ref={rootRef}
       id="hero"
-      className="relative min-h-[100dvh] scroll-mt-24 overflow-hidden bg-[#020617]"
+      className="relative scroll-mt-24 overflow-hidden bg-[#020617] lg:min-h-[100dvh]"
     >
       <motion.div className="absolute inset-0" style={{ y: imageY }} aria-hidden>
         <Image
@@ -78,9 +79,9 @@ export function HeroHomeSection() {
       />
 
       <div
-        className={`${siteContainerClass} relative z-10 flex min-h-[100dvh] flex-col justify-center py-24 lg:min-h-[100dvh]`}
+        className={`${siteContainerClass} relative z-10 flex flex-col justify-center py-16 sm:py-20 lg:min-h-[100dvh] lg:py-24`}
       >
-        <div className="grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-10 xl:gap-14">
+        <div className="grid w-full items-center gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-14">
           <motion.div
             className="mx-auto w-full max-w-xl shrink-0 text-center lg:mx-0 lg:max-w-none lg:text-left"
             variants={heroContainer}
@@ -91,60 +92,66 @@ export function HeroHomeSection() {
               variants={heroItem}
               className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#3B8CFF]/80"
             >
-              Design / Build / Ship
+              Michael Brylinski
             </motion.p>
 
             <motion.h1
               variants={heroItem}
-              className="mt-5 text-[clamp(2.75rem,9vw,5.5rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em]"
+              className="mt-4 text-[clamp(2.15rem,7.2vw,4.75rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em]"
             >
-              <span className="block text-white">Mike</span>
-              <span className="block text-[#3B8CFF]">Brylinski</span>
+              <span className="block text-white">Senior</span>
+              <span className="block text-[#3B8CFF]">Full-Stack Developer</span>
             </motion.h1>
-
-            <motion.p
-              variants={heroItem}
-              className="mt-5 text-[11px] font-medium uppercase tracking-[0.22em] text-white/80 sm:text-xs sm:tracking-[0.26em]"
-            >
-              Digital Product Designer & Full-Stack Developer
-            </motion.p>
 
             <motion.p
               variants={heroItem}
               className="mx-auto mt-6 max-w-md text-base leading-relaxed text-white/75 md:text-lg lg:mx-0"
             >
-              I design and build SaaS platforms, AI applications, and
-              high-performance digital experiences — from the first idea through
-              production.
+              I build production web applications from frontend to backend,
+              database, cloud infrastructure, and AI.
+            </motion.p>
+
+            <motion.p
+              variants={heroItem}
+              className="mt-5 font-mono text-[10px] uppercase tracking-[0.16em] text-[#3B8CFF]/85 sm:text-[11px] sm:tracking-[0.18em]"
+            >
+              React · Next.js · Node.js · TypeScript · AWS · SQL · AI
             </motion.p>
 
             <motion.div
               variants={heroItem}
-              className="mt-10 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
+              className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
             >
               <Link
                 href="/#work"
                 className="inline-flex min-h-[48px] items-center gap-2.5 rounded-md border border-[#3B8CFF] bg-[#3B8CFF]/10 px-7 py-3 text-sm font-medium text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
               >
-                Explore the Work
+                View Selected Work
                 <span aria-hidden className="text-[#3B8CFF]">
                   →
                 </span>
               </Link>
-              <Link
-                href="/#contact"
-                className="inline-flex min-h-[48px] items-center gap-2.5 rounded-md border border-white/25 bg-transparent px-7 py-3 text-sm font-medium text-white transition-[border-color,background-color] hover:border-[#3B8CFF]/50 hover:bg-[#3B8CFF]/10"
-              >
-                Start a Project
-                <span aria-hidden className="text-[#3B8CFF]">
-                  →
-                </span>
-              </Link>
+              <ResumeCta variant="secondary" />
+            </motion.div>
+
+            <motion.div
+              variants={heroItem}
+              className="mt-8 space-y-2"
+            >
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/70">
+                Remote · Full-Time · W-2
+              </p>
+              <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#3B8CFF]/70">
+                Open to remote full-time W-2 opportunities
+              </p>
+              <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/45">
+                15+ years building digital products
+              </p>
             </motion.div>
 
             <motion.p
               variants={heroItem}
-              className="mt-8 hidden font-mono text-[9px] uppercase tracking-[0.18em] text-[#3B8CFF]/35 sm:block"
+              className="mt-6 hidden font-mono text-[9px] uppercase tracking-[0.18em] text-[#3B8CFF]/35 sm:block"
               aria-hidden
             >
               LAT / 34.0928 · LONG / -118.3287 · REV / 2026.09
@@ -152,7 +159,7 @@ export function HeroHomeSection() {
           </motion.div>
 
           <motion.div
-            className="mt-4 w-full max-w-md shrink-0 justify-self-center lg:mt-0 lg:max-w-none lg:justify-self-end"
+            className="mt-2 hidden w-full max-w-sm shrink-0 justify-self-center sm:mt-0 sm:block sm:max-w-md lg:max-w-none lg:justify-self-end"
             aria-hidden
             initial={reduceBool ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}

@@ -21,12 +21,11 @@ import { cn } from "@/lib/cn";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-const APPROACH_STAGES = [
-  "Discover",
-  "Design",
-  "Architect",
-  "Build",
-  "Launch",
+const BUILD_STAGES = [
+  "Concept",
+  "Architecture",
+  "Implementation",
+  "Deployment",
 ] as const;
 
 function FadeIn({
@@ -107,14 +106,17 @@ export function CaseStudyView({
                 />
               ) : null}
             </div>
+            <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-[#3B8CFF]/80">
+              {study.category}
+            </p>
             <h1 className="mt-4 text-[clamp(1.85rem,4.5vw,3.15rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
               {study.title}
             </h1>
             <p className="mt-4 max-w-xl text-sm font-medium leading-relaxed text-white/90 md:text-[15px]">
               {study.headline}
             </p>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
-              {study.statement}
+            <p className="mt-4 max-w-xl font-mono text-[10px] uppercase tracking-[0.14em] text-[#9cb6d4]">
+              {study.techLine}
             </p>
             {study.liveUrl ? (
               <div className="mt-7">
@@ -160,18 +162,6 @@ export function CaseStudyView({
           </FadeIn>
         </header>
 
-        <section className="relative mt-6 overflow-hidden border border-[#3B8CFF]/30 md:mt-8">
-          <div className="flex items-center justify-between border-b border-[#3B8CFF]/30 px-5 py-3 md:px-7">
-            <SheetLabel code="00">Hero plate</SheetLabel>
-            <span className="font-mono text-[10px] tracking-[0.16em] text-[#3B8CFF]/50">
-              FIG. A
-            </span>
-          </div>
-            <div className="relative aspect-[16/10] w-full md:aspect-[21/9]">
-              <CaseStudyHeroMedia study={study} />
-            </div>
-        </section>
-
         <section className="mt-6 border border-[#3B8CFF]/30 p-5 md:mt-8 md:p-7">
           <SheetLabel code="01">The challenge</SheetLabel>
           <h2 className="mt-4 text-xl font-medium uppercase tracking-tight text-white md:text-2xl">
@@ -184,13 +174,19 @@ export function CaseStudyView({
 
         <section className="mt-6 border border-[#3B8CFF]/30 md:mt-8">
           <div className="border-b border-[#3B8CFF]/30 px-5 py-3 md:px-7">
-            <SheetLabel code="02">The approach</SheetLabel>
+            <SheetLabel code="02">What I built</SheetLabel>
           </div>
           <div className="px-5 py-5 md:px-7">
             <h2 className="text-xl font-medium uppercase tracking-tight text-white md:text-2xl">
-              The approach
+              What I built
             </h2>
-            <BlueprintPath steps={APPROACH_STAGES} className="mt-5" />
+            <p className="mt-5 text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
+              {study.solution}
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
+              {study.summary}
+            </p>
+            <BlueprintPath steps={[...BUILD_STAGES]} className="mt-5" />
           </div>
           <div className="divide-y divide-[#3B8CFF]/20">
             {study.process.map((step, i) => (
@@ -207,7 +203,7 @@ export function CaseStudyView({
                 className="grid w-full items-start gap-3 px-5 py-6 sm:grid-cols-[5.5rem_minmax(0,1fr)] sm:gap-6 md:px-7 md:py-7"
               >
                 <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#3B8CFF]/70">
-                  <p>Step</p>
+                  <p>Spec</p>
                   <p className="mt-1 text-2xl tracking-[0.06em] text-[#3B8CFF]">
                     {String(i + 1).padStart(2, "0")}
                   </p>
@@ -226,48 +222,28 @@ export function CaseStudyView({
         </section>
 
         <section className="mt-6 border border-[#3B8CFF]/30 p-5 md:mt-8 md:p-7">
-          <SheetLabel code="03">The system</SheetLabel>
+          <SheetLabel code="03">My role</SheetLabel>
           <h2 className="mt-4 text-xl font-medium uppercase tracking-tight text-white md:text-2xl">
-            The system
+            My role
           </h2>
-          <ol className="mt-6 flex w-full flex-col items-stretch gap-0">
-            {study.architecture.map((node, i) => (
-              <li key={node} className="flex w-full flex-col items-center">
-                <span className="flex w-full items-center justify-center border border-[#3B8CFF]/35 bg-[#06101c] px-4 py-3 text-center font-mono text-[11px] uppercase tracking-[0.16em] text-white sm:py-3.5 sm:text-xs">
-                  {node}
-                </span>
-                {i < study.architecture.length - 1 ? (
-                  <span
-                    className="h-6 w-px shrink-0 bg-[#3B8CFF]/40"
-                    aria-hidden
-                  />
-                ) : null}
-              </li>
-            ))}
-          </ol>
+          <p className="mt-5 font-mono text-[12px] uppercase tracking-[0.16em] text-[#c8dff7]">
+            {study.role}
+          </p>
+          <p className="mt-4 text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
+            End-to-end ownership from concept through architecture, implementation,
+            and production deployment — {study.meta.toLowerCase()}.
+          </p>
         </section>
-
-        {study.mockups && study.mockups.length > 0 ? (
-          <section className="relative mt-6 overflow-hidden border border-[#3B8CFF]/30 md:mt-8">
-            <div className="flex items-center justify-between border-b border-[#3B8CFF]/30 px-5 py-3 md:px-7">
-              <SheetLabel code="04">The build</SheetLabel>
-              <span className="font-mono text-[10px] tracking-[0.16em] text-[#3B8CFF]/50">
-                FIG. A–{study.mockups.length}
-              </span>
-            </div>
-            <h2 className="px-5 pt-5 text-xl font-medium uppercase tracking-tight text-white md:px-7 md:text-2xl">
-              The build
-            </h2>
-            <CaseStudyDeviceMockups mockups={study.mockups} />
-          </section>
-        ) : null}
 
         {study.stack.length > 0 ? (
           <section className="mt-6 border border-[#3B8CFF]/30 p-5 md:mt-8 md:p-7">
-            <SheetLabel code="05">Under the hood</SheetLabel>
+            <SheetLabel code="04">Technology</SheetLabel>
             <h2 className="mt-4 text-xl font-medium uppercase tracking-tight text-white md:text-2xl">
-              Under the hood
+              Technology
             </h2>
+            <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.14em] text-[#3B8CFF]/80">
+              {study.techLine}
+            </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {study.stack.map((group) => (
                 <article
@@ -286,22 +262,32 @@ export function CaseStudyView({
         ) : null}
 
         <section className="mt-6 border border-[#3B8CFF]/30 p-5 md:mt-8 md:p-7">
-          <SheetLabel code="06">The result</SheetLabel>
+          <SheetLabel code="05">Architecture</SheetLabel>
           <h2 className="mt-4 text-xl font-medium uppercase tracking-tight text-white md:text-2xl">
-            The result
+            Architecture
           </h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            {study.metrics.map((metric) => (
-              <div key={metric.label} className="border border-[#3B8CFF]/20 p-4">
-                <p className="text-2xl font-bold uppercase tracking-tight text-white md:text-3xl">
-                  {metric.value}
-                </p>
-                <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[#3B8CFF]/70">
-                  {metric.label}
-                </p>
-              </div>
+          <ol className="mt-6 flex w-full flex-col items-stretch gap-0">
+            {study.architecture.map((node, i) => (
+              <li key={node} className="flex w-full flex-col items-center">
+                <span className="flex w-full items-center justify-center border border-[#3B8CFF]/35 bg-[#06101c] px-4 py-3 text-center font-mono text-[11px] uppercase tracking-[0.16em] text-white sm:py-3.5 sm:text-xs">
+                  {node}
+                </span>
+                {i < study.architecture.length - 1 ? (
+                  <span
+                    className="h-6 w-px shrink-0 bg-[#3B8CFF]/40"
+                    aria-hidden
+                  />
+                ) : null}
+              </li>
             ))}
-          </div>
+          </ol>
+        </section>
+
+        <section className="mt-6 border border-[#3B8CFF]/30 p-5 md:mt-8 md:p-7">
+          <SheetLabel code="06">Key features</SheetLabel>
+          <h2 className="mt-4 text-xl font-medium uppercase tracking-tight text-white md:text-2xl">
+            Key features
+          </h2>
           <ul className="mt-6 space-y-0">
             {study.keyResults.map((line, i) => (
               <li
@@ -315,14 +301,54 @@ export function CaseStudyView({
               </li>
             ))}
           </ul>
+        </section>
+
+        <section className="mt-6 border border-[#3B8CFF]/30 p-5 md:mt-8 md:p-7">
+          <SheetLabel code="07">Result / Outcome</SheetLabel>
+          <h2 className="mt-4 text-xl font-medium uppercase tracking-tight text-white md:text-2xl">
+            Result / Outcome
+          </h2>
+          <p className="mt-5 text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
+            {study.outcome}
+          </p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {study.metrics.map((metric) => (
+              <div key={metric.label} className="border border-[#3B8CFF]/20 p-4">
+                <p className="text-2xl font-bold uppercase tracking-tight text-white md:text-3xl">
+                  {metric.value}
+                </p>
+                <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[#3B8CFF]/70">
+                  {metric.label}
+                </p>
+              </div>
+            ))}
+          </div>
           <p className="mt-6 text-base leading-relaxed text-white md:text-lg">
             {study.takeaway}
           </p>
         </section>
 
+        <section className="relative mt-6 overflow-hidden border border-[#3B8CFF]/30 md:mt-8">
+          <div className="flex items-center justify-between border-b border-[#3B8CFF]/30 px-5 py-3 md:px-7">
+            <SheetLabel code="08">The build</SheetLabel>
+            <span className="font-mono text-[10px] tracking-[0.16em] text-[#3B8CFF]/50">
+              FIG. A
+            </span>
+          </div>
+          <h2 className="px-5 pt-5 text-xl font-medium uppercase tracking-tight text-white md:px-7 md:text-2xl">
+            Screenshots
+          </h2>
+          <div className="relative mt-4 aspect-[16/10] w-full md:aspect-[21/9]">
+            <CaseStudyHeroMedia study={study} />
+          </div>
+          {study.mockups && study.mockups.length > 0 ? (
+            <CaseStudyDeviceMockups mockups={study.mockups} />
+          ) : null}
+        </section>
+
         <footer className="mt-6 grid gap-0 border border-[#3B8CFF]/30 md:mt-8 md:grid-cols-[1fr_auto]">
           <div className="border-b border-[#3B8CFF]/30 p-5 md:border-b-0 md:border-r md:p-7">
-            <SheetLabel code="07">Next sheet</SheetLabel>
+            <SheetLabel code="09">Next sheet</SheetLabel>
             <div className="mt-5 flex flex-col gap-3 font-mono text-[12px] uppercase tracking-[0.16em]">
               {next ? (
                 <Link

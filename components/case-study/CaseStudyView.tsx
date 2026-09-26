@@ -118,19 +118,6 @@ export function CaseStudyView({
             <p className="mt-4 max-w-xl font-mono text-[10px] uppercase tracking-[0.14em] text-[#9cb6d4]">
               {study.techLine}
             </p>
-            {study.liveUrl ? (
-              <div className="mt-7">
-                <a
-                  href={study.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-[44px] items-center gap-2 border border-[#3B8CFF] bg-[#3B8CFF]/10 px-5 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#3B8CFF]/20"
-                >
-                  View live site
-                  <span aria-hidden>↗</span>
-                </a>
-              </div>
-            ) : null}
           </FadeIn>
 
           <FadeIn

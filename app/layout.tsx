@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SiteChrome } from "@/components/SiteChrome";
@@ -29,23 +30,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: siteConfig.locale,
     url: siteConfig.url,
-    siteName: siteConfig.name,
+    siteName: siteConfig.brand,
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.title,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
   },
   robots: {
     index: true,
@@ -68,7 +60,8 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": absoluteUrl("/#website"),
       url: siteConfig.url,
-      name: siteConfig.name,
+      name: siteConfig.brand,
+      alternateName: siteConfig.name,
       description: siteConfig.description,
       publisher: { "@id": absoluteUrl("/#person") },
       inLanguage: "en-US",
@@ -77,6 +70,7 @@ const jsonLd = {
       "@type": "Person",
       "@id": absoluteUrl("/#person"),
       name: siteConfig.name,
+      alternateName: siteConfig.brand,
       url: siteConfig.url,
       jobTitle: siteConfig.jobTitle,
       description: siteConfig.description,
@@ -116,6 +110,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <SiteChrome>{children}</SiteChrome>
+        <Analytics />
       </body>
     </html>
   );

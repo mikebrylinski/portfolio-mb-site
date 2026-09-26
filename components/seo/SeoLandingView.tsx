@@ -31,26 +31,6 @@ export function SeoLandingView({ page }: { page: SeoPage }) {
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#9cb6d4] md:text-lg">
             {page.intro}
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex min-h-[48px] items-center gap-2 border border-[#3B8CFF] bg-[#3B8CFF]/10 px-6 py-3 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
-            >
-              {page.cta}
-              <span aria-hidden className="text-[#3B8CFF]">
-                →
-              </span>
-            </Link>
-            <Link
-              href="/work"
-              className="inline-flex min-h-[48px] items-center gap-2 border border-white/20 px-6 py-3 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-white transition-[border-color,background-color] hover:border-[#3B8CFF]/50 hover:bg-[#3B8CFF]/10"
-            >
-              View the work
-              <span aria-hidden className="text-[#3B8CFF]">
-                →
-              </span>
-            </Link>
-          </div>
         </div>
 
         <section className="mt-8 border border-[#3B8CFF]/25 p-5 sm:p-7 md:p-8">
@@ -121,12 +101,6 @@ export function SeoLandingView({ page }: { page: SeoPage }) {
                 </article>
               ))}
             </div>
-            <Link
-              href="/work"
-              className="mt-6 inline-flex min-h-[44px] items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[#3B8CFF] transition-opacity hover:opacity-80"
-            >
-              Explore all selected builds →
-            </Link>
           </SheetBlock>
         </section>
 

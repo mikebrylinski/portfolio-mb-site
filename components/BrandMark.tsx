@@ -1,26 +1,19 @@
 "use client";
 
-import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { FrameCorners } from "@/components/ui/FieldNotes";
 import { cn } from "@/lib/cn";
 import { appleEase } from "@/lib/motion";
 
-export function BrandMark({
-  className,
-  href = "/",
-}: {
-  className?: string;
-  href?: string;
-}) {
+export function BrandMark({ className }: { className?: string }) {
   const reduce = Boolean(useReducedMotion());
 
   return (
-    <Link
-      href={href}
-      aria-label="mikebweb.com home"
+    <a
+      href="https://mikebweb.dev"
+      aria-label="MIKEBWEB.dev"
       className={cn(
-        "group relative inline-flex min-h-[44px] items-center gap-1 border border-[#3B8CFF]/40 bg-[#06101c]/80 px-3 py-2 font-bold uppercase leading-none tracking-[-0.03em] transition-[border-color,background-color] hover:border-[#3B8CFF]/70 hover:bg-[#06101c]",
+        "group relative inline-flex min-h-[44px] items-center gap-1.5 border border-[#3B8CFF]/40 bg-[#06101c]/80 font-bold leading-none tracking-[-0.03em] transition-[border-color,background-color] hover:border-[#3B8CFF]/70 hover:bg-[#06101c]",
         className,
       )}
     >
@@ -54,9 +47,9 @@ export function BrandMark({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: reduce ? 0 : 0.55, delay: reduce ? 0 : 0.12, ease: appleEase }}
       >
-        <span className="text-white">mikeb</span>
-        <span className="text-[#3B8CFF]">web.com</span>
+        <span className="text-white">MIKEBWEB</span>
+        <span className="text-[#3B8CFF]">.dev</span>
       </motion.span>
-    </Link>
+    </a>
   );
 }

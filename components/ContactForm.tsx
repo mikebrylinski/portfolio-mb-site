@@ -11,9 +11,11 @@ const initial: ContactState = {};
 export type ContactFormProps = {
   /** Tighter layout for in-page sections (e.g. homepage) — default intent project, no focus steal */
   variant?: "default" | "compact";
+  /** Keeps field ids unique when more than one form is on the page. */
+  idPrefix?: string;
 };
 
-export function ContactForm({ variant = "default" }: ContactFormProps) {
+export function ContactForm({ variant = "default", idPrefix = "" }: ContactFormProps) {
   const compact = variant === "compact";
   const [state, formAction, isPending] = useActionState(
     submitContact,
@@ -53,19 +55,19 @@ export function ContactForm({ variant = "default" }: ContactFormProps) {
       noValidate
     >
       <div className="hidden" aria-hidden>
-        <label htmlFor="company">Company</label>
-        <input id="company" name="company" tabIndex={-1} autoComplete="off" />
+        <label htmlFor={`${idPrefix}company`}>Company</label>
+        <input id={`${idPrefix}company`} name="company" tabIndex={-1} autoComplete="off" />
       </div>
 
       {compact ? (
         <input type="hidden" name="intent" value="fulltime" />
       ) : (
         <div>
-          <label htmlFor="intent" className="mb-2 block text-sm font-medium text-white">
+          <label htmlFor={`${idPrefix}intent`} className="mb-2 block text-sm font-medium text-white">
             I&apos;m interested in
           </label>
           <select
-            id="intent"
+            id={`${idPrefix}intent`}
             name="intent"
             className={fieldClass}
             defaultValue="fulltime"
@@ -77,68 +79,68 @@ export function ContactForm({ variant = "default" }: ContactFormProps) {
       )}
 
       <div>
-        <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
+        <label htmlFor={`${idPrefix}name`} className="mb-2 block text-sm font-medium text-white">
           Name
         </label>
         <input
           ref={firstRef}
-          id="name"
+          id={`${idPrefix}name`}
           name="name"
           type="text"
           autoComplete="name"
           required
           aria-invalid={!!state.fieldErrors?.name}
-          aria-describedby={state.fieldErrors?.name ? "name-error" : undefined}
+          aria-describedby={state.fieldErrors?.name ? `${idPrefix}name-error` : undefined}
           className={fieldClass}
           placeholder="Your name"
         />
         {state.fieldErrors?.name && (
-          <p id="name-error" className="mt-1 text-sm text-red-400" role="alert">
+          <p id={`${idPrefix}name-error`} className="mt-1 text-sm text-red-400" role="alert">
             {state.fieldErrors.name}
           </p>
         )}
       </div>
 
       <div>
-        <label htmlFor="email" className="mb-2 block text-sm font-medium text-white">
+        <label htmlFor={`${idPrefix}email`} className="mb-2 block text-sm font-medium text-white">
           Email
         </label>
         <input
-          id="email"
+          id={`${idPrefix}email`}
           name="email"
           type="email"
           autoComplete="email"
           required
           aria-invalid={!!state.fieldErrors?.email}
-          aria-describedby={state.fieldErrors?.email ? "email-error" : undefined}
+          aria-describedby={state.fieldErrors?.email ? `${idPrefix}email-error` : undefined}
           className={fieldClass}
           placeholder="you@company.com"
         />
         {state.fieldErrors?.email && (
-          <p id="email-error" className="mt-1 text-sm text-red-400" role="alert">
+          <p id={`${idPrefix}email-error`} className="mt-1 text-sm text-red-400" role="alert">
             {state.fieldErrors.email}
           </p>
         )}
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-2 block text-sm font-medium text-white">
+        <label htmlFor={`${idPrefix}message`} className="mb-2 block text-sm font-medium text-white">
           Message
         </label>
         <textarea
-          id="message"
+          id={`${idPrefix}message`}
           name="message"
           rows={compact ? 4 : 6}
           required
           aria-invalid={!!state.fieldErrors?.message}
           aria-describedby={
-            state.fieldErrors?.message ? "message-error" : undefined
+            state.fieldErrors?.message ? `${idPrefix}message-error` : undefined
           }
           className={`resize-y ${fieldClass}`}
           placeholder="Role, team, stack, timeline…"
         />
         {state.fieldErrors?.message && (
-          <p id="message-error" className="mt-1 text-sm text-red-400" role="alert">
+          <p id={`${idPrefix}message-error`} className="mt-1 text-sm text-red-400" role="alert">
             {state.fieldErrors.message}
           </p>
         )}

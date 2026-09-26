@@ -2,15 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { ResumeCta } from "@/components/ResumeCta";
 import { SiteFooter } from "@/components/sections/SiteFooter";
 import { FieldLabel, FrameCorners } from "@/components/ui/FieldNotes";
 import { caseStudies } from "@/content/case-studies";
 import { experience } from "@/content/experience";
 import {
   absoluteUrl,
-  emailHref,
-  githubHref,
   siteConfig,
   siteContainerClass,
 } from "@/lib/site";
@@ -23,25 +20,16 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/recruiters" },
-  openGraph: {
+    openGraph: {
     title: `${siteConfig.name} | Senior Full-Stack Developer`,
     description,
     url: absoluteUrl("/recruiters"),
     type: "website",
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.title,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} | Senior Full-Stack Developer`,
     description,
-    images: [siteConfig.ogImage],
   },
 };
 
@@ -81,8 +69,6 @@ function Sheet({
 }
 
 export default function RecruitersPage() {
-  const github = githubHref();
-
   return (
     <main id="main-content" className="relative min-h-dvh overflow-hidden bg-[#020617] text-white">
       <div
@@ -112,18 +98,6 @@ export default function RecruitersPage() {
                 15+ years building web applications, ecommerce platforms, SaaS
                 products, enterprise systems, and AI-powered applications.
               </p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <ResumeCta variant="primary" />
-                <Link
-                  href="/contact"
-                  className="inline-flex min-h-[48px] items-center gap-2.5 rounded-md border border-white/25 px-7 py-3 text-sm font-medium text-white transition-[border-color,background-color] hover:border-[#3B8CFF]/50 hover:bg-[#3B8CFF]/10"
-                >
-                  Contact
-                  <span aria-hidden className="text-[#3B8CFF]">
-                    →
-                  </span>
-                </Link>
-              </div>
             </div>
 
             <div className="relative mx-auto w-full max-w-[360px] border border-[#3B8CFF]/30 bg-[#06101c] p-2 md:mx-0">
@@ -201,26 +175,9 @@ export default function RecruitersPage() {
 
           <Sheet code="04" title="Links">
             <nav className="flex flex-col gap-2 font-mono text-[11px] uppercase tracking-[0.16em]" aria-label="Recruiter links">
-              <ResumeCta variant="footer" className="w-fit" />
-              {github ? (
-                <a
-                  href={github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-fit text-[#3B8CFF] transition-opacity hover:opacity-80"
-                >
-                  GitHub
-                </a>
-              ) : null}
               <Link href="/" className="w-fit text-[#3B8CFF] transition-opacity hover:opacity-80">
                 Portfolio
               </Link>
-              <Link href="/contact" className="w-fit text-[#3B8CFF] transition-opacity hover:opacity-80">
-                Contact
-              </Link>
-              <a href={emailHref()} className="w-fit text-[#3B8CFF] transition-opacity hover:opacity-80">
-                Email
-              </a>
             </nav>
           </Sheet>
         </div>

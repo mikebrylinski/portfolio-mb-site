@@ -11,7 +11,6 @@ export type SeoPage = {
   outcomes: readonly string[];
   approach: readonly { title: string; body: string }[];
   proof: readonly { label: string; detail: string }[];
-  cta: string;
 };
 
 export const seoPages: SeoPage[] = [
@@ -58,7 +57,6 @@ export const seoPages: SeoPage[] = [
         detail: "AI-powered SaaS with custom profiles, vector context, and data-driven product insights.",
       },
     ],
-    cta: "Start a SaaS conversation",
   },
   {
     slug: "ai-product-development",
@@ -103,7 +101,6 @@ export const seoPages: SeoPage[] = [
         detail: "AI Sprint Coach woven into a membership product for between-session support.",
       },
     ],
-    cta: "Start an AI product conversation",
   },
   {
     slug: "membership-platforms",
@@ -144,7 +141,6 @@ export const seoPages: SeoPage[] = [
         detail: "Custom calendar booking API, custom CMS, LiveKit community video, membership funnel, and AI coaching in one platform.",
       },
     ],
-    cta: "Start a membership platform conversation",
   },
   {
     slug: "hire",
@@ -189,7 +185,6 @@ export const seoPages: SeoPage[] = [
         detail: "Studio and touring systems experience applied to digital products that have to work when it counts.",
       },
     ],
-    cta: "Get in touch",
   },
 ];
 

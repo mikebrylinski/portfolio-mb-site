@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { BrandMark } from "@/components/BrandMark";
-import { ResumeCta } from "@/components/ResumeCta";
 import { cn } from "@/lib/cn";
 import { siteContainerClass } from "@/lib/site";
 
@@ -107,10 +106,10 @@ export function SiteHeader() {
       <div
         className={cn(
           siteContainerClass,
-          "flex min-h-[3.75rem] items-center justify-between gap-3 sm:min-h-16",
+          "flex h-24 items-center justify-between gap-3 py-3",
         )}
       >
-        <BrandMark className="text-[clamp(1.15rem,2.8vw,1.4rem)]" />
+        <BrandMark className="px-5 py-3.5 text-[clamp(1.2rem,3vw,1.5rem)]" />
 
         <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main">
           {navItems.map((item) => {
@@ -148,7 +147,17 @@ export function SiteHeader() {
               </Link>
             );
           })}
-          <ResumeCta variant="compact" className="ml-2" />
+          <Link
+            href="/#contact"
+            onClick={(e) => {
+              if (!onHome) return;
+              e.preventDefault();
+              scrollToId("contact");
+            }}
+            className="ml-2 inline-flex min-h-[44px] items-center border border-[#3B8CFF] bg-[#3B8CFF]/10 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.18em] text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
+          >
+            Get in touch
+          </Link>
         </nav>
 
         <button
@@ -175,12 +184,25 @@ export function SiteHeader() {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
-          className="fixed inset-0 top-[calc(env(safe-area-inset-top,0px)+3.75rem)] z-50 flex flex-col bg-[#020617]/95 px-7 backdrop-blur-md lg:hidden"
+          className="fixed inset-0 top-[calc(env(safe-area-inset-top,0px)+6rem)] z-50 flex flex-col bg-[#020617]/95 px-7 backdrop-blur-md lg:hidden"
           style={{
             paddingBottom: "max(1rem, env(safe-area-inset-bottom))",
           }}
         >
           <nav className="flex w-full flex-col items-center gap-1 pt-8" aria-label="Mobile">
+            <Link
+              href="/#contact"
+              className="mb-3 inline-flex min-h-[48px] w-full max-w-sm items-center justify-center border border-[#3B8CFF] bg-[#3B8CFF]/10 px-4 py-3 text-sm font-medium uppercase tracking-[0.28em] text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
+              onClick={(e) => {
+                if (onHome) {
+                  e.preventDefault();
+                  scrollToId("contact");
+                }
+                setOpen(false);
+              }}
+            >
+              Get in touch
+            </Link>
             {navItems.map((item) => {
               if (item.kind === "route") {
                 return (
@@ -213,9 +235,6 @@ export function SiteHeader() {
                 </Link>
               );
             })}
-            <div className="pt-4">
-              <ResumeCta variant="compact" />
-            </div>
           </nav>
         </div>
       )}

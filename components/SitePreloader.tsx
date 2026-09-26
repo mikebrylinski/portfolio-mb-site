@@ -8,6 +8,16 @@ import { appleEase } from "@/lib/motion";
 const MIN_MS = 900;
 const MAX_MS = 2400;
 
+const STAGES = [
+  { at: 12, code: "00", label: "Canvas" },
+  { at: 32, code: "01", label: "Interface" },
+  { at: 52, code: "02", label: "Services" },
+  { at: 72, code: "03", label: "Data" },
+  { at: 90, code: "04", label: "Signal" },
+] as const;
+
+const METER_TICKS = 24;
+
 export function SitePreloader() {
   const reduce = Boolean(useReducedMotion());
   const [visible, setVisible] = useState(true);
@@ -96,14 +106,30 @@ export function SitePreloader() {
             aria-hidden
           />
 
-          <div className="relative z-[1] w-[min(92vw,22rem)] border border-[#3B8CFF]/35 bg-[#06101c]/90 px-6 py-8 text-center">
+          <div className="relative z-[1] w-[min(92vw,26rem)] border border-[#3B8CFF]/35 bg-[#06101c]/92 px-5 py-6 text-left sm:px-6 sm:py-7">
             <FrameCorners />
+            {!reduce ? (
+              <motion.div
+                className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[#3B8CFF]/70"
+                animate={{ top: ["8%", "92%", "8%"], opacity: [0.15, 0.7, 0.15] }}
+                transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden
+              />
+            ) : null}
 
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#3B8CFF]/75">
-              System boot
-            </p>
+            <div className="flex items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-[#3B8CFF]/75">
+              <span className="flex items-center gap-2">
+                <motion.span
+                  className="h-1.5 w-1.5 rounded-full bg-[#3B8CFF]"
+                  animate={reduce ? undefined : { opacity: [0.35, 1, 0.35] }}
+                  transition={{ duration: 1.2, repeat: Infinity }}
+                />
+                Fig. 00 — Boot
+              </span>
+              <span>Rev / 2026.09</span>
+            </div>
 
-            <p className="mt-5 inline-flex items-baseline gap-1 text-[clamp(1.15rem,4vw,1.45rem)] font-bold uppercase leading-none tracking-[-0.03em]">
+            <p className="mt-5 inline-flex items-baseline gap-1 text-[clamp(1.15rem,4vw,1.5rem)] font-bold leading-none tracking-[-0.03em]">
               <span className="font-mono text-[0.9em] font-medium tracking-[0.08em] text-[#3B8CFF]">
                 &lt;
                 <motion.span
@@ -119,21 +145,49 @@ export function SitePreloader() {
                 </motion.span>
                 &gt;
               </span>
-              <span className="text-white">mikeb</span>
-              <span className="text-[#3B8CFF]">web.com</span>
+              <span className="text-white">MIKEBWEB</span>
+              <span className="text-[#3B8CFF]">.dev</span>
             </p>
 
-            <div className="mx-auto mt-8 h-px w-full overflow-hidden bg-[#3B8CFF]/15">
-              <motion.div
-                className="h-full bg-[#3B8CFF]"
-                initial={false}
-                animate={{ width: `${progress}%` }}
-                transition={{ duration: reduce ? 0 : 0.2, ease: "linear" }}
-              />
+            <ul className="mt-5 space-y-1.5 border-y border-[#3B8CFF]/15 py-3">
+              {STAGES.map((stage) => {
+                const live = progress >= stage.at;
+                return (
+                  <li
+                    key={stage.code}
+                    className="flex items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.16em]"
+                  >
+                    <span className={live ? "text-[#3B8CFF]" : "text-white/25"}>
+                      {stage.code}
+                      <span className="ml-3 tracking-[0.14em]">{stage.label}</span>
+                    </span>
+                    <span className={live ? "text-[#c8dff7]" : "text-white/20"}>
+                      {live ? "Online" : "Standby"}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="mt-4 flex gap-1" aria-hidden>
+              {Array.from({ length: METER_TICKS }, (_, index) => {
+                const filled = progress >= ((index + 1) / METER_TICKS) * 100;
+                return (
+                  <span
+                    key={index}
+                    className={
+                      filled
+                        ? "h-2 flex-1 bg-[#3B8CFF]"
+                        : "h-2 flex-1 bg-[#3B8CFF]/15"
+                    }
+                  />
+                );
+              })}
             </div>
 
-            <div className="mt-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-[#3B8CFF]/60">
-              <span>Drawing</span>
+            <div className="mt-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-[#3B8CFF]/70">
+              <span>{progress >= 100 ? "Live" : "Drawing"}</span>
+              <span>Lat 34.0928 · Long -118.3287</span>
               <span>{String(progress).padStart(3, "0")}%</span>
             </div>
           </div>

@@ -31,7 +31,7 @@ const STAGE_META: Record<
   code: { title: "deploy.ts", status: "compiling", label: "TypeScript" },
   components: { title: "components.tsx", status: "assembling", label: "React" },
   database: { title: "db.client.ts", status: "connecting", label: "MySQL" },
-  webpage: { title: "mikebweb.com", status: "live", label: "Browser" },
+  webpage: { title: "mikebweb.dev", status: "live", label: "Browser" },
 };
 
 function tokenClass(kind: string) {
@@ -248,7 +248,7 @@ function WebpageStage({ reduce }: { reduce: boolean }) {
       <div className="flex h-8 shrink-0 items-center gap-2 border-b border-white/10 bg-white/[0.04] px-3">
         <div className="flex h-5 flex-1 items-center rounded-md border border-white/10 bg-black/40 px-2 font-mono text-[10px] text-white/50">
           <span className="text-[#3B8CFF]">https://</span>
-          mikebweb.com
+          mikebweb.dev
         </div>
       </div>
 

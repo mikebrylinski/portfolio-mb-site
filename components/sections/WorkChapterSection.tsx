@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   AnimatePresence,
@@ -213,27 +212,6 @@ export function WorkChapterSection() {
             />
           ))}
         </motion.ul>
-
-        <motion.div
-          className="mt-12 flex flex-wrap items-center justify-between gap-4 border border-[#3B8CFF]/20 px-5 py-4"
-          initial={reduce ? false : { opacity: 0, y: 28 }}
-          whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: reduce ? 0 : 0.85, ease: appleEase }}
-        >
-          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#3B8CFF]/50">
-            Continue → Full drawing set
-          </p>
-          <Link
-            href="/work"
-            className="inline-flex min-h-[44px] items-center gap-2.5 border border-[#3B8CFF] bg-[#3B8CFF]/10 px-6 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
-          >
-            View all case studies
-            <span aria-hidden className="text-[#3B8CFF]">
-              →
-            </span>
-          </Link>
-        </motion.div>
       </div>
     </ScrollSection>
   );

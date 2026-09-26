@@ -4,14 +4,10 @@ export const siteConfig = {
   title: "Michael Brylinski | Senior Full-Stack Developer",
   description:
     "Senior full-stack developer with 15+ years of experience building production web applications, SaaS platforms, ecommerce systems, enterprise applications, and AI-powered products. React, Next.js, Node.js, TypeScript, AWS and AI. Open to remote full-time opportunities.",
-  url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://mikebweb.com",
+  brand: "MIKEBWEB.dev",
+  url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://mikebweb.dev",
   locale: "en_US",
-  ogImage: "/og-default.png",
   twitterHandle: "",
-  /** Drop a PDF at this public path, then point resumeHref at it. */
-  resumePath: "/michael-brylinski-resume.pdf",
-  /** Placeholder route until a resume PDF exists in /public. */
-  resumeHref: "/resume",
   githubUrl: "",
   email: "",
   keywords: [

@@ -20,10 +20,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const title = `${study.title} — Case Study`;
   const description = study.seoDescription;
-  const ogImage = study.visualSrc.endsWith(".svg")
-    ? "/og-default.png"
-    : study.visualSrc;
   const url = absoluteUrl(`/work/${study.slug}`);
+  const image = study.visualSrc.endsWith(".svg")
+    ? undefined
+    : [{ url: study.visualSrc, alt: study.visualAlt }];
 
   return {
     title,
@@ -34,18 +34,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       url,
       type: "article",
-      images: [
-        {
-          url: ogImage,
-          alt: study.visualAlt,
-        },
-      ],
+      images: image,
     },
     twitter: {
       card: "summary_large_image",
       title: `${title} — ${siteConfig.name}`,
       description,
-      images: [ogImage],
+      images: image?.map((item) => item.url),
     },
   };
 }

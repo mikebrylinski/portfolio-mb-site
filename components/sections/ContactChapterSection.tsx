@@ -1,15 +1,12 @@
 "use client";
 
 import { ContactForm } from "@/components/ContactForm";
-import { ResumeCta } from "@/components/ResumeCta";
 import { AppleStaggerChild, AppleStaggerRoot } from "@/components/layout/AppleStagger";
 import { MountainBackdrop } from "@/components/sections/MountainBackdrop";
 import { AestheticNote, FieldLabel } from "@/components/ui/FieldNotes";
-import { emailHref, githubHref, siteContainerClass } from "@/lib/site";
+import { siteContainerClass } from "@/lib/site";
 
 export function ContactChapterSection() {
-  const github = githubHref();
-
   return (
     <section
       id="contact"
@@ -38,27 +35,6 @@ export function ContactChapterSection() {
                 </p>
               </AppleStaggerChild>
               <AppleStaggerChild>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <ResumeCta variant="footer" />
-                  {github ? (
-                    <a
-                      href={github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-[44px] items-center gap-2 border border-white/25 px-5 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-white transition-[border-color,background-color] hover:border-[#3B8CFF]/50 hover:bg-[#3B8CFF]/10"
-                    >
-                      GitHub
-                    </a>
-                  ) : null}
-                  <a
-                    href={emailHref()}
-                    className="inline-flex min-h-[44px] items-center gap-2 border border-white/25 px-5 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-white transition-[border-color,background-color] hover:border-[#3B8CFF]/50 hover:bg-[#3B8CFF]/10"
-                  >
-                    Email
-                  </a>
-                </div>
-              </AppleStaggerChild>
-              <AppleStaggerChild>
                 <p className="mt-6 max-w-md text-sm leading-relaxed text-white/50">
                   Select freelance and consulting projects also considered.
                 </p>
@@ -76,7 +52,7 @@ export function ContactChapterSection() {
               <p className="mb-5 font-mono text-[11px] font-medium uppercase tracking-[0.24em] text-white/70">
                 Get in touch
               </p>
-              <ContactForm variant="compact" />
+              <ContactForm variant="compact" idPrefix="summit-" />
             </div>
           </div>
         </div>

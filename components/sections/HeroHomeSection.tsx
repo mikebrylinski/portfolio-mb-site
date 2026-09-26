@@ -9,7 +9,6 @@ import {
   useTransform,
 } from "framer-motion";
 import { useMemo, useRef } from "react";
-import { ResumeCta } from "@/components/ResumeCta";
 import { HeroDevAnimation } from "@/components/sections/HeroDevAnimation";
 import { appleEase } from "@/lib/motion";
 import { siteContainerClass } from "@/lib/site";
@@ -120,18 +119,23 @@ export function HeroHomeSection() {
 
             <motion.div
               variants={heroItem}
-              className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
+              className="mt-8 flex justify-center lg:justify-start"
             >
               <Link
-                href="/#work"
+                href="/#contact"
+                onClick={(e) => {
+                  const el = document.getElementById("contact");
+                  if (!el) return;
+                  e.preventDefault();
+                  el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
                 className="inline-flex min-h-[48px] items-center gap-2.5 rounded-md border border-[#3B8CFF] bg-[#3B8CFF]/10 px-7 py-3 text-sm font-medium text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
               >
-                View Selected Work
+                Get in touch
                 <span aria-hidden className="text-[#3B8CFF]">
                   →
                 </span>
               </Link>
-              <ResumeCta variant="secondary" />
             </motion.div>
 
             <motion.div
@@ -159,7 +163,7 @@ export function HeroHomeSection() {
           </motion.div>
 
           <motion.div
-            className="mt-2 hidden w-full max-w-sm shrink-0 justify-self-center sm:mt-0 sm:block sm:max-w-md lg:max-w-none lg:justify-self-end"
+            className="mt-2 w-full max-w-sm shrink-0 justify-self-center sm:mt-0 sm:max-w-md lg:max-w-none lg:justify-self-end"
             aria-hidden
             initial={reduceBool ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}

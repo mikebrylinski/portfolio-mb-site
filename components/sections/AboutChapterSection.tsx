@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { AppleStaggerChild, AppleStaggerRoot } from "@/components/layout/AppleStagger";
 import { ScrollSection } from "@/components/layout/ScrollSection";
 import { AboutPortrait } from "@/components/sections/AboutPortrait";
@@ -71,6 +72,15 @@ export function AboutChapterSection() {
                 frontend architecture to APIs, databases, cloud infrastructure,
                 and AI.
               </p>
+              <Link
+                href="/about"
+                className="inline-flex min-h-[44px] w-fit items-center gap-2.5 rounded-md border border-[#3B8CFF] bg-[#3B8CFF]/10 px-5 py-2.5 text-sm font-medium text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
+              >
+                Read the full story
+                <span aria-hidden className="text-[#3B8CFF]">
+                  →
+                </span>
+              </Link>
             </div>
           </div>
         </div>

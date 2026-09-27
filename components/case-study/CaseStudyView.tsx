@@ -112,6 +112,17 @@ export function CaseStudyView({
             <h1 className="mt-4 text-[clamp(1.85rem,4.5vw,3.15rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
               {study.title}
             </h1>
+            {study.liveUrl ? (
+              <a
+                href={study.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex min-h-[48px] items-center gap-2.5 rounded-md border border-[#3B8CFF] bg-[#3B8CFF] px-5 py-3 text-sm font-medium text-[#06101c] transition-[filter] hover:brightness-110"
+              >
+                Visit live site
+                <span aria-hidden>↗</span>
+              </a>
+            ) : null}
             <p className="mt-4 max-w-xl text-sm font-medium leading-relaxed text-white/90 md:text-[15px]">
               {study.headline}
             </p>

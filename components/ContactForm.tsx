@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import {
   submitContact,
   type ContactState,
@@ -22,12 +22,17 @@ export function ContactForm({ variant = "default", idPrefix = "" }: ContactFormP
     initial,
   );
   const firstRef = useRef<HTMLInputElement>(null);
+  // Email fields get extra nodes from password-manager extensions before hydration.
+  const [fieldsReady, setFieldsReady] = useState(false);
 
   useEffect(() => {
-    if (!compact) {
-      firstRef.current?.focus();
-    }
-  }, [compact]);
+    setFieldsReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!fieldsReady || compact) return;
+    firstRef.current?.focus();
+  }, [compact, fieldsReady]);
 
   if (state.ok) {
     return (
@@ -101,27 +106,34 @@ export function ContactForm({ variant = "default", idPrefix = "" }: ContactFormP
         )}
       </div>
 
-      <div>
-        <label htmlFor={`${idPrefix}email`} className="mb-2 block text-sm font-medium text-white">
-          Email
-        </label>
-        <input
-          id={`${idPrefix}email`}
-          name="email"
-          type="email"
-          autoComplete="email"
-          required
-          aria-invalid={!!state.fieldErrors?.email}
-          aria-describedby={state.fieldErrors?.email ? `${idPrefix}email-error` : undefined}
-          className={fieldClass}
-          placeholder="you@company.com"
-        />
-        {state.fieldErrors?.email && (
-          <p id={`${idPrefix}email-error`} className="mt-1 text-sm text-red-400" role="alert">
-            {state.fieldErrors.email}
-          </p>
-        )}
-      </div>
+      {fieldsReady ? (
+        <div>
+          <label htmlFor={`${idPrefix}email`} className="mb-2 block text-sm font-medium text-white">
+            Email
+          </label>
+          <input
+            id={`${idPrefix}email`}
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            aria-invalid={!!state.fieldErrors?.email}
+            aria-describedby={state.fieldErrors?.email ? `${idPrefix}email-error` : undefined}
+            className={fieldClass}
+            placeholder="you@company.com"
+          />
+          {state.fieldErrors?.email && (
+            <p id={`${idPrefix}email-error`} className="mt-1 text-sm text-red-400" role="alert">
+              {state.fieldErrors.email}
+            </p>
+          )}
+        </div>
+      ) : (
+        <div aria-hidden>
+          <p className="mb-2 block text-sm font-medium text-white">Email</p>
+          <div className={`${fieldClass} h-12`} />
+        </div>
+      )}
 
       <div>
         <label htmlFor={`${idPrefix}message`} className="mb-2 block text-sm font-medium text-white">

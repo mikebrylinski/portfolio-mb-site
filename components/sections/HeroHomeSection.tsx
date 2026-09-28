@@ -129,7 +129,7 @@ export function HeroHomeSection() {
                   e.preventDefault();
                   el.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
-                className="inline-flex min-h-[48px] items-center gap-2.5 rounded-md border border-[#3B8CFF] bg-[#3B8CFF]/10 px-7 py-3 text-sm font-medium text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
+                className="inline-flex min-h-[48px] items-center gap-2.5 rounded-md border border-[#3B8CFF] bg-[#3B8CFF]/10 px-7 py-3 text-sm font-medium uppercase tracking-[0.12em] text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
               >
                 Get in touch
                 <span aria-hidden className="text-[#3B8CFF]">
@@ -153,13 +153,6 @@ export function HeroHomeSection() {
               </p>
             </motion.div>
 
-            <motion.p
-              variants={heroItem}
-              className="mt-6 hidden font-mono text-[9px] uppercase tracking-[0.18em] text-[#3B8CFF]/35 sm:block"
-              aria-hidden
-            >
-              LAT / 34.0928 · LONG / -118.3287 · REV / 2026.09
-            </motion.p>
           </motion.div>
 
           <motion.div

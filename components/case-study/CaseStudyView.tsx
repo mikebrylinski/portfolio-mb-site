@@ -3,6 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import { AndyEbertLogo } from "@/components/case-study/AndyEbertLogo";
+import { GlucorAILogo } from "@/components/case-study/GlucorAILogo";
+import { PracticalDrummingLogo } from "@/components/case-study/PracticalDrummingLogo";
 import { CaseStudyLogo } from "@/components/case-study/CaseStudyLogo";
 import {
   CaseStudyDeviceMockups,
@@ -98,7 +101,10 @@ export function CaseStudyView({
           >
             <div className="flex flex-wrap items-start justify-between gap-4">
               <FieldLabel>Case study {study.code}</FieldLabel>
-              {study.logoSrc ? (
+              {study.slug !== "andy-ebert" &&
+              study.slug !== "practical-drumming" &&
+              study.slug !== "glucorai" &&
+              study.logoSrc ? (
                 <CaseStudyLogo
                   src={study.logoSrc}
                   alt={study.logoAlt ?? `${study.title} logo`}
@@ -109,20 +115,23 @@ export function CaseStudyView({
             <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-[#3B8CFF]/80">
               {study.category}
             </p>
-            <h1 className="mt-4 text-[clamp(1.85rem,4.5vw,3.15rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
-              {study.title}
-            </h1>
-            {study.liveUrl ? (
-              <a
-                href={study.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex min-h-[48px] items-center gap-2.5 rounded-md border border-[#3B8CFF] bg-[#3B8CFF] px-5 py-3 text-sm font-medium text-[#06101c] transition-[filter] hover:brightness-110"
-              >
-                Visit live site
-                <span aria-hidden>↗</span>
-              </a>
-            ) : null}
+            {study.slug === "andy-ebert" ? (
+              <h1 className="mt-4">
+                <AndyEbertLogo size="title" />
+              </h1>
+            ) : study.slug === "practical-drumming" ? (
+              <h1 className="mt-4">
+                <PracticalDrummingLogo size="title" />
+              </h1>
+            ) : study.slug === "glucorai" ? (
+              <h1 className="mt-4">
+                <GlucorAILogo size="title" />
+              </h1>
+            ) : (
+              <h1 className="mt-4 text-[clamp(1.85rem,4.5vw,3.15rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
+                {study.title}
+              </h1>
+            )}
             <p className="mt-4 max-w-xl text-sm font-medium leading-relaxed text-white/90 md:text-[15px]">
               {study.headline}
             </p>
@@ -158,6 +167,24 @@ export function CaseStudyView({
               </p>
             </div>
           </FadeIn>
+          {study.liveUrl ? (
+            <FadeIn
+              delay={0.12}
+              className={cn(
+                "relative z-[1] border-t border-[#3B8CFF]/30 p-4 md:col-span-2 md:p-5",
+                study.heroBgSrc && "bg-[#06101c]/55 backdrop-blur-[2px]",
+              )}
+            >
+              <a
+                href={study.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[44px] items-center rounded-md border border-[#3B8CFF] bg-[#3B8CFF] px-5 py-2.5 text-xs font-medium uppercase tracking-[0.12em] text-[#06101c] transition-[filter] hover:brightness-110"
+              >
+                Visit live site
+              </a>
+            </FadeIn>
+          ) : null}
         </header>
 
         <section className="mt-6 border border-[#3B8CFF]/30 p-5 md:mt-8 md:p-7">

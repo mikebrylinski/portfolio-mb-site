@@ -106,7 +106,7 @@ export function SitePreloader() {
             aria-hidden
           />
 
-          <div className="relative z-[1] w-[min(92vw,26rem)] border border-[#3B8CFF]/35 bg-[#06101c]/92 px-5 py-6 text-left sm:px-6 sm:py-7">
+          <div className="relative z-[1] w-[min(72vw,15.5rem)] border border-[#3B8CFF]/35 bg-[#06101c]/92 px-3 py-3 text-left sm:w-[min(92vw,26rem)] sm:px-6 sm:py-7">
             <FrameCorners />
             {!reduce ? (
               <motion.div
@@ -117,7 +117,7 @@ export function SitePreloader() {
               />
             ) : null}
 
-            <div className="flex items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-[#3B8CFF]/75">
+            <div className="flex items-center justify-between gap-2 font-mono text-[8px] uppercase tracking-[0.16em] text-[#3B8CFF]/75 sm:gap-3 sm:text-[10px] sm:tracking-[0.22em]">
               <span className="flex items-center gap-2">
                 <motion.span
                   className="h-1.5 w-1.5 rounded-full bg-[#3B8CFF]"
@@ -129,7 +129,7 @@ export function SitePreloader() {
               <span>Rev / 2026.09</span>
             </div>
 
-            <p className="mt-5 inline-flex items-baseline gap-1 text-[clamp(1.15rem,4vw,1.5rem)] font-bold leading-none tracking-[-0.03em]">
+            <p className="mt-3 inline-flex items-baseline gap-1 text-[clamp(0.95rem,3.4vw,1.5rem)] font-bold leading-none tracking-[-0.03em] sm:mt-5">
               <span className="font-mono text-[0.9em] font-medium tracking-[0.08em] text-[#3B8CFF]">
                 &lt;
                 <motion.span
@@ -149,13 +149,13 @@ export function SitePreloader() {
               <span className="text-[#3B8CFF]">.dev</span>
             </p>
 
-            <ul className="mt-5 space-y-1.5 border-y border-[#3B8CFF]/15 py-3">
+            <ul className="mt-3 space-y-1 border-y border-[#3B8CFF]/15 py-2 sm:mt-5 sm:space-y-1.5 sm:py-3">
               {STAGES.map((stage) => {
                 const live = progress >= stage.at;
                 return (
                   <li
                     key={stage.code}
-                    className="flex items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.16em]"
+                    className="flex items-center justify-between gap-2 font-mono text-[8px] uppercase tracking-[0.12em] sm:gap-3 sm:text-[10px] sm:tracking-[0.16em]"
                   >
                     <span className={live ? "text-[#3B8CFF]" : "text-white/25"}>
                       {stage.code}
@@ -169,7 +169,7 @@ export function SitePreloader() {
               })}
             </ul>
 
-            <div className="mt-4 flex gap-1" aria-hidden>
+            <div className="mt-3 flex gap-0.5 sm:mt-4 sm:gap-1" aria-hidden>
               {Array.from({ length: METER_TICKS }, (_, index) => {
                 const filled = progress >= ((index + 1) / METER_TICKS) * 100;
                 return (
@@ -177,17 +177,16 @@ export function SitePreloader() {
                     key={index}
                     className={
                       filled
-                        ? "h-2 flex-1 bg-[#3B8CFF]"
-                        : "h-2 flex-1 bg-[#3B8CFF]/15"
+                        ? "h-1.5 flex-1 bg-[#3B8CFF] sm:h-2"
+                        : "h-1.5 flex-1 bg-[#3B8CFF]/15 sm:h-2"
                     }
                   />
                 );
               })}
             </div>
 
-            <div className="mt-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-[#3B8CFF]/70">
+            <div className="mt-2.5 flex items-center justify-between font-mono text-[8px] uppercase tracking-[0.14em] text-[#3B8CFF]/70 sm:mt-3 sm:text-[10px] sm:tracking-[0.18em]">
               <span>{progress >= 100 ? "Live" : "Drawing"}</span>
-              <span>Lat 34.0928 · Long -118.3287</span>
               <span>{String(progress).padStart(3, "0")}%</span>
             </div>
           </div>

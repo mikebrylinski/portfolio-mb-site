@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { Inter } from "next/font/google";
+import { Bebas_Neue, Geist, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { SiteChrome } from "@/components/SiteChrome";
 import { absoluteUrl, siteConfig } from "@/lib/site";
@@ -8,6 +8,27 @@ import { absoluteUrl, siteConfig } from "@/lib/site";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  weight: ["700"],
+  display: "swap",
+});
+
+const bebas = Bebas_Neue({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-bebas",
+  display: "swap",
+});
+
+const geist = Geist({
+  subsets: ["latin"],
+  weight: "600",
+  variable: "--font-geist",
   display: "swap",
 });
 
@@ -94,7 +115,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${spaceGrotesk.variable} ${bebas.variable} ${geist.variable}`}
+      suppressHydrationWarning
+    >
       <body
         suppressHydrationWarning
         className={`${inter.className} min-h-dvh overflow-x-hidden bg-[#000000] antialiased text-white`}

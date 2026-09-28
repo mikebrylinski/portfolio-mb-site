@@ -111,7 +111,7 @@ export function SiteHeader() {
       >
         <BrandMark className="px-5 py-3.5 text-[clamp(1.2rem,3vw,1.5rem)]" />
 
-        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
           {navItems.map((item) => {
             if (item.kind === "route") {
               return (
@@ -119,7 +119,7 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "px-2 py-2 text-[10px] font-medium uppercase tracking-[0.18em] transition-colors xl:px-2.5 xl:tracking-[0.2em]",
+                    "px-2.5 py-2 text-xs font-medium uppercase tracking-[0.12em] transition-colors xl:px-3 xl:text-[13px] xl:tracking-[0.14em]",
                     recruitersActive
                       ? "text-white"
                       : "text-white/70 hover:text-white",
@@ -137,7 +137,7 @@ export function SiteHeader() {
                 href={href}
                 onClick={(e) => handleSectionClick(item.id, e)}
                 className={cn(
-                  "px-2 py-2 text-[10px] font-medium uppercase tracking-[0.18em] transition-colors xl:px-2.5 xl:tracking-[0.2em]",
+                  "px-2.5 py-2 text-xs font-medium uppercase tracking-[0.12em] transition-colors xl:px-3 xl:text-[13px] xl:tracking-[0.14em]",
                   navActive === item.id
                     ? "text-white"
                     : "text-white/70 hover:text-white",
@@ -154,7 +154,7 @@ export function SiteHeader() {
               e.preventDefault();
               scrollToId("contact");
             }}
-            className="ml-2 inline-flex min-h-[44px] items-center border border-[#3B8CFF] bg-[#3B8CFF]/10 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.18em] text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
+            className="ml-2 inline-flex min-h-[44px] items-center border border-[#3B8CFF] bg-[#3B8CFF]/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.12em] text-white transition-[background-color] hover:bg-[#3B8CFF]/20 xl:text-[13px] xl:tracking-[0.14em]"
           >
             Get in touch
           </Link>
@@ -192,7 +192,7 @@ export function SiteHeader() {
           <nav className="flex w-full flex-col items-center gap-1 pt-8" aria-label="Mobile">
             <Link
               href="/#contact"
-              className="mb-3 inline-flex min-h-[48px] w-full max-w-sm items-center justify-center border border-[#3B8CFF] bg-[#3B8CFF]/10 px-4 py-3 text-sm font-medium uppercase tracking-[0.28em] text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
+              className="mb-3 inline-flex min-h-[48px] w-full max-w-sm items-center justify-center border border-[#3B8CFF] bg-[#3B8CFF]/10 px-4 py-3 text-sm font-medium uppercase tracking-[0.16em] text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
               onClick={(e) => {
                 if (onHome) {
                   e.preventDefault();
@@ -209,7 +209,7 @@ export function SiteHeader() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="w-full max-w-sm py-3.5 text-center text-sm font-medium uppercase tracking-[0.28em] text-white/85 transition-colors hover:text-[#3B8CFF]"
+                    className="w-full max-w-sm py-3.5 text-center text-sm font-medium uppercase tracking-[0.16em] text-white/85 transition-colors hover:text-[#3B8CFF]"
                     onClick={() => setOpen(false)}
                   >
                     {item.label}
@@ -222,7 +222,7 @@ export function SiteHeader() {
                 <Link
                   key={item.id}
                   href={href}
-                  className="w-full max-w-sm py-3.5 text-center text-sm font-medium uppercase tracking-[0.28em] text-white/85 transition-colors hover:text-[#3B8CFF]"
+                  className="w-full max-w-sm py-3.5 text-center text-sm font-medium uppercase tracking-[0.16em] text-white/85 transition-colors hover:text-[#3B8CFF]"
                   onClick={(e) => {
                     if (onHome) {
                       e.preventDefault();

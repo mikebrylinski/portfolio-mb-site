@@ -167,7 +167,7 @@ export function ContactForm({ variant = "default", idPrefix = "" }: ContactFormP
       <button
         type="submit"
         disabled={isPending}
-        className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-md border border-[#3B8CFF] bg-[#3B8CFF]/10 px-7 py-3 text-sm font-medium text-white transition-[background-color,opacity] hover:bg-[#3B8CFF]/20 disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-md border border-[#3B8CFF] bg-[#3B8CFF]/10 px-7 py-3 text-sm font-medium uppercase tracking-[0.12em] text-white transition-[background-color,opacity] hover:bg-[#3B8CFF]/20 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isPending ? "Sending…" : "Send message"}
         {!isPending ? (

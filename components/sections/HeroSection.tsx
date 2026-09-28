@@ -65,7 +65,7 @@ export function HeroSection() {
           <div className="mt-10 flex justify-center">
             <Link
               href="/contact"
-              className="inline-flex min-h-[48px] min-w-[200px] items-center justify-center rounded-lg bg-[#3B8CFF] px-8 py-3 text-base font-semibold text-[#050505] transition-opacity hover:opacity-90"
+              className="inline-flex min-h-[48px] min-w-[200px] items-center justify-center rounded-lg bg-[#3B8CFF] px-8 py-3 text-base font-semibold uppercase tracking-[0.12em] text-[#050505] transition-opacity hover:opacity-90"
             >
               Hire Me ($100/hour)
             </Link>

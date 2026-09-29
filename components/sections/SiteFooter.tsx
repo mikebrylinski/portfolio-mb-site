@@ -9,7 +9,7 @@ import { siteContainerClass } from "@/lib/site";
 const footerNav = [
   { href: "/#work", label: "Work" },
   { href: "/#experience", label: "Experience" },
-  { href: "/#about", label: "About" },
+  { href: "/about", label: "About" },
   { href: "/#skills", label: "Skills" },
   { href: "/#contact", label: "Contact" },
   { href: "/recruiters", label: "Recruiters" },

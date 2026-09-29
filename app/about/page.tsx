@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { AboutClip, AboutPhoto } from "@/components/about/AboutMedia";
+import { AboutClip, AboutPhoto, AboutPhotoPack } from "@/components/about/AboutMedia";
 import { CreativeProcess } from "@/components/about/CreativeProcess";
 import { AboutBuildSignal } from "@/components/sections/AboutBuildSignal";
+import { AppleStaggerChild, AppleStaggerRoot } from "@/components/layout/AppleStagger";
 import { SiteFooter } from "@/components/sections/SiteFooter";
 import { FieldLabel, FrameCorners } from "@/components/ui/FieldNotes";
 import { absoluteUrl, siteConfig, siteContainerClass } from "@/lib/site";
@@ -35,15 +36,21 @@ function Emphasis({ children }: { children: ReactNode }) {
 
 function Chapter({
   title,
+  id,
   children,
   split = false,
 }: {
   title: string;
+  id?: string;
   children: ReactNode;
   split?: boolean;
 }) {
   return (
-    <section className="mt-14 border-t border-[#3B8CFF]/20 pt-10">
+    <section
+      id={id}
+      className="relative mt-8 scroll-mt-24 border border-[#3B8CFF]/25 px-5 py-8 sm:px-7 sm:py-10 md:px-10 md:py-12"
+    >
+      <FrameCorners />
       <h2 className="text-xl font-medium uppercase tracking-tight text-white md:text-2xl">
         {title}
       </h2>
@@ -98,46 +105,105 @@ export default function AboutPage() {
             </Link>
           </div>
 
-          <div>
           <h1 className="text-[clamp(1.7rem,3.6vw,2.75rem)] font-bold uppercase leading-[0.98] tracking-[-0.03em] text-white">
-            I learned to build under pressure{" "}
+            I learned to build under pressure
+            <br />
             <span className="text-[#3B8CFF]">before I learned to code.</span>
           </h1>
           <p className="mt-6 text-base font-medium text-white md:text-lg">
             Before there was a terminal, there was a stage.
           </p>
-          <AboutBuildSignal />
 
-          <div className="mt-12 space-y-5 text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
-            <p>My career didn&apos;t start in technology.</p>
-            <p>
-              It started in a recording studio when I was{" "}
-              <Emphasis>15 years old</Emphasis>, where I got my first opportunity
-              as an intern.
-            </p>
-            <p>
-              I worked my way through the trenches—recording bands, setting up
-              sessions, troubleshooting equipment, working with artists, and
-              learning what happens behind the scenes when an idea becomes
-              something real.
-            </p>
-            <p>I learned by doing.</p>
-            <p>And I&apos;ve been doing that ever since.</p>
+          <div className="mt-10 grid items-start gap-8 md:mt-12 md:grid-cols-2 md:gap-10 lg:gap-14">
+            <AppleStaggerRoot className="space-y-5 text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
+              <AppleStaggerChild>
+                <p>My career didn&apos;t start in technology.</p>
+              </AppleStaggerChild>
+              <AppleStaggerChild>
+                <p>
+                  It started in a recording studio when I was{" "}
+                  <Emphasis>15 years old</Emphasis>, where I got my first opportunity
+                  as an intern.
+                </p>
+              </AppleStaggerChild>
+              <AppleStaggerChild>
+                <p>
+                  I worked my way through the trenches—recording bands, setting up
+                  sessions, troubleshooting equipment, working with artists, and
+                  learning what happens behind the scenes when an idea becomes
+                  something real.
+                </p>
+              </AppleStaggerChild>
+              <AppleStaggerChild>
+                <p>I learned by doing.</p>
+              </AppleStaggerChild>
+              <AppleStaggerChild>
+                <p>And I&apos;ve been doing that ever since.</p>
+              </AppleStaggerChild>
+            </AppleStaggerRoot>
+            <AppleStaggerRoot>
+              <AppleStaggerChild>
+                <AboutBuildSignal />
+              </AppleStaggerChild>
+            </AppleStaggerRoot>
           </div>
+        </article>
 
-          <Chapter title="The Studio" split>
+        <Chapter id="studio" title="The Studio" split>
             <Split
               imageSide="left"
               media={
-                <AboutPhoto
-                  src="/about/studio-session.jpg"
-                  alt="Musicians and the engineering team in a recording studio control room, with a large console in the foreground and guitar amps along the back wall."
-                  width={1024}
-                  height={736}
-                  caption="Studio — control room"
+                <AboutPhotoPack
+                  photos={[
+                    {
+                      src: "/about/inner-machine-overview.jpg",
+                      alt: "Overhead view of the Inner Machine control room: a large-format mixing console in the foreground, an engineer’s chair, and a curved wall of outboard racks.",
+                      width: 1024,
+                      height: 682,
+                      caption: "Inner Machine",
+                    },
+                    {
+                      src: "/about/inner-machine-live-room.jpg",
+                      alt: "Inner Machine control room at night: a large-format console, an engineer’s chair, and a view through the glass into the live room where a drum kit is set up.",
+                      width: 1024,
+                      height: 682,
+                      caption: "Overnight sessions",
+                    },
+                    {
+                      src: "/about/studio-console.jpg",
+                      alt: "John Rzeznik and Robby Takac at the Inner Machine mixing console, with Mike Brylinski at the console in the back.",
+                      width: 1024,
+                      height: 870,
+                      caption: "Rzeznik and Takac",
+                    },
+                    {
+                      src: "/about/inner-machine-outboard.jpg",
+                      alt: "A curved wall of outboard audio processors and microphone preamps in the Inner Machine control room.",
+                      width: 1024,
+                      height: 682,
+                      caption: "Outboard",
+                    },
+                  ]}
                 />
               }
             >
+              <p>
+                I started as an <Emphasis>assistant engineer</Emphasis>.
+              </p>
+              <p>That&apos;s where I learned how people made records.</p>
+              <p>
+                Mic placement. <Emphasis>Pro Tools</Emphasis>. Backup management.
+                All of it.
+              </p>
+              <p>
+                I worked with local bands overnight, from{" "}
+                <Emphasis>12 a.m. to 7 a.m.</Emphasis>, while the rest of the
+                studio was dark.
+              </p>
+              <p>Staying up all night to record music was the exciting part.</p>
+              <p>
+                Then I got involved with the <Emphasis>Goo Goo Dolls</Emphasis>.
+              </p>
               <p>
                 Over the years, those early lessons turned into bigger
                 responsibilities.
@@ -148,7 +214,7 @@ export default function AboutPage() {
                   manage the buildout and day-to-day operations of a private,
                   multi-million-dollar recording facility
                 </Emphasis>{" "}
-                associated with the Goo Goo Dolls.
+                associated with the band.
               </p>
               <p>I wasn&apos;t just working in the room.</p>
               <p>I helped bring the room to life.</p>
@@ -157,11 +223,11 @@ export default function AboutPage() {
               imageSide="right"
               media={
                 <AboutPhoto
-                  src="/about/studio-console.jpg"
-                  alt="Engineers at a large-format mixing console in a recording studio control room."
-                  width={1024}
-                  height={870}
-                  caption="Studio — mix position"
+                  src="/about/mix-cover-2008.jpg"
+                  alt="June 2008 cover of Mix magazine, featuring the Inner Machine studio live room and control room under the headline Class of 2008."
+                  width={1105}
+                  height={1136}
+                  caption="Mix — June 2008"
                 />
               }
             >
@@ -169,12 +235,6 @@ export default function AboutPage() {
                 The project involved the technology, infrastructure, people,
                 systems, and countless details required to make a complex creative
                 environment work.
-              </p>
-              <p>
-                The facility and its work were eventually{" "}
-                <Emphasis>
-                  featured on the cover of <em>Mix</em> magazine.
-                </Emphasis>
               </p>
               <p>
                 That experience taught me something that has stayed with me
@@ -188,10 +248,27 @@ export default function AboutPage() {
                 behind it.
               </p>
               <p>They just get to create.</p>
+              <p>
+                The facility and its work were eventually{" "}
+                <Emphasis>
+                  featured on the cover of <em>Mix</em> magazine.
+                </Emphasis>
+              </p>
+              <p>June 2008. Inner Machine, in Buffalo.</p>
+              <p>
+                <a
+                  href="https://wsdg.com/projects-items/goo-goo-dolls-gcr-audio/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-white underline decoration-[#3B8CFF]/70 underline-offset-4 transition-colors hover:text-[#3B8CFF]"
+                >
+                  More info on the studio
+                </a>
+              </p>
             </Split>
           </Chapter>
 
-          <Chapter title="The Road" split>
+          <Chapter id="road" title="The Road" split>
             <Split
               imageSide="left"
               media={
@@ -206,8 +283,8 @@ export default function AboutPage() {
             >
               <p>That studio experience eventually took me on the road.</p>
               <p>
-                I was asked by the <Emphasis>Goo Goo Dolls</Emphasis> to manage
-                their studio and later join their touring operation as a{" "}
+                I was asked by the <Emphasis>Goo Goo Dolls</Emphasis> to join
+                their touring operation as a{" "}
                 <Emphasis>playback and drum technician</Emphasis>.
               </p>
               <p>The studio had taught me how to build and manage complex systems.</p>
@@ -326,8 +403,20 @@ export default function AboutPage() {
             </div>
           </Chapter>
 
-          <Chapter title="From the Stage to the Stack">
+          <Chapter id="stack" title="From the Stage to the Stack">
             <p>Eventually, I realized I could apply that same mindset to software.</p>
+            <p>
+              <Emphasis>File management and workflow</Emphasis> were already how I
+              worked.
+            </p>
+            <p>
+              In the studio, that meant keeping sessions, backups, and versions in
+              order so the work could keep moving.
+            </p>
+            <p>Those habits carried straight into web development.</p>
+            <p>
+              I also watched other developers and learned from the way they built.
+            </p>
             <p>
               Today I&apos;m a{" "}
               <Emphasis>
@@ -367,8 +456,6 @@ export default function AboutPage() {
               Start a project
             </Link>
           </Chapter>
-          </div>
-        </article>
       </div>
 
       <SiteFooter />

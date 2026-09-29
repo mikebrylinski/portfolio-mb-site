@@ -87,19 +87,32 @@ function ThumbCaption({ caption }: { caption: string }) {
   );
 }
 
+type AboutPhotoFields = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption: string;
+};
+
+export function AboutPhotoPack({ photos }: { photos: readonly AboutPhotoFields[] }) {
+  return (
+    <div className="grid w-full grid-cols-2 gap-3">
+      {photos.map((photo) => (
+        <AboutPhoto key={photo.src} {...photo} compact />
+      ))}
+    </div>
+  );
+}
+
 export function AboutPhoto({
   src,
   alt,
   width,
   height,
   caption,
-}: {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-  caption: string;
-}) {
+  compact = false,
+}: AboutPhotoFields & { compact?: boolean }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -116,8 +129,8 @@ export function AboutPhoto({
           alt=""
           width={width}
           height={height}
-          sizes="(max-width: 768px) 90vw, 560px"
-          className="h-auto w-full"
+          sizes={compact ? "(max-width: 768px) 45vw, 320px" : "(max-width: 768px) 90vw, 560px"}
+          className={compact ? "aspect-[4/3] w-full object-cover" : "h-auto w-full"}
         />
         <ThumbCaption caption={caption} />
       </button>

@@ -64,7 +64,7 @@ export function AboutBuildSignal() {
 
   return (
     <div
-      className="relative mt-8 overflow-hidden border border-[#3B8CFF]/30 bg-[#030910]"
+      className="relative overflow-hidden border border-[#3B8CFF]/30 bg-[#030910]"
       aria-hidden
     >
       <div className="flex items-center justify-between border-b border-[#3B8CFF]/20 px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[#3B8CFF]/70">

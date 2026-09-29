@@ -7,7 +7,7 @@ import { BrandMark } from "@/components/BrandMark";
 import { cn } from "@/lib/cn";
 import { siteContainerClass } from "@/lib/site";
 
-const SECTION_IDS = ["work", "experience", "about", "skills", "contact"] as const;
+const SECTION_IDS = ["work", "experience", "skills", "contact"] as const;
 
 type SectionNavItem = {
   kind: "section";
@@ -26,7 +26,7 @@ type NavItem = SectionNavItem | RouteNavItem;
 const navItems: NavItem[] = [
   { kind: "section", id: "work", label: "Work" },
   { kind: "section", id: "experience", label: "Experience" },
-  { kind: "section", id: "about", label: "About" },
+  { kind: "route", href: "/about", label: "About" },
   { kind: "section", id: "skills", label: "Skills" },
   { kind: "section", id: "contact", label: "Contact" },
   { kind: "route", href: "/recruiters", label: "Recruiters" },
@@ -51,7 +51,6 @@ export function SiteHeader() {
 
   const onHome = pathname === "/";
   const navActive = onHome ? active : null;
-  const recruitersActive = pathname === "/recruiters";
 
   useEffect(() => {
     if (!open) return;
@@ -114,13 +113,15 @@ export function SiteHeader() {
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
           {navItems.map((item) => {
             if (item.kind === "route") {
+              const routeActive =
+                pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={cn(
                     "px-2.5 py-2 text-xs font-medium uppercase tracking-[0.12em] transition-colors xl:px-3 xl:text-[13px] xl:tracking-[0.14em]",
-                    recruitersActive
+                    routeActive
                       ? "text-white"
                       : "text-white/70 hover:text-white",
                   )}

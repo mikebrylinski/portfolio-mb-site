@@ -5,9 +5,9 @@ import { AestheticNote, FieldLabel, FrameCorners } from "@/components/ui/FieldNo
 import { caseStudies } from "@/content/case-studies";
 import { absoluteUrl, siteConfig, siteContainerClass } from "@/lib/site";
 
-const title = "Selected Projects";
+const title = "Products Shipped";
 const description =
-  "Products designed, architected, and shipped by Michael Brylinski — full-stack SaaS, AI-powered applications, and production web experiences.";
+  "Products designed, architected, built, and shipped by Michael Brylinski — full-stack SaaS, AI-powered applications, and production web experiences.";
 
 export const metadata: Metadata = {
   title,
@@ -37,15 +37,12 @@ export default function WorkIndexPage() {
         <div className="relative border border-[#3B8CFF]/25 px-5 py-8 sm:px-7 sm:py-10 md:px-8">
           <FrameCorners />
           <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-            <FieldLabel>Sheet A — Selected projects</FieldLabel>
+            <FieldLabel>Sheet A — Shipped products</FieldLabel>
             <AestheticNote>SCALE 1 : 1 · END TO END</AestheticNote>
           </div>
-          <h1 className="text-[clamp(2rem,4.5vw,3.25rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
-            Selected projects
+          <h1 className="text-[clamp(1.65rem,3.6vw,2.85rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
+            Products I&apos;ve Designed, Architected, Built &amp; Shipped
           </h1>
-          <p className="mt-6 max-w-xl text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
-            Products I&apos;ve designed, architected, and shipped.
-          </p>
         </div>
 
         <ul className="mt-10 grid list-none grid-cols-1 gap-6 p-0 md:mt-12">

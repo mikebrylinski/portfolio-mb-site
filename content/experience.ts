@@ -9,17 +9,14 @@ export type ExperienceItem = {
 export const experience: readonly ExperienceItem[] = [
   {
     company: "Pixel Palisade",
-    role: "Founder / Full-Stack Developer",
+    role: "Full-Stack Product Engineer",
     dates: "2020–Present",
     focus: [
-      "Full-stack applications",
-      "SaaS platforms",
-      "AI-powered products",
-      "Ecommerce",
-      "Cloud infrastructure",
-      "UX/UI",
-      "SEO",
-      "Product development",
+      "Architect and ship full-stack SaaS products from concept through production.",
+      "Build React/Next.js applications using TypeScript, Node.js, PostgreSQL/Supabase, and cloud infrastructure.",
+      "Integrate AI/LLM capabilities into production applications.",
+      "Design APIs, authentication, databases, admin systems, and third-party integrations.",
+      "Own UX, technical architecture, deployment, SEO, and product strategy.",
     ],
   },
   {
@@ -27,12 +24,10 @@ export const experience: readonly ExperienceItem[] = [
     role: "Web Developer / Ecommerce",
     dates: "2018–2020",
     focus: [
-      "BigCommerce",
-      "WordPress",
-      "Ecommerce",
-      "UX",
-      "Portal development",
-      "Conversion-focused web development",
+      "Built and maintained BigCommerce and WordPress ecommerce systems.",
+      "Developed internal portals and customer-facing experiences.",
+      "Improved UX and conversion-focused web experiences.",
+      "Worked across ecommerce integrations and content systems.",
     ],
   },
   {
@@ -40,11 +35,9 @@ export const experience: readonly ExperienceItem[] = [
     role: "Web / Data Developer",
     dates: "2016–2018",
     focus: [
-      "SQL",
-      "Dashboards",
-      "Enterprise applications",
-      "Data visualization",
-      "Schneider Electric / EcoStruxure ecosystem",
+      "Built enterprise web and data applications.",
+      "Developed SQL-driven dashboards and data visualization.",
+      "Worked within the Schneider Electric / EcoStruxure ecosystem.",
     ],
   },
   {
@@ -52,11 +45,9 @@ export const experience: readonly ExperienceItem[] = [
     role: "Frontend / Ecommerce Developer",
     dates: "2014–2016",
     focus: [
-      "Magento",
-      "WooCommerce",
-      "Shopify",
-      "Frontend development",
-      "Ecommerce UX",
+      "Built ecommerce experiences across Magento, WooCommerce, and Shopify.",
+      "Developed responsive frontend interfaces.",
+      "Worked on ecommerce UX and frontend architecture.",
     ],
   },
   {

@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "Michael Brylinski",
-  jobTitle: "Senior Full-Stack Developer",
-  title: "Michael Brylinski | Senior Full-Stack Developer",
+  jobTitle: "Senior Full-Stack / Product Engineer",
+  title: "Michael Brylinski | Senior Full-Stack & Product Engineer",
   description:
-    "Senior full-stack developer with 15+ years of experience building production web applications, SaaS platforms, ecommerce systems, enterprise applications, and AI-powered products. React, Next.js, Node.js, TypeScript, AWS and AI. Open to remote full-time opportunities.",
+    "Senior Full-Stack / Product Engineer with 15+ years of experience building SaaS, AI-powered applications, ecommerce platforms, enterprise systems, and digital products. React, Next.js, TypeScript, Node.js, AWS, PostgreSQL and AI.",
   brand: "MIKEBWEB.dev",
   url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://mikebweb.dev",
   locale: "en_US",
@@ -12,8 +12,10 @@ export const siteConfig = {
   email: "",
   keywords: [
     "Michael Brylinski",
-    "Senior Full-Stack Developer",
+    "Senior Full-Stack / Product Engineer",
+    "Product Engineer",
     "full stack engineer",
+    "PostgreSQL",
     "React",
     "Next.js",
     "Node.js",

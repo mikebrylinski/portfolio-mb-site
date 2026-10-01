@@ -69,18 +69,29 @@ export function ExperienceChapterSection() {
                     </p>
                   ) : null}
                   {item.focus.length > 0 ? (
-                    <ul
-                      className="mt-4 flex flex-wrap gap-1.5"
-                      aria-label={`${item.company} focus`}
-                    >
-                      {item.focus.map((chip) => (
-                        <li key={chip}>
-                          <span className="inline-flex border border-[#3B8CFF]/20 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.14em] text-[#9cb6d4]">
-                            {chip}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                    item.note ? (
+                      <ul
+                        className="mt-4 flex flex-wrap gap-1.5"
+                        aria-label={`${item.company} focus`}
+                      >
+                        {item.focus.map((chip) => (
+                          <li key={chip}>
+                            <span className="inline-flex border border-[#3B8CFF]/20 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.14em] text-[#9cb6d4]">
+                              {chip}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <ul className="mt-4 space-y-2 text-sm leading-relaxed text-[#9cb6d4]">
+                        {item.focus.map((bullet) => (
+                          <li key={bullet} className="flex gap-2">
+                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#3B8CFF]" aria-hidden />
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )
                   ) : null}
                 </article>
               </li>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
 import { MountainBackdrop } from "@/components/sections/MountainBackdrop";
 import { SiteFooter } from "@/components/sections/SiteFooter";
@@ -7,7 +8,7 @@ import { absoluteUrl, siteConfig, siteContainerClass } from "@/lib/site";
 
 const title = "Contact";
 const description =
-  "Contact Michael Brylinski — senior full-stack developer open to remote full-time W-2 opportunities.";
+  "Contact Michael Brylinski — Senior Full-Stack / Product Engineer available for remote full-time W-2 opportunities.";
 
 export const metadata: Metadata = {
   title,
@@ -41,15 +42,31 @@ export default function ContactPage() {
             <div className="relative min-w-0 border border-[#3B8CFF]/25 bg-[#020617]/45 px-5 py-8 backdrop-blur-sm sm:px-7 sm:py-10">
               <FrameCorners />
               <FieldLabel>Summit — Contact</FieldLabel>
-              <h1 className="mt-5 text-[clamp(2rem,4.5vw,3.25rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
-                Let&apos;s build
-                <span className="mt-1 block text-[#3B8CFF]">something.</span>
+              <h1 className="mt-5 text-[clamp(1.75rem,4vw,3rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
+                Looking for a senior engineer
+                <span className="mt-1 block text-[#3B8CFF]">
+                  who can own the whole stack?
+                </span>
               </h1>
               <p className="mt-6 max-w-md text-base leading-relaxed text-white/75 md:text-lg">
-                I&apos;m currently open to remote full-time W-2 opportunities in
-                full-stack engineering, product engineering, and AI-powered
-                application development.
+                I&apos;m currently available for remote full-time W-2 opportunities
+                in Senior Full-Stack Engineering, Product Engineering, and
+                AI-powered application development.
               </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="/recruiters"
+                  className="inline-flex min-h-[44px] items-center rounded-md border border-[#3B8CFF] bg-[#3B8CFF]/10 px-5 py-2.5 text-sm font-medium uppercase tracking-[0.12em] text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
+                >
+                  View resume
+                </Link>
+                <a
+                  href="#contact-form"
+                  className="inline-flex min-h-[44px] items-center rounded-md border border-[#3B8CFF]/50 px-5 py-2.5 text-sm font-medium uppercase tracking-[0.12em] text-white transition-[background-color] hover:bg-[#3B8CFF]/15"
+                >
+                  Contact me
+                </a>
+              </div>
               <p className="mt-6 max-w-md text-sm leading-relaxed text-white/50">
                 Select freelance and consulting projects also considered.
               </p>
@@ -58,7 +75,7 @@ export default function ContactPage() {
               </AestheticNote>
             </div>
 
-            <div className="relative min-w-0 border border-[#3B8CFF]/30 bg-[#020617]/70 p-5 backdrop-blur-md sm:p-6">
+            <div id="contact-form" className="relative min-w-0 scroll-mt-28 border border-[#3B8CFF]/30 bg-[#020617]/70 p-5 backdrop-blur-md sm:p-6">
               <FrameCorners />
               <p className="mb-5 font-mono text-[11px] font-medium uppercase tracking-[0.24em] text-white/70">
                 Get in touch

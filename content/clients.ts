@@ -17,7 +17,6 @@ export const clients = [
   "Alanis Morissette",
   "Stark Tech Group",
   "NyRA Trophy",
-  "Clair Global",
   "David Cook",
   "Paul Hager",
   "Sosume Touring Inc",

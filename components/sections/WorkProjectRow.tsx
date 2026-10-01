@@ -10,7 +10,6 @@ import { CaseStudyLogo } from "@/components/case-study/CaseStudyLogo";
 import { GlucorAILogo } from "@/components/case-study/GlucorAILogo";
 import { PracticalDrummingLogo } from "@/components/case-study/PracticalDrummingLogo";
 import { CaseStudyThumbMedia } from "@/components/case-study/CaseStudyMedia";
-import { ArrowNudge } from "@/components/icons/AccentIcons";
 import { FieldLabel, FrameCorners } from "@/components/ui/FieldNotes";
 import { cn } from "@/lib/cn";
 
@@ -115,12 +114,36 @@ export function WorkProjectRow({
             <p className="mt-4 font-mono text-[10px] uppercase leading-relaxed tracking-[0.12em] text-[#3B8CFF]/80">
               {project.techLine}
             </p>
+            {project.flow ? (
+              <ol
+                className="mt-4 flex max-w-xs flex-col"
+                aria-label={`${project.title} architecture`}
+              >
+                {project.flow.map((step, index) => (
+                  <li key={step}>
+                    {index > 0 ? (
+                      <span
+                        className="block py-0.5 pl-3 font-mono text-[10px] text-[#3B8CFF]"
+                        aria-hidden
+                      >
+                        ↓
+                      </span>
+                    ) : null}
+                    <span className="inline-flex border border-[#3B8CFF]/25 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-[#c8dff7]">
+                      {step}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            ) : null}
           </div>
 
-          <p className="relative z-[1] mt-auto flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-[#3B8CFF]">
-            <span>View case study</span>
-            <ArrowNudge className="opacity-80 group-hover:opacity-100" />
-          </p>
+          <span className="relative z-[1] mt-auto inline-flex w-fit min-h-[48px] items-center gap-2.5 rounded-md border border-[#3B8CFF] bg-[#3B8CFF]/10 px-7 py-3 text-sm font-medium uppercase tracking-[0.12em] text-white transition-[background-color] group-hover:bg-[#3B8CFF]/20">
+            View case study
+            <span aria-hidden className="text-[#3B8CFF]">
+              →
+            </span>
+          </span>
         </div>
       </Link>
     </motion.li>

@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const ogSize = { width: 1200, height: 630 };
 export const ogContentType = "image/png";
 export const ogAlt =
-  "MIKEBWEB.dev — Michael Brylinski, Senior Full-Stack Developer";
+  "MIKEBWEB.dev — Michael Brylinski, Senior Full-Stack / Product Engineer";
 
 export function OgImage() {
   return new ImageResponse(
@@ -56,16 +56,16 @@ export function OgImage() {
           <div
             style={{
               marginTop: 18,
-              fontSize: 72,
+              fontSize: 56,
               fontWeight: 700,
-              letterSpacing: -2,
-              lineHeight: 1.02,
+              letterSpacing: -1.5,
+              lineHeight: 1.05,
             }}
           >
-            Senior Full-Stack Developer
+            Senior Full-Stack / Product Engineer
           </div>
           <div style={{ marginTop: 28, fontSize: 28, color: "#9cb6d4" }}>
-            React · Next.js · Node.js · TypeScript · AWS · AI
+            React · Next.js · TypeScript · Node.js · PostgreSQL · AWS · AI
           </div>
         </div>
 

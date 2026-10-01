@@ -74,7 +74,7 @@ export function ServicesChapterSection() {
 
           <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
             <FieldLabel>Ridgeline — Technical expertise</FieldLabel>
-            <AestheticNote>SPEC SET · 06</AestheticNote>
+            <AestheticNote>SPEC SET · 07</AestheticNote>
           </div>
 
           <AppleStaggerRoot>

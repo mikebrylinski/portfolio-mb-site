@@ -12,17 +12,32 @@ const phases = [
   {
     code: "01",
     title: "Understand",
-    body: "Goals, users, constraints and requirements.",
+    body: "Translate ambiguous product requirements into a technical plan.",
   },
   {
     code: "02",
-    title: "Build",
-    body: "Design, architecture, development and integration.",
+    title: "Architect",
+    body: "Design frontend, backend, database, APIs, and infrastructure.",
   },
   {
     code: "03",
-    title: "Launch",
-    body: "Deploy, measure and improve.",
+    title: "Build",
+    body: "Ship production-quality interfaces and full-stack functionality.",
+  },
+  {
+    code: "04",
+    title: "Integrate",
+    body: "Connect AI, APIs, payments, analytics, and third-party services.",
+  },
+  {
+    code: "05",
+    title: "Deploy",
+    body: "Own cloud infrastructure, CI/CD, and production environments.",
+  },
+  {
+    code: "06",
+    title: "Iterate",
+    body: "Measure, troubleshoot, improve, and ship again.",
   },
 ] as const;
 
@@ -33,7 +48,7 @@ export function ProcessChapterSection() {
     () => ({
       hidden: {},
       show: {
-        transition: { staggerChildren: reduce ? 0 : 0.12, delayChildren: reduce ? 0 : 0.04 },
+        transition: { staggerChildren: reduce ? 0 : 0.1, delayChildren: reduce ? 0 : 0.04 },
       },
     }),
     [reduce],
@@ -53,35 +68,36 @@ export function ProcessChapterSection() {
 
   return (
     <ScrollSection id="process" className="relative overflow-hidden bg-[#000000]">
-      <div className={`${siteContainerClass} text-left`}>
+      <div
+        className="pointer-events-none absolute inset-0 blueprint-grid opacity-35"
+        aria-hidden
+      />
+      <div className={`relative z-[1] ${siteContainerClass} text-left`}>
         <div className="relative border border-[#3B8CFF]/25 px-5 py-8 sm:px-7 sm:py-10 md:px-8">
           <FrameCorners />
-          <FieldLabel>The build</FieldLabel>
+          <FieldLabel>The build — From problem to production</FieldLabel>
           <AppleStaggerRoot>
             <AppleStaggerChild>
-              <h2 className="mt-4 text-[clamp(1.75rem,3.6vw,2.75rem)] font-bold uppercase tracking-[-0.03em] text-white">
-                How I work
+              <h2 className="mt-4 max-w-3xl text-[clamp(1.75rem,3.6vw,2.85rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
+                From problem to production
               </h2>
             </AppleStaggerChild>
           </AppleStaggerRoot>
 
           <motion.ol
-            className="relative mt-10 grid list-none grid-cols-1 gap-6 p-0 md:grid-cols-3 md:gap-0"
+            className="relative mt-10 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3"
             variants={packContainer}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.15 }}
           >
-            <span
-              className="pointer-events-none absolute left-[8%] right-[8%] top-7 hidden h-px bg-[#3B8CFF]/30 md:block"
-              aria-hidden
-            />
             {phases.map((phase) => (
               <motion.li
                 key={phase.code}
                 variants={packItem}
-                className="relative px-0 md:px-4"
+                className="relative border border-[#3B8CFF]/20 bg-[#06101c]/40 p-4 sm:p-5"
               >
+                <FrameCorners size="sm" />
                 <p className="font-mono text-[11px] tracking-[0.2em] text-[#3B8CFF]">
                   {phase.code}
                 </p>

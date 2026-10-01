@@ -71,6 +71,16 @@ export function CaseStudyView({
           <FrameCorners />
 
         <header className="relative grid gap-0 overflow-hidden border border-[#3B8CFF]/30 md:grid-cols-[1fr_minmax(220px,280px)]">
+          <div className="relative z-[1] aspect-[16/9] w-full overflow-hidden border-b border-[#3B8CFF]/30 md:col-span-2 md:aspect-[21/9]">
+            <Image
+              src={study.visualSrc}
+              alt={study.visualAlt}
+              fill
+              priority
+              sizes="(max-width: 1100px) 100vw, 1100px"
+              className="object-cover object-center"
+            />
+          </div>
           {study.heroBgSrc ? (
             <>
               <Image

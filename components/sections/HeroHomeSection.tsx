@@ -96,30 +96,38 @@ export function HeroHomeSection() {
 
             <motion.h1
               variants={heroItem}
-              className="mt-4 text-[clamp(2.15rem,7.2vw,4.75rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em]"
+              className="mt-4 text-[clamp(1.85rem,5.6vw,4.25rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em]"
             >
               <span className="block text-white">Senior</span>
-              <span className="block text-[#3B8CFF]">Full-Stack Developer</span>
+              <span className="block text-[#3B8CFF]">Full-Stack / Product Engineer</span>
             </motion.h1>
 
             <motion.p
               variants={heroItem}
-              className="mx-auto mt-6 max-w-md text-base leading-relaxed text-white/75 md:text-lg lg:mx-0"
+              className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/75 md:text-lg lg:mx-0"
             >
-              I build production web applications from frontend to backend,
-              database, cloud infrastructure, and AI.
+              I build and ship production SaaS, web applications, and
+              AI-powered products—from UX and frontend architecture through
+              APIs, databases, cloud infrastructure, and deployment.
             </motion.p>
 
             <motion.p
               variants={heroItem}
-              className="mt-5 font-mono text-[10px] uppercase tracking-[0.16em] text-[#3B8CFF]/85 sm:text-[11px] sm:tracking-[0.18em]"
+              className="mt-5 font-mono text-[10px] uppercase tracking-[0.12em] text-[#3B8CFF]/85 sm:text-[11px] sm:tracking-[0.14em]"
             >
-              React · Next.js · Node.js · TypeScript · AWS · SQL · AI
+              React · Next.js · TypeScript · Node.js · PostgreSQL · AWS · AI
+            </motion.p>
+
+            <motion.p
+              variants={heroItem}
+              className="mt-6 font-mono text-[10px] uppercase tracking-[0.22em] text-white/70"
+            >
+              Remote · Full-Time · W-2
             </motion.p>
 
             <motion.div
               variants={heroItem}
-              className="mt-8 flex justify-center lg:justify-start"
+              className="mt-6 flex justify-center lg:justify-start"
             >
               <Link
                 href="/#contact"
@@ -138,19 +146,22 @@ export function HeroHomeSection() {
               </Link>
             </motion.div>
 
-            <motion.div
-              variants={heroItem}
-              className="mt-8 space-y-2"
-            >
-              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/70">
-                Remote · Full-Time · W-2
-              </p>
-              <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#3B8CFF]/70">
-                Open to remote full-time W-2 opportunities
-              </p>
-              <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/45">
-                15+ years building digital products
-              </p>
+            <motion.div variants={heroItem} className="mt-8">
+              <ul className="grid grid-cols-2 items-stretch gap-1.5 md:grid-cols-4">
+                {[
+                  "15+ Years Experience",
+                  "End-to-End Product Ownership",
+                  "SaaS + AI + Ecommerce",
+                  "Remote / US",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex h-full items-center justify-center border border-[#3B8CFF]/30 bg-[#020617]/35 px-2 py-2 text-center font-mono text-[8px] uppercase leading-snug tracking-[0.08em] text-[#c8dff7] sm:text-[9px] sm:tracking-[0.1em]"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
 
           </motion.div>

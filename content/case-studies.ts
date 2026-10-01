@@ -35,6 +35,8 @@ export type CaseStudy = {
   category: string;
   /** Homepage technology line */
   techLine: string;
+  /** Homepage architecture schematic, top to bottom */
+  flow?: readonly string[];
   /** Homepage summary — engineering-first */
   homepageSummary: string;
   role: string;
@@ -75,11 +77,12 @@ export const caseStudies: CaseStudy[] = [
       "Turning a drummer's expertise into a complete digital mentorship platform.",
     headline: "Turning decades of touring experience into a digital product.",
     systemType: "SaaS / Membership / Video / AI",
-    category: "FULL-STACK SAAS",
+    category: "FULL-STACK SAAS · PRODUCT ENGINEERING",
     techLine:
       "Next.js · React · TypeScript · Supabase · LiveKit · Resend · Vercel",
+    flow: ["User", "Next.js", "Supabase / PostgreSQL", "LiveKit / Resend / AI", "Vercel"],
     homepageSummary:
-      "Built an end-to-end SaaS platform for a premium online drumming mastermind, including the marketing site, membership experience, authentication, database architecture, live video, admin functionality, email infrastructure, AI coaching functionality, SEO, and production deployment.",
+      "Built an end-to-end membership SaaS for a professional touring musician—from marketing site and authentication to live video, database architecture, AI coaching, email infrastructure, admin tooling, SEO, and production deployment.",
     role: "Product Design · Full-Stack Development",
     status: "LIVE",
     tags: ["PRODUCT DESIGN", "FULL-STACK", "AI", "VIDEO", "SAAS"],
@@ -121,8 +124,8 @@ export const caseStudies: CaseStudy[] = [
       "AI-powered Sprint Coach for between-session support",
       "Conversion-focused membership funnel and SEO architecture",
     ],
-    visualSrc: "/case-studies/pd-imac-home.png",
-    visualAlt: "Practical Drumming homepage on an iMac — dark premium mastermind branding",
+    visualSrc: "/case-studies/practical-drumming-preview.jpg",
+    visualAlt: "Practical Drumming on a MacBook, iPad, and iPhone — homepage and member screens",
     logoSrc: "/case-studies/logos/practical-drumming-wordmark.png",
     logoAlt: "Practical Drumming Mastermind Club logo",
     liveUrl: "https://pracdrum.com",
@@ -233,11 +236,12 @@ export const caseStudies: CaseStudy[] = [
     statement: "Turning fragmented diabetes data into actionable intelligence",
     headline: "An AI-powered health product built around real-world data.",
     systemType: "AI Product / SaaS / Health Data",
-    category: "AI-POWERED SAAS",
+    category: "AI PRODUCT ENGINEERING · DATA · SAAS",
     techLine:
       "Next.js · React · TypeScript · AI APIs · Supabase · Vercel",
+    flow: ["User", "Next.js", "Supabase", "AI APIs", "Vercel"],
     homepageSummary:
-      "Designed and built an AI-powered SaaS product that transforms glucose, insulin, meal, and activity data into contextual insights — covering AI integration, product and data architecture, frontend and backend development, SaaS architecture, and production deployment.",
+      "Designed and built an AI-powered product that transforms glucose, insulin, meal, and activity data into contextual insights, combining AI integration, product architecture, data architecture, frontend, backend, and production deployment.",
     role: "Product Design · Full-Stack Development",
     status: "LIVE",
     tags: ["AI", "PRODUCT", "SAAS", "DATA"],
@@ -273,8 +277,8 @@ export const caseStudies: CaseStudy[] = [
       "Nightscout ecosystem integration and expandable health-data architecture",
       "Mobile-first UI on Next.js, Supabase, and Vercel",
     ],
-    visualSrc: "/case-studies/glucorai-cinema-display.png",
-    visualAlt: "GlucorAI homepage on an Apple Cinema Display — AI-powered diabetes intelligence hero",
+    visualSrc: "/case-studies/glucorai-preview.jpg",
+    visualAlt: "GlucorAI on a desktop display, laptop, and phone — the AI diabetes homepage",
     logoSrc: "/case-studies/logos/glucorai.svg",
     logoAlt: "GlucorAI logo",
     liveUrl: "https://glucorai.vercel.app/",
@@ -324,10 +328,11 @@ export const caseStudies: CaseStudy[] = [
     statement: "International Live Production & Monitor Engineering",
     headline: "A cinematic digital experience for an international audio professional.",
     systemType: "Digital Experience / CMS / Admin",
-    category: "WEB APPLICATION",
+    category: "WEB APPLICATION · PRODUCT EXPERIENCE",
     techLine: "Next.js · React · TypeScript · CMS · Animation",
+    flow: ["User", "Next.js", "CMS", "Galleries / Animation", "Vercel"],
     homepageSummary:
-      "Modernized an established professional audio website into a responsive, multilingual web experience with custom galleries, German localization, animations, and a modern content architecture.",
+      "Modernized an established professional audio website into a responsive architecture and multilingual experience—with a CMS, custom galleries, animation, and production deployment.",
     role: "Product Design · Full-Stack Development",
     status: "LIVE",
     tags: ["UX", "DEVELOPMENT", "MOTION", "GALLERY", "ADMIN"],
@@ -362,13 +367,13 @@ export const caseStudies: CaseStudy[] = [
       "Responsive development across desktop, tablet, and mobile",
       "Decades of professional experience organized into a clearer digital story",
     ],
-    visualSrc: "/case-studies/andy-ebert-hero-devices.png",
+    visualSrc: "/case-studies/andy-ebert-preview.jpg",
     visualAlt:
-      "Andy Ebert portfolio on MacBook and iPhone — career timeline and gallery screens over an arena crowd",
+      "Andy Ebert site on a MacBook and iPhone in front of an arena crowd — homepage and on-the-road gallery",
     logoSrc: "/case-studies/logos/andy-ebert.svg",
     logoAlt: "Andy Ebert AE logo",
     heroBgSrc: "/case-studies/andy-ebert-portfolio-bg.jpg",
-    liveUrl: "https://ae-eight-omega.vercel.app/",
+    liveUrl: "https://andyebert.com",
     mockups: [
       {
         src: "/case-studies/andy-ebert-hero-devices.png",

@@ -172,21 +172,16 @@ export function WorkChapterSection() {
           <FrameCorners />
 
           <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-            <FieldLabel>Basecamp — Selected projects</FieldLabel>
+            <FieldLabel>Basecamp — Shipped products</FieldLabel>
             <AestheticNote>SYSTEM / DIGITAL PRODUCT</AestheticNote>
           </div>
 
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
             <AppleStaggerRoot>
               <AppleStaggerChild>
-                <h2 className="text-[clamp(2rem,4.5vw,3.25rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
-                  Selected projects
+                <h2 className="text-[clamp(1.65rem,3.6vw,2.85rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
+                  Products I&apos;ve Designed, Architected, Built &amp; Shipped
                 </h2>
-              </AppleStaggerChild>
-              <AppleStaggerChild>
-                <p className="mt-6 max-w-xl text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
-                  Products I&apos;ve designed, architected, and shipped.
-                </p>
               </AppleStaggerChild>
             </AppleStaggerRoot>
 

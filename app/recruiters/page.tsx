@@ -4,8 +4,10 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { SiteFooter } from "@/components/sections/SiteFooter";
 import { FieldLabel, FrameCorners } from "@/components/ui/FieldNotes";
+import { ContactForm } from "@/components/ContactForm";
 import { caseStudies } from "@/content/case-studies";
 import { experience } from "@/content/experience";
+import { skillGroups } from "@/content/services";
 import {
   absoluteUrl,
   siteConfig,
@@ -14,37 +16,24 @@ import {
 
 const title = "Recruiters";
 const description =
-  "Michael Brylinski — Senior Full-Stack Developer. Remote · Full-Time · W-2. React, Next.js, TypeScript, Node.js, AWS, SQL, and AI.";
+  "Michael Brylinski — Senior Full-Stack / Product Engineer. Remote · US · Full-Time · W-2. React, Next.js, TypeScript, Node.js, PostgreSQL, AWS, and AI.";
 
 export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/recruiters" },
     openGraph: {
-    title: `${siteConfig.name} | Senior Full-Stack Developer`,
+    title: `${siteConfig.name} | Senior Full-Stack / Product Engineer`,
     description,
     url: absoluteUrl("/recruiters"),
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Senior Full-Stack Developer`,
+    title: `${siteConfig.name} | Senior Full-Stack / Product Engineer`,
     description,
   },
 };
-
-const coreStack = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Node.js",
-  "AWS",
-  "SQL",
-  "MongoDB",
-  "Supabase",
-  "Docker",
-  "AI / LLM APIs",
-] as const;
 
 function Sheet({
   code,
@@ -82,7 +71,7 @@ export default function RecruitersPage() {
           <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
             <FieldLabel>Recruiter snapshot</FieldLabel>
             <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#3B8CFF]/70">
-              Remote · Full-Time · W-2
+              Remote · US · Full-Time · W-2
             </p>
           </div>
 
@@ -92,12 +81,26 @@ export default function RecruitersPage() {
                 Michael Brylinski
               </h1>
               <p className="mt-4 text-base font-medium uppercase tracking-[0.16em] text-[#3B8CFF] md:text-lg">
-                Senior Full-Stack Developer
+                Senior Full-Stack / Product Engineer
               </p>
               <p className="mt-5 max-w-2xl text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
-                15+ years building web applications, ecommerce platforms, SaaS
-                products, enterprise systems, and AI-powered applications.
+                15+ years building production software across SaaS, AI, ecommerce,
+                enterprise applications, and digital products.
               </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="/work"
+                  className="inline-flex min-h-[44px] items-center rounded-md border border-[#3B8CFF] bg-[#3B8CFF]/10 px-5 py-2.5 text-sm font-medium uppercase tracking-[0.12em] text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
+                >
+                  View case studies
+                </Link>
+                <Link
+                  href="#contact"
+                  className="inline-flex min-h-[44px] items-center rounded-md border border-[#3B8CFF]/50 px-5 py-2.5 text-sm font-medium uppercase tracking-[0.12em] text-white transition-[background-color] hover:bg-[#3B8CFF]/15"
+                >
+                  Contact
+                </Link>
+              </div>
             </div>
 
             <div className="relative mx-auto w-full max-w-[360px] border border-[#3B8CFF]/30 bg-[#06101c] p-2 md:mx-0">
@@ -105,7 +108,7 @@ export default function RecruitersPage() {
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src="/michael-brylinski-recruiter-headshot.png"
-                  alt="Michael Brylinski, Senior Full-Stack Developer"
+                  alt="Michael Brylinski, Senior Full-Stack / Product Engineer"
                   fill
                   priority
                   sizes="(max-width: 767px) 100vw, 360px"
@@ -125,17 +128,28 @@ export default function RecruitersPage() {
         </div>
 
         <div className="mt-6 grid gap-4 lg:grid-cols-2">
-          <Sheet code="01" title="Core stack">
-            <ul className="flex flex-wrap gap-1.5">
-              {coreStack.map((item) => (
-                <li key={item}>
-                  <span className="inline-flex border border-[#3B8CFF]/25 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[#c8dff7]">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </Sheet>
+          <div className="lg:col-span-2">
+            <Sheet code="01" title="Technical expertise">
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {skillGroups.map((group) => (
+                  <div key={group.label}>
+                    <h3 className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#3B8CFF]">
+                      {group.label}
+                    </h3>
+                    <ul className="mt-2 flex flex-wrap gap-1.5">
+                      {group.items.map((item) => (
+                        <li key={item}>
+                          <span className="inline-flex border border-[#3B8CFF]/25 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[#c8dff7]">
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </Sheet>
+          </div>
 
           <Sheet code="02" title="Recent projects">
             <ul className="space-y-3">
@@ -178,12 +192,28 @@ export default function RecruitersPage() {
               <Link href="/" className="w-fit text-[#3B8CFF] transition-opacity hover:opacity-80">
                 Portfolio
               </Link>
+              <Link href="/work" className="w-fit text-[#3B8CFF] transition-opacity hover:opacity-80">
+                View case studies
+              </Link>
+              <Link href="#contact" className="w-fit text-[#3B8CFF] transition-opacity hover:opacity-80">
+                Contact
+              </Link>
             </nav>
           </Sheet>
         </div>
 
         <div className="mt-6">
-          <Sheet code="05" title="About">
+          <Sheet code="05" title="What I'm looking for">
+            <p className="text-sm leading-relaxed text-[#9cb6d4] md:text-[15px]">
+              I&apos;m seeking a remote Senior Full-Stack, Product Engineer, or AI
+              Product Engineering role where I can own meaningful product work
+              across frontend, backend, data, cloud infrastructure, and AI.
+            </p>
+          </Sheet>
+        </div>
+
+        <div className="mt-6">
+          <Sheet code="06" title="About">
             <div className="grid gap-5 md:grid-cols-[minmax(180px,0.4fr)_minmax(0,1fr)] md:gap-8">
               <p className="text-lg font-medium uppercase leading-tight tracking-tight text-white">
                 From the studio
@@ -204,6 +234,12 @@ export default function RecruitersPage() {
                 </p>
               </div>
             </div>
+          </Sheet>
+        </div>
+
+        <div id="contact" className="mt-6 scroll-mt-24">
+          <Sheet code="07" title="Contact">
+            <ContactForm variant="compact" idPrefix="recruiters-" />
           </Sheet>
         </div>
       </div>

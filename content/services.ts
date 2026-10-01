@@ -5,29 +5,29 @@ export type SkillGroup = {
 
 export const skillGroups: readonly SkillGroup[] = [
   {
-    label: "Full Stack",
+    label: "Frontend",
+    items: ["React", "Next.js", "TypeScript", "JavaScript", "HTML/CSS"],
+  },
+  {
+    label: "Backend",
     items: [
-      "React",
-      "Next.js",
       "Node.js",
-      "TypeScript",
-      "JavaScript",
       "REST APIs",
-      "Frontend Architecture",
-      "Backend Development",
+      "Serverless",
+      "Authentication",
+      "API Architecture",
     ],
   },
   {
     label: "Data",
     items: [
       "PostgreSQL",
+      "Supabase",
       "MySQL",
       "MongoDB",
-      "Supabase",
       "Firebase",
       "Firestore",
       "Data Modeling",
-      "BI Dashboards",
     ],
   },
   {
@@ -38,37 +38,34 @@ export const skillGroups: readonly SkillGroup[] = [
       "GCP",
       "Vercel",
       "Docker",
-      "Firebase",
-      "Serverless",
       "CI/CD",
+      "Serverless",
     ],
   },
   {
     label: "AI",
     items: [
       "LLM APIs",
-      "AWS Bedrock",
-      "AI Product Integration",
-      "Prompt Engineering",
+      "RAG",
       "AI Workflows",
-      "RAG / Contextual AI",
-      "AI-powered SaaS",
+      "Prompt Engineering",
+      "AI Product Integration",
     ],
-  },
-  {
-    label: "Ecommerce",
-    items: ["Shopify", "WooCommerce", "BigCommerce", "Magento"],
   },
   {
     label: "Product",
     items: [
       "UX/UI",
+      "Product Architecture",
       "Design Systems",
       "Analytics",
       "SEO",
-      "Product Architecture",
       "Technical Strategy",
     ],
+  },
+  {
+    label: "Ecommerce",
+    items: ["Shopify", "BigCommerce", "WooCommerce", "Magento"],
   },
 ];
 

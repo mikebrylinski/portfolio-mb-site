@@ -145,14 +145,14 @@ export const seoPages: SeoPage[] = [
   {
     slug: "hire",
     title: "Work with Michael Brylinski",
-    metaTitle: "Senior Full-Stack Developer — Remote Full-Time & Select Freelance",
+    metaTitle: "Senior Full-Stack / Product Engineer — Remote Full-Time",
     description:
-      "Michael Brylinski is a senior full-stack developer open to remote full-time W-2 roles. Select freelance and consulting projects are also considered.",
+      "Michael Brylinski is a Senior Full-Stack / Product Engineer open to remote full-time W-2 roles. Select freelance and consulting projects are also considered.",
     eyebrow: "Remote · Full-time · W-2",
     headline: "Senior engineer.",
     headlineAccent: "Ready to ship.",
     intro:
-      "I'm currently looking for a remote full-time W-2 role as a senior full-stack developer. I build production web applications from frontend to backend, database, cloud infrastructure, and AI. Select freelance and consulting projects are also considered.",
+      "I'm currently looking for a remote full-time W-2 role as a Senior Full-Stack / Product Engineer. I build and ship production SaaS, web applications, and AI-powered products—from UX and frontend architecture through APIs, databases, cloud infrastructure, and deployment. Select freelance and consulting projects are also considered.",
     audience:
       "A strong fit for product and engineering teams that need someone who can take a system from architecture through implementation and production — and for operators who still need a senior builder for a focused engagement.",
     outcomes: [

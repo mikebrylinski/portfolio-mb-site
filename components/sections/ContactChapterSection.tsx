@@ -22,17 +22,41 @@ export function ContactChapterSection() {
                 <FieldLabel>Summit — Contact</FieldLabel>
               </AppleStaggerChild>
               <AppleStaggerChild>
-                <h2 className="mt-5 text-[clamp(2rem,4.5vw,3.25rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
-                  Let&apos;s build
-                  <span className="mt-1 block text-[#3B8CFF]">something.</span>
-                </h2>
+              <h2 className="mt-5 text-[clamp(1.75rem,4vw,3rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white">
+                Looking for a senior engineer
+                <span className="mt-1 block text-[#3B8CFF]">
+                  who can own the whole stack?
+                </span>
+              </h2>
               </AppleStaggerChild>
               <AppleStaggerChild>
                 <p className="mt-6 max-w-md text-base leading-relaxed text-white/75 md:text-lg">
-                  I&apos;m currently open to remote full-time W-2 opportunities in
-                  full-stack engineering, product engineering, and AI-powered
-                  application development.
+                  I&apos;m currently available for remote full-time W-2 opportunities
+                  in Senior Full-Stack Engineering, Product Engineering, and
+                  AI-powered application development.
                 </p>
+              </AppleStaggerChild>
+              <AppleStaggerChild>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href="/recruiters"
+                    className="inline-flex min-h-[44px] items-center rounded-md border border-[#3B8CFF] bg-[#3B8CFF]/10 px-5 py-2.5 text-sm font-medium uppercase tracking-[0.12em] text-white transition-[background-color] hover:bg-[#3B8CFF]/20"
+                  >
+                    View resume
+                  </a>
+                  <a
+                    href="#contact"
+                    onClick={(e) => {
+                      const el = document.getElementById("contact");
+                      if (!el) return;
+                      e.preventDefault();
+                      el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }}
+                    className="inline-flex min-h-[44px] items-center rounded-md border border-[#3B8CFF]/50 px-5 py-2.5 text-sm font-medium uppercase tracking-[0.12em] text-white transition-[background-color] hover:bg-[#3B8CFF]/15"
+                  >
+                    Contact me
+                  </a>
+                </div>
               </AppleStaggerChild>
               <AppleStaggerChild>
                 <p className="mt-6 max-w-md text-sm leading-relaxed text-white/50">

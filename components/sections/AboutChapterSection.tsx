@@ -52,25 +52,43 @@ export function AboutChapterSection() {
             </div>
 
             <div className="min-w-0 w-full max-w-2xl flex-1 space-y-5 text-sm leading-relaxed text-[#9cb6d4] md:text-[15px] lg:max-w-none">
+              <p className="text-base font-medium text-white md:text-lg">
+                I learned to build systems where failure isn&apos;t an option.
+              </p>
               <p>
-                Before writing production code, I spent years working in recording
-                studios and touring internationally with artists and production
+                Before writing production code, I worked in professional recording
+                studios and toured internationally with artists and production
                 teams.
               </p>
               <p>
-                That experience taught me to troubleshoot complex systems, work
-                under pressure, collaborate across disciplines, and keep things
-                running when failure isn&apos;t an option.
+                I started working in studios as a teenager and eventually managed
+                the buildout and day-to-day operation of a major recording
+                facility while working alongside professional musicians, producers,
+                engineers, and production teams.
               </p>
               <p>
-                I eventually moved into full-time web development, where I&apos;ve
-                spent 15+ years building ecommerce platforms, enterprise systems,
-                digital experiences, SaaS products, and AI-powered applications.
+                I also toured with a multi-platinum band, running redundant playback
+                systems in front of large audiences.
               </p>
               <p>
-                Today I work across the entire product stack — from UX and
-                frontend architecture to APIs, databases, cloud infrastructure,
-                and AI.
+                That environment taught me something I still use every day as an
+                engineer:
+              </p>
+              <p className="font-medium text-white">
+                Understand the system. Anticipate failure. Stay calm. Solve the
+                problem. Ship.
+              </p>
+              <p>
+                I eventually brought that mindset into software, where I&apos;ve spent
+                15+ years building ecommerce platforms, enterprise systems, digital
+                products, SaaS applications, and AI-powered products.
+              </p>
+              <p>
+                Today, I work across the entire product stack—from UX and frontend
+                architecture to APIs, databases, cloud infrastructure, and AI.
+              </p>
+              <p>
+                I don&apos;t just build websites. I build systems that have to work.
               </p>
               <Link
                 href="/about"
